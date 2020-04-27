@@ -1,0 +1,654 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Volatilidad portafolio de inversión &mdash; Abril  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Abril  documentation" href="../index.html"/>
+        <link rel="next" title="Ejercicios: Estadística y conformación de portafolios de inversión." href="../Ejercicios - Estadística y conformación de portafolios de inversión (solución)/Ejercicios - Estadística y conformación de portafolios de inversión (solución).html"/>
+        <link rel="prev" title="Conformación portafolio de inversión" href="../Conformación portafolio de inversión/Conformación portafolio de inversión.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Abril
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">RIESGO DE MERCADO</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Introducción a R/1. Introducción a R.mp4.html">Introducción a R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Diversificación de portafolios de inversión/Diversificación de portafolios de inversión.html">Diversificación de portafolios de inversión</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Conformación portafolio de inversión/Conformación portafolio de inversión.html">Conformación portafolio de inversión</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Volatilidad portafolio de inversión</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Curso 2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Ejercicios - Estadística y conformación de portafolios de inversión (solución)/Ejercicios - Estadística y conformación de portafolios de inversión (solución).html">Ejercicios: Estadística y conformación de portafolios de inversión.</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Abril</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Volatilidad portafolio de inversión</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/Volatilidad portafolio de inversión/Volatilidad portafolio de inversión.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="volatilidad-portafolio-de-inversion">
+<h1>Volatilidad portafolio de inversión<a class="headerlink" href="#volatilidad-portafolio-de-inversion" title="Permalink to this headline">¶</a></h1>
+<p>La varianza es el cuadrado de la dispersión alrededor de la media
+(<span class="math notranslate nohighlight">\(\sigma^2\)</span>).</p>
+<p>La desviación estándar, o también llamada volatilidad, es la raíz
+cuadrada de la varianza. Tiene las mismas unidades que la variable
+original.</p>
+<div class="section" id="forma-polinomial">
+<h2>Forma polinomial<a class="headerlink" href="#forma-polinomial" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight">
+\[\sigma_P=\sqrt{\sum_{i=1}^n\sum_{j=1}^nw_iw_j\sigma_{i,j}}=\sqrt{\sum_{i=1}^n\sum_{j=1}^nw_iw_j\sigma_j\sigma_j\rho_{i,j}}\]</div>
+<hr class="docutils" />
+<div class="math notranslate nohighlight">
+\[\sigma_P=\sqrt{\sum_{i=1}^nw_i^2\sigma_i^2+2\sum_{i&lt;j}w_iw_j\sigma_i\sigma_j\rho_{i,j}}\]</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="varianza-entre-dos-activos">
+<h2>Varianza entre dos activos.<a class="headerlink" href="#varianza-entre-dos-activos" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight">
+\[\sigma_P^2=w_A^2\sigma_A^2+w_B^2\sigma_B^2+2w_Aw_B\sigma_{A,B}\]</div>
+<hr class="docutils" />
+<p><span class="math notranslate nohighlight">\(\sigma_p^2:\)</span> varianza del portafolio de inversión.</p>
+<p><span class="math notranslate nohighlight">\(\sigma_A^2:\)</span> varianza activo A.</p>
+<p><span class="math notranslate nohighlight">\(\sigma_B^2:\)</span> varianza activo B.</p>
+<p><span class="math notranslate nohighlight">\(w_A^2:\)</span> proporción de inversión en A al cuadrado.</p>
+<p><span class="math notranslate nohighlight">\(w_B^2:\)</span> proporción de inversión en B al cuadrado.</p>
+<p><span class="math notranslate nohighlight">\(w_A:\)</span> proporción de inversión en A.</p>
+<p><span class="math notranslate nohighlight">\(w_B:\)</span> proporción de inversión en B.</p>
+<p><span class="math notranslate nohighlight">\(\sigma_{A,B}:\)</span> covarianza entre A y B.</p>
+</div>
+<div class="section" id="volatilidad-de-dos-activos">
+<h2>Volatilidad de dos activos.<a class="headerlink" href="#volatilidad-de-dos-activos" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight">
+\[\sigma_P=\sqrt{w_A^2\sigma_A^2+w_B^2\sigma_B^2+2w_Aw_B\sigma_{A,B}}\]</div>
+<hr class="docutils" />
+<p><span class="math notranslate nohighlight">\(\sigma_p:\)</span> volatilidad o desviación estándar del portafolio de
+inversión.</p>
+<div class="math notranslate nohighlight">
+\[\sigma_{A,B}=\sigma_A  \sigma_B\rho_{A,B}\]</div>
+<hr class="docutils" />
+<p><span class="math notranslate nohighlight">\(\rho_{A,B}:\)</span> coeficiente de correlación entre A y B.</p>
+<div class="math notranslate nohighlight">
+\[\sigma_P=\sqrt{w_A^2\sigma_A^2+w_B^2\sigma_B^2+2w_Aw_B\sigma_A\sigma_B\rho_{A,B}}\]</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="ejemplo">
+<h2>Ejemplo:<a class="headerlink" href="#ejemplo" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 26%" />
+<col style="width: 24%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>Volatilidad</p></th>
+<th class="head"><p>Proporción de inversión</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Acción A</strong></p></td>
+<td><p>2%</p></td>
+<td><p>70%</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Acción B</strong></p></td>
+<td><p>5%</p></td>
+<td><p>30%</p></td>
+</tr>
+</tbody>
+</table>
+<div class="math notranslate nohighlight">
+\[\rho_{A,B}=0,67\]</div>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">volatilidad_portafolio</span> <span class="o">=</span> <span class="nf">sqrt</span><span class="p">(</span><span class="m">0.7</span><span class="o">^</span><span class="m">2</span><span class="o">*</span><span class="m">0.02</span><span class="o">^</span><span class="m">2</span> <span class="o">+</span> <span class="m">0.3</span><span class="o">^</span><span class="m">2</span><span class="o">*</span><span class="m">0.05</span><span class="o">^</span><span class="m">2</span> <span class="o">+</span> <span class="m">2</span><span class="o">*</span><span class="m">0.7</span><span class="o">*</span><span class="m">0.3</span><span class="o">*</span><span class="m">0.02</span><span class="o">*</span><span class="m">0.05</span><span class="o">*</span><span class="m">0.67</span><span class="p">)</span>
+<span class="n">volatilidad_portafolio</span>
+</pre></div>
+</div>
+0.0265028300375639<p>Volatilidad del portafolio de inversión de 2,65%.</p>
+</div>
+<div class="section" id="id1">
+<h2>Ejemplo:<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 26%" />
+<col style="width: 24%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>Volatilidad</p></th>
+<th class="head"><p>Proporción de inversión</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Acción A</strong></p></td>
+<td><p>2%</p></td>
+<td><p>30%</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Acción B</strong></p></td>
+<td><p>5%</p></td>
+<td><p>70%</p></td>
+</tr>
+</tbody>
+</table>
+<div class="math notranslate nohighlight">
+\[\rho_{A,B}=0,67\]</div>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">volatilidad_portafolio</span> <span class="o">=</span> <span class="nf">sqrt</span><span class="p">(</span><span class="m">0.30</span><span class="o">^</span><span class="m">2</span><span class="o">*</span><span class="m">0.02</span><span class="o">^</span><span class="m">2</span> <span class="o">+</span> <span class="m">0.70</span><span class="o">^</span><span class="m">2</span><span class="o">*</span><span class="m">0.05</span><span class="o">^</span><span class="m">2</span> <span class="o">+</span> <span class="m">2</span><span class="o">*</span><span class="m">0.30</span><span class="o">*</span><span class="m">0.70</span><span class="o">*</span><span class="m">0.02</span><span class="o">*</span><span class="m">0.05</span><span class="o">*</span><span class="m">0.67</span><span class="p">)</span>
+<span class="n">volatilidad_portafolio</span>
+</pre></div>
+</div>
+0.0392734006676274<p>Volatilidad del portafolio de inversión de 3,93%.</p>
+</div>
+<div class="section" id="volatilidad-de-tres-activos">
+<h2>Volatilidad de tres activos.<a class="headerlink" href="#volatilidad-de-tres-activos" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight">
+\[\sigma_P=\sqrt{w_A^2\sigma_A^2+w_B^2\sigma_B^2+w_C^2\sigma_C^2+2w_Aw_B\sigma_{A,B}+2w_Aw_C\sigma_{A,C}+2w_Bw_C\sigma_{B,C}}\]</div>
+<hr class="docutils" />
+<div class="math notranslate nohighlight">
+\[\sigma_P=\sqrt{w_A^2\sigma_A^2+w_B^2\sigma_B^2+w_C^2\sigma_C^2+2w_Aw_B\sigma_A\sigma_B\rho_{A,B}+2w_Aw_C\sigma_A\sigma_C\rho_{A,C}+2w_Bw_C\sigma_B\sigma_C\rho_{B,C}}\]</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="id2">
+<h2>Ejemplo:<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 26%" />
+<col style="width: 24%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>Volatilidad</p></th>
+<th class="head"><p>Proporción de inversión</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Acción A</strong></p></td>
+<td><p>2%</p></td>
+<td><p>20%</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Acción B</strong></p></td>
+<td><p>4%</p></td>
+<td><p>50%</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Acción C</strong></p></td>
+<td><p>3,2%</p></td>
+<td><p>30%</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="matriz-de-coeficientes-de-correlacion">
+<h2>Matriz de coeficientes de correlación:<a class="headerlink" href="#matriz-de-coeficientes-de-correlacion" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p><strong>Acción A</strong></p></th>
+<th class="head"><p><strong>Acción B</strong></p></th>
+<th class="head"><p><strong>Acción C</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Acción A</strong></p></td>
+<td><p>1</p></td>
+<td><p>0,52</p></td>
+<td><p>0,32</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Acción B</strong></p></td>
+<td><p>0,52</p></td>
+<td><p>1</p></td>
+<td><p>0,48</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Acción C</strong></p></td>
+<td><p>0,42</p></td>
+<td><p>0,48</p></td>
+<td><p>1</p></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">volatilidad_portafolio</span> <span class="o">=</span> <span class="nf">sqrt</span><span class="p">(</span><span class="m">0.20</span><span class="o">^</span><span class="m">2</span><span class="o">*</span><span class="m">0.02</span><span class="o">^</span><span class="m">2</span> <span class="o">+</span> <span class="m">0.50</span><span class="o">^</span><span class="m">2</span><span class="o">*</span><span class="m">0.04</span><span class="o">^</span><span class="m">2</span> <span class="o">+</span> <span class="m">0.30</span><span class="o">^</span><span class="m">2</span><span class="o">*</span><span class="m">0.032</span><span class="o">^</span><span class="m">2</span> <span class="o">+</span> <span class="m">2</span><span class="o">*</span><span class="m">0.20</span><span class="o">*</span><span class="m">0.50</span><span class="o">*</span><span class="m">0.02</span><span class="o">*</span><span class="m">0.04</span><span class="o">*</span><span class="m">0.52</span> <span class="o">+</span> <span class="m">2</span><span class="o">*</span><span class="m">0.20</span><span class="o">*</span><span class="m">0.30</span><span class="o">*</span><span class="m">0.02</span><span class="o">*</span><span class="m">0.032</span><span class="o">*</span><span class="m">0.42</span> <span class="o">+</span> <span class="m">2</span><span class="o">*</span><span class="m">0.50</span><span class="o">*</span><span class="m">0.30</span><span class="o">*</span><span class="m">0.04</span><span class="o">*</span><span class="m">0.032</span><span class="p">)</span>
+<span class="n">volatilidad_portafolio</span>
+</pre></div>
+</div>
+0.0317429677251513<p>Volatilidad del portafolio de inversión de 3,17%.</p>
+</div>
+<div class="section" id="forma-matricial">
+<h2>Forma matricial<a class="headerlink" href="#forma-matricial" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="id3">
+<h2>Varianza entre dos activos<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p><img alt="image0" src="../_images/matricial.jpg" /></p>
+</div>
+<div class="section" id="id4">
+<h2>Ejemplo:<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 26%" />
+<col style="width: 24%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>Volatilidad</p></th>
+<th class="head"><p>Proporción de inversión</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Acción A</strong></p></td>
+<td><p>2%</p></td>
+<td><p>70%</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Acción B</strong></p></td>
+<td><p>5%</p></td>
+<td><p>30%</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="matriz-de-varianzas-covarianzas">
+<h2>Matriz de varianzas-covarianzas<a class="headerlink" href="#matriz-de-varianzas-covarianzas" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p><strong>Acción A</strong></p></th>
+<th class="head"><p><strong>Acción B</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Acción A</strong></p></td>
+<td><p>0,0010196809</p></td>
+<td><p>0,0005939468</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Acción B</strong></p></td>
+<td><p>0,0005939468</p></td>
+<td><p>0,0008155434</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="vector-de-proporciones">
+<h2>Vector de proporciones.<a class="headerlink" href="#vector-de-proporciones" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">proporciones</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">0.70</span><span class="p">,</span> <span class="m">0.30</span><span class="p">)</span>
+<span class="n">proporciones</span>
+</pre></div>
+</div>
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>0.7</li><li>0.3</li></ol><p>Es importante conocer si el vector de <code class="docutils literal notranslate"><span class="pre">proporciones</span></code> está en posición
+horizontal o vertical. La ecuación de volatilidad en forma matricial,
+indica que primero el vector de <code class="docutils literal notranslate"><span class="pre">proporciones</span></code> debe estár horizontal y
+después vertical.</p>
+</div>
+<div class="section" id="id5">
+<h2>Matriz de varianzas-covarianzas<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<p>Si utilizamos <code class="docutils literal notranslate"><span class="pre">cbind</span></code>, entonces cada vector será una columna.</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">vector_1</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">0.0010196809</span><span class="p">,</span> <span class="m">0.0005939468</span><span class="p">)</span>
+
+<span class="n">vector_2</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">0.0005939468</span><span class="p">,</span> <span class="m">0.0008155434</span><span class="p">)</span>
+
+<span class="n">covarianzas</span> <span class="o">=</span> <span class="nf">cbind</span><span class="p">(</span><span class="n">vector_1</span><span class="p">,</span> <span class="n">vector_2</span><span class="p">)</span>
+<span class="n">covarianzas</span>
+</pre></div>
+</div>
+<table>
+<caption>A matrix: 2 × 2 of type dbl</caption>
+<thead>
+    <tr><th scope=col>vector_1</th><th scope=col>vector_2</th></tr>
+</thead>
+<tbody>
+    <tr><td>0.0010196809</td><td>0.0005939468</td></tr>
+    <tr><td>0.0005939468</td><td>0.0008155434</td></tr>
+</tbody>
+</table><div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">volatilidad_portafolio</span> <span class="o">=</span> <span class="nf">sqrt</span><span class="p">(</span><span class="nf">sum</span><span class="p">(</span><span class="n">proporciones</span><span class="o">*</span><span class="n">covarianzas</span><span class="o">*</span><span class="nf">t</span><span class="p">(</span><span class="n">proporciones</span><span class="p">)))</span>
+<span class="n">volatilidad_portafolio</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Error</span> <span class="ow">in</span> <span class="n">proporciones</span> <span class="o">*</span> <span class="n">covarianzas</span> <span class="o">*</span> <span class="n">t</span><span class="p">(</span><span class="n">proporciones</span><span class="p">):</span> <span class="n">arreglos</span> <span class="n">de</span> <span class="n">dimensón</span> <span class="n">no</span> <span class="n">compatibles</span>
+<span class="n">Traceback</span><span class="p">:</span>
+</pre></div>
+</div>
+<p>Volatilidad del portafolio de inversión de 4,39%.</p>
+</div>
+<div class="section" id="ejemplo-con-historico-de-precios">
+<h2>Ejemplo con histórico de precios<a class="headerlink" href="#ejemplo-con-historico-de-precios" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="importar-datos">
+<h2>Importar datos.<a class="headerlink" href="#importar-datos" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">datos</span> <span class="o">=</span> <span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;Cuatro acciones 2020.csv&quot;</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&quot;;&quot;</span><span class="p">,</span> <span class="n">dec</span> <span class="o">=</span> <span class="s">&quot;,&quot;</span><span class="p">,</span> <span class="n">header</span> <span class="o">=</span> <span class="bp">T</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="matriz-de-precios">
+<h2>Matriz de precios.<a class="headerlink" href="#matriz-de-precios" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">precios</span> <span class="o">=</span> <span class="n">datos</span><span class="p">[,</span><span class="m">-1</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">precios</span> <span class="o">=</span> <span class="nf">ts</span><span class="p">(</span><span class="n">precios</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="nombres-de-las-acciones">
+<h2>Nombres de las acciones.<a class="headerlink" href="#nombres-de-las-acciones" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">nombres</span> <span class="o">=</span> <span class="nf">colnames</span><span class="p">(</span><span class="n">precios</span><span class="p">)</span>
+<span class="n">nombres</span>
+</pre></div>
+</div>
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>'ECO'</li><li>'PFAVAL'</li><li>'ISA'</li><li>'NUTRESA'</li></ol></div>
+<div class="section" id="matriz-de-rendimientos">
+<h2>Matriz de rendimientos.<a class="headerlink" href="#matriz-de-rendimientos" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">rendimientos</span> <span class="o">=</span> <span class="nf">diff</span><span class="p">(</span><span class="nf">log</span><span class="p">(</span><span class="n">precios</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="volatilidad-de-cada-accion">
+<h2>Volatilidad de cada acción.<a class="headerlink" href="#volatilidad-de-cada-accion" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">volatilidades</span> <span class="o">=</span> <span class="nf">apply</span><span class="p">(</span><span class="n">rendimientos</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="n">sd</span><span class="p">)</span>
+<span class="n">volatilidades</span>
+</pre></div>
+</div>
+<style>
+.dl-inline {width: auto; margin:0; padding: 0}
+.dl-inline>dt, .dl-inline>dd {float: none; width: auto; display: inline-block}
+.dl-inline>dt::after {content: ":\0020"; padding-right: .5ex}
+.dl-inline>dt:not(:first-of-type) {padding-left: .5ex}
+</style><dl class=dl-inline><dt>ECO</dt><dd>0.0319324424190137</dd><dt>PFAVAL</dt><dd>0.0285577211893029</dd><dt>ISA</dt><dd>0.0237292026947701</dd><dt>NUTRESA</dt><dd>0.0140104740592151</dd></dl></div>
+<div class="section" id="id6">
+<h2>Matriz de varianzas-covarianzas<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">covarianzas</span> <span class="o">=</span> <span class="nf">cov</span><span class="p">(</span><span class="n">rendimientos</span><span class="p">)</span>
+<span class="n">covarianzas</span>
+</pre></div>
+</div>
+<table>
+<caption>A matrix: 4 × 4 of type dbl</caption>
+<thead>
+    <tr><th></th><th scope=col>ECO</th><th scope=col>PFAVAL</th><th scope=col>ISA</th><th scope=col>NUTRESA</th></tr>
+</thead>
+<tbody>
+    <tr><th scope=row>ECO</th><td>0.0010196809</td><td>0.0005939468</td><td>0.0001160327</td><td>0.0001493216</td></tr>
+    <tr><th scope=row>PFAVAL</th><td>0.0005939468</td><td>0.0008155434</td><td>0.0001564360</td><td>0.0001322689</td></tr>
+    <tr><th scope=row>ISA</th><td>0.0001160327</td><td>0.0001564360</td><td>0.0005630751</td><td>0.0001519996</td></tr>
+    <tr><th scope=row>NUTRESA</th><td>0.0001493216</td><td>0.0001322689</td><td>0.0001519996</td><td>0.0001962934</td></tr>
+</tbody>
+</table></div>
+<div class="section" id="proporciones-de-inversion">
+<h2>Proporciones de inversión.<a class="headerlink" href="#proporciones-de-inversion" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">proporciones</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">0.20</span><span class="p">,</span> <span class="m">0.30</span><span class="p">,</span> <span class="m">0.40</span><span class="p">,</span> <span class="m">0.10</span><span class="p">)</span>
+<span class="n">proporciones</span>
+</pre></div>
+</div>
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>0.2</li><li>0.3</li><li>0.4</li><li>0.1</li></ol></div>
+<div class="section" id="volatilidad-del-portafolio-de-inversion-forma-matricial">
+<h2>Volatilidad del portafolio de inversión (forma matricial).<a class="headerlink" href="#volatilidad-del-portafolio-de-inversion-forma-matricial" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">volatilidad_portafolio</span> <span class="o">=</span> <span class="nf">sqrt</span><span class="p">(</span><span class="nf">sum</span><span class="p">(</span><span class="n">proporciones</span><span class="o">*</span><span class="n">covarianzas</span><span class="o">*</span><span class="nf">t</span><span class="p">(</span><span class="n">proporciones</span><span class="p">)))</span>
+<span class="n">volatilidad_portafolio</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Error</span> <span class="ow">in</span> <span class="n">proporciones</span> <span class="o">*</span> <span class="n">covarianzas</span> <span class="o">*</span> <span class="n">t</span><span class="p">(</span><span class="n">proporciones</span><span class="p">):</span> <span class="n">arreglos</span> <span class="n">de</span> <span class="n">dimensón</span> <span class="n">no</span> <span class="n">compatibles</span>
+<span class="n">Traceback</span><span class="p">:</span>
+</pre></div>
+</div>
+<p>Para corregir el error anterior, debemos poner en la primera
+multiplicación <code class="docutils literal notranslate"><span class="pre">%*%</span></code>, que en código de R se utiliza para
+multiplicación de vectores y matrices.</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">volatilidad_portafolio</span> <span class="o">=</span> <span class="nf">sqrt</span><span class="p">(</span><span class="nf">sum</span><span class="p">(</span><span class="n">proporciones</span><span class="o">%*%</span><span class="n">covarianzas</span><span class="o">*</span><span class="nf">t</span><span class="p">(</span><span class="n">proporciones</span><span class="p">)))</span>
+<span class="n">volatilidad_portafolio</span>
+</pre></div>
+</div>
+0.0189655883295511<p>Volatilida del portafolio de inversión de 1,897% diaria.</p>
+</div>
+<div class="section" id="volatilidad-del-portafolio-de-inversion-a-partir-de-los-rendimientos-de-las-acciones">
+<h2>Volatilidad del portafolio de inversión a partir de los rendimientos de las acciones.<a class="headerlink" href="#volatilidad-del-portafolio-de-inversion-a-partir-de-los-rendimientos-de-las-acciones" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="rendimientos-del-portafolio-de-inversion">
+<h2>Rendimientos del portafolio de inversión.<a class="headerlink" href="#rendimientos-del-portafolio-de-inversion" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">rendimientos_portafolio</span> <span class="o">=</span> <span class="nf">vector</span><span class="p">()</span>
+
+<span class="nf">for</span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="nf">nrow</span><span class="p">(</span><span class="n">rendimientos</span><span class="p">)){</span>
+
+  <span class="n">rendimientos_portafolio</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">rendimientos</span><span class="p">[</span><span class="n">i</span><span class="p">,]</span><span class="o">*</span><span class="n">proporciones</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="volatilidad-del-portafolio-de-inversion">
+<h2>Volatilidad del portafolio de inversión<a class="headerlink" href="#volatilidad-del-portafolio-de-inversion" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">volatilidad_portafolio</span> <span class="o">=</span> <span class="nf">sd</span><span class="p">(</span><span class="n">rendimientos_portafolio</span><span class="p">)</span>
+<span class="n">volatilidad_portafolio</span>
+</pre></div>
+</div>
+0.0189655883295511<p>Se obtiene el mismo resultado que por la forma matricial. Este método se
+pude usar sólo cuando se tienen los históricos de precios.</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../Ejercicios - Estadística y conformación de portafolios de inversión (solución)/Ejercicios - Estadística y conformación de portafolios de inversión (solución).html" class="btn btn-neutral float-right" title="Ejercicios: Estadística y conformación de portafolios de inversión." accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../Conformación portafolio de inversión/Conformación portafolio de inversión.html" class="btn btn-neutral" title="Conformación portafolio de inversión" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Miguel.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/language_data.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

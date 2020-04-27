@@ -1,0 +1,462 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Diversificación de portafolios de inversión &mdash; Abril  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Abril  documentation" href="../index.html"/>
+        <link rel="next" title="Conformación portafolio de inversión" href="../Conformación portafolio de inversión/Conformación portafolio de inversión.html"/>
+        <link rel="prev" title="Introducción a R" href="../Introducción a R/1. Introducción a R.mp4.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Abril
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">RIESGO DE MERCADO</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Introducción a R/1. Introducción a R.mp4.html">Introducción a R</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Diversificación de portafolios de inversión</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Conformación portafolio de inversión/Conformación portafolio de inversión.html">Conformación portafolio de inversión</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Volatilidad portafolio de inversión/Volatilidad portafolio de inversión.html">Volatilidad portafolio de inversión</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Curso 2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Ejercicios - Estadística y conformación de portafolios de inversión (solución)/Ejercicios - Estadística y conformación de portafolios de inversión (solución).html">Ejercicios: Estadística y conformación de portafolios de inversión.</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Abril</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Diversificación de portafolios de inversión</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/Diversificación de portafolios de inversión/Diversificación de portafolios de inversión.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="diversificacion-de-portafolios-de-inversion">
+<h1>Diversificación de portafolios de inversión<a class="headerlink" href="#diversificacion-de-portafolios-de-inversion" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="importar-datos">
+<h2>Importar datos.<a class="headerlink" href="#importar-datos" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">quantmod</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">tseries</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Se conformaran varios portafolios de inversión con las acciones Netflix
+y Apple. Se descargarán datos de dos años.</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">NFLX</span> <span class="o">=</span> <span class="nf">get.hist.quote</span><span class="p">(</span><span class="n">instrument</span> <span class="o">=</span> <span class="s">&quot;NFLX&quot;</span><span class="p">,</span> <span class="n">start</span> <span class="o">=</span> <span class="nf">as.Date</span><span class="p">(</span><span class="s">&quot;2018-04-16&quot;</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span> <span class="nf">as.Date</span><span class="p">(</span><span class="s">&quot;2020-04-15&quot;</span><span class="p">),</span> <span class="n">quote</span> <span class="o">=</span> <span class="s">&quot;AdjClose&quot;</span><span class="p">)</span>
+
+<span class="n">AAPL</span> <span class="o">=</span> <span class="nf">get.hist.quote</span><span class="p">(</span><span class="n">instrument</span> <span class="o">=</span> <span class="s">&quot;AAPL&quot;</span><span class="p">,</span> <span class="n">start</span> <span class="o">=</span> <span class="nf">as.Date</span><span class="p">(</span><span class="s">&quot;2018-04-16&quot;</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span> <span class="nf">as.Date</span><span class="p">(</span><span class="s">&quot;2020-04-15&quot;</span><span class="p">),</span> <span class="n">quote</span> <span class="o">=</span> <span class="s">&quot;AdjClose&quot;</span><span class="p">,</span> <span class="n">provider</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;yahoo&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">time</span> <span class="n">series</span> <span class="n">ends</span>   <span class="mi">2020</span><span class="o">-</span><span class="mi">04</span><span class="o">-</span><span class="mi">14</span>
+<span class="n">time</span> <span class="n">series</span> <span class="n">ends</span>   <span class="mi">2020</span><span class="o">-</span><span class="mi">04</span><span class="o">-</span><span class="mi">14</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="matriz-de-precios">
+<h2>Matriz de precios.<a class="headerlink" href="#matriz-de-precios" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">precios</span> <span class="o">=</span> <span class="nf">merge</span><span class="p">(</span><span class="n">NFLX</span><span class="p">,</span> <span class="n">AAPL</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">precios</span> <span class="o">=</span> <span class="nf">ts</span><span class="p">(</span><span class="n">precios</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">dim</span><span class="p">(</span><span class="n">precios</span><span class="p">)</span>
+</pre></div>
+</div>
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>503</li><li>2</li></ol><div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="n">precios</span><span class="p">,</span> <span class="n">xlab</span> <span class="o">=</span> <span class="s">&quot;Tiempo&quot;</span><span class="p">,</span> <span class="n">main</span> <span class="o">=</span> <span class="s">&quot;Precios&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/output_9_0.png"><img alt="../_images/output_9_0.png" src="../_images/output_9_0.png" style="width: 420px; height: 420px;" /></a>
+</div>
+<div class="section" id="matriz-de-rendimientos">
+<h2>Matriz de rendimientos.<a class="headerlink" href="#matriz-de-rendimientos" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">rendimientos</span> <span class="o">=</span> <span class="nf">diff</span><span class="p">(</span><span class="nf">log</span><span class="p">(</span><span class="n">precios</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="n">rendimientos</span><span class="p">,</span> <span class="n">xlab</span> <span class="o">=</span> <span class="s">&quot;Tiempo&quot;</span><span class="p">,</span> <span class="n">main</span> <span class="o">=</span> <span class="s">&quot;Rendimientos&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/output_12_0.png"><img alt="../_images/output_12_0.png" src="../_images/output_12_0.png" style="width: 420px; height: 420px;" /></a>
+</div>
+<div class="section" id="rendimiento-esperado-de-cada-accion">
+<h2>Rendimiento esperado de cada acción.<a class="headerlink" href="#rendimiento-esperado-de-cada-accion" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">rendimientos_esperados</span> <span class="o">=</span> <span class="nf">apply</span><span class="p">(</span><span class="n">rendimientos</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="n">mean</span><span class="p">)</span>
+<span class="n">rendimientos_esperados</span>
+</pre></div>
+</div>
+<style>
+.dl-inline {width: auto; margin:0; padding: 0}
+.dl-inline>dt, .dl-inline>dd {float: none; width: auto; display: inline-block}
+.dl-inline>dt::after {content: ":\0020"; padding-right: .5ex}
+.dl-inline>dt:not(:first-of-type) {padding-left: .5ex}
+</style><dl class=dl-inline><dt>NFLX</dt><dd>0.000588432586323178</dd><dt>AAPL</dt><dd>0.00103249413623901</dd></dl></div>
+<div class="section" id="volatilidad-de-cada-accion">
+<h2>Volatilidad de cada acción.<a class="headerlink" href="#volatilidad-de-cada-accion" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">volatilidades</span> <span class="o">=</span> <span class="nf">apply</span><span class="p">(</span><span class="n">rendimientos</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="n">sd</span><span class="p">)</span>
+<span class="n">volatilidades</span>
+</pre></div>
+</div>
+<style>
+.dl-inline {width: auto; margin:0; padding: 0}
+.dl-inline>dt, .dl-inline>dd {float: none; width: auto; display: inline-block}
+.dl-inline>dt::after {content: ":\0020"; padding-right: .5ex}
+.dl-inline>dt:not(:first-of-type) {padding-left: .5ex}
+</style><dl class=dl-inline><dt>NFLX</dt><dd>0.0269586803690924</dd><dt>AAPL</dt><dd>0.0225446855418197</dd></dl></div>
+<div class="section" id="matriz-de-coeficientes-de-correlacion">
+<h2>Matriz de coeficientes de correlación.<a class="headerlink" href="#matriz-de-coeficientes-de-correlacion" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">correlacion</span> <span class="o">=</span> <span class="nf">cor</span><span class="p">(</span><span class="n">rendimientos</span><span class="p">)</span>
+<span class="n">correlacion</span>
+</pre></div>
+</div>
+<table>
+<caption>A matrix: 2 × 2 of type dbl</caption>
+<thead>
+    <tr><th></th><th scope=col>NFLX</th><th scope=col>AAPL</th></tr>
+</thead>
+<tbody>
+    <tr><th scope=row>NFLX</th><td>1.0000000</td><td>0.5432898</td></tr>
+    <tr><th scope=row>AAPL</th><td>0.5432898</td><td>1.0000000</td></tr>
+</tbody>
+</table></div>
+<div class="section" id="matriz-de-varianzas-covarianzas">
+<h2>Matriz de varianzas-covarianzas.<a class="headerlink" href="#matriz-de-varianzas-covarianzas" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">covarianzas</span> <span class="o">=</span> <span class="nf">cov</span><span class="p">(</span><span class="n">rendimientos</span><span class="p">)</span>
+<span class="n">covarianzas</span>
+</pre></div>
+</div>
+<table>
+<caption>A matrix: 2 × 2 of type dbl</caption>
+<thead>
+    <tr><th></th><th scope=col>NFLX</th><th scope=col>AAPL</th></tr>
+</thead>
+<tbody>
+    <tr><th scope=row>NFLX</th><td>0.0007267704</td><td>0.0003301979</td></tr>
+    <tr><th scope=row>AAPL</th><td>0.0003301979</td><td>0.0005082628</td></tr>
+</tbody>
+</table></div>
+<div class="section" id="portafolios-de-inversion">
+<h2>Portafolios de inversión<a class="headerlink" href="#portafolios-de-inversion" title="Permalink to this headline">¶</a></h2>
+<p>Se conformaran varios portafolios de inversión cambiando las
+proporciones de inversión.</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">proporciones_NFLX</span> <span class="o">=</span> <span class="nf">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">0.05</span><span class="p">)</span>
+<span class="n">proporciones_AAPL</span> <span class="o">=</span> <span class="nf">seq</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">-0.05</span><span class="p">)</span>
+
+<span class="n">proporciones</span> <span class="o">=</span> <span class="nf">cbind</span><span class="p">(</span><span class="n">proporciones_NFLX</span><span class="p">,</span> <span class="n">proporciones_AAPL</span><span class="p">)</span>
+<span class="n">proporciones</span>
+</pre></div>
+</div>
+<table>
+<caption>A matrix: 21 × 2 of type dbl</caption>
+<thead>
+    <tr><th scope=col>proporciones_NFLX</th><th scope=col>proporciones_AAPL</th></tr>
+</thead>
+<tbody>
+    <tr><td>0.00</td><td>1.00</td></tr>
+    <tr><td>0.05</td><td>0.95</td></tr>
+    <tr><td>0.10</td><td>0.90</td></tr>
+    <tr><td>0.15</td><td>0.85</td></tr>
+    <tr><td>0.20</td><td>0.80</td></tr>
+    <tr><td>0.25</td><td>0.75</td></tr>
+    <tr><td>0.30</td><td>0.70</td></tr>
+    <tr><td>0.35</td><td>0.65</td></tr>
+    <tr><td>0.40</td><td>0.60</td></tr>
+    <tr><td>0.45</td><td>0.55</td></tr>
+    <tr><td>0.50</td><td>0.50</td></tr>
+    <tr><td>0.55</td><td>0.45</td></tr>
+    <tr><td>0.60</td><td>0.40</td></tr>
+    <tr><td>0.65</td><td>0.35</td></tr>
+    <tr><td>0.70</td><td>0.30</td></tr>
+    <tr><td>0.75</td><td>0.25</td></tr>
+    <tr><td>0.80</td><td>0.20</td></tr>
+    <tr><td>0.85</td><td>0.15</td></tr>
+    <tr><td>0.90</td><td>0.10</td></tr>
+    <tr><td>0.95</td><td>0.05</td></tr>
+    <tr><td>1.00</td><td>0.00</td></tr>
+</tbody>
+</table><div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">dim</span><span class="p">(</span><span class="n">proporciones</span><span class="p">)</span>
+</pre></div>
+</div>
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>21</li><li>2</li></ol><div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">dim</span><span class="p">(</span><span class="nf">t</span><span class="p">(</span><span class="n">proporciones</span><span class="p">[</span><span class="m">2</span><span class="p">,]))</span>
+</pre></div>
+</div>
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>1</li><li>2</li></ol><div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">volatilidad_portafolio</span> <span class="o">=</span> <span class="nf">vector</span><span class="p">()</span>
+
+<span class="nf">for</span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span> <span class="nf">nrow</span><span class="p">(</span><span class="n">proporciones</span><span class="p">)){</span>
+
+    <span class="n">volatilidad_portafolio</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nf">sqrt</span><span class="p">(</span><span class="nf">sum</span><span class="p">(</span><span class="n">proporciones</span><span class="p">[</span><span class="n">i</span><span class="p">,]</span><span class="o">%*%</span><span class="n">covarianzas</span><span class="o">*</span><span class="nf">t</span><span class="p">(</span><span class="n">proporciones</span><span class="p">[</span><span class="n">i</span><span class="p">,])))</span>
+<span class="p">}</span>
+
+<span class="n">volatilidad_portafolio</span>
+</pre></div>
+</div>
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>0.0225446855418197</li><li>0.0221786597557738</li><li>0.0218722709856205</li><li>0.0216280538814209</li><li>0.0214481322834895</li><li>0.0213341329640011</li><li>0.0212871150540528</li><li>0.0213075219686964</li><li>0.0213951607774204</li><li>0.0215492112166559</li><li>0.021768263379324</li><li>0.0220503801365505</li><li>0.0223931780885237</li><li>0.022793919644622</li><li>0.0232496087655217</li><li>0.0237570837826817</li><li>0.0243131022102914</li><li>0.0249144142102919</li><li>0.0255578230473392</li><li>0.0262402322687776</li><li>0.0269586803690924</li></ol><div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">rendimientos_portafolio</span> <span class="o">=</span> <span class="nf">matrix</span><span class="p">(,</span> <span class="nf">nrow</span><span class="p">(</span><span class="n">rendimientos</span><span class="p">),</span> <span class="nf">nrow</span><span class="p">(</span><span class="n">proporciones</span><span class="p">))</span>
+
+<span class="nf">for</span><span class="p">(</span><span class="n">j</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="nf">nrow</span><span class="p">(</span><span class="n">proporciones</span><span class="p">)){</span>
+
+  <span class="nf">for</span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="nf">nrow</span><span class="p">(</span><span class="n">rendimientos</span><span class="p">)){</span>
+
+    <span class="n">rendimientos_portafolio</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">rendimientos</span><span class="p">[</span><span class="n">i</span><span class="p">,]</span><span class="o">*</span><span class="n">proporciones</span><span class="p">[</span><span class="n">j</span><span class="p">,])</span>
+
+<span class="p">}}</span>
+</pre></div>
+</div>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">dim</span><span class="p">(</span><span class="n">rendimientos_portafolio</span><span class="p">)</span>
+</pre></div>
+</div>
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>502</li><li>21</li></ol><div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">rendimiento_esperado_portafolio</span> <span class="o">=</span> <span class="nf">apply</span><span class="p">(</span><span class="n">rendimientos_portafolio</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="n">mean</span><span class="p">)</span>
+<span class="n">rendimiento_esperado_portafolio</span>
+</pre></div>
+</div>
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>0.00103249413623901</li><li>0.00101029105874321</li><li>0.000988087981247423</li><li>0.000965884903751631</li><li>0.00094368182625584</li><li>0.000921478748760049</li><li>0.000899275671264257</li><li>0.000877072593768466</li><li>0.000854869516272674</li><li>0.000832666438776883</li><li>0.000810463361281092</li><li>0.0007882602837853</li><li>0.000766057206289509</li><li>0.000743854128793718</li><li>0.000721651051297926</li><li>0.000699447973802135</li><li>0.000677244896306343</li><li>0.000655041818810552</li><li>0.000632838741314761</li><li>0.000610635663818969</li><li>0.000588432586323178</li></ol><div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="n">volatilidad_portafolio</span><span class="p">,</span> <span class="n">rendimiento_esperado_portafolio</span><span class="p">,</span> <span class="n">xlab</span> <span class="o">=</span> <span class="s">&quot;Volatilidad portafolio&quot;</span><span class="p">,</span> <span class="n">ylab</span> <span class="o">=</span> <span class="s">&quot;Rendimiento esperado portafolio&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/output_30_0.png"><img alt="../_images/output_30_0.png" src="../_images/output_30_0.png" style="width: 420px; height: 420px;" /></a>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="n">volatilidad_portafolio</span><span class="p">,</span> <span class="n">rendimiento_esperado_portafolio</span><span class="p">,</span> <span class="n">xlab</span> <span class="o">=</span> <span class="s">&quot;Volatilidad portafolio&quot;</span><span class="p">,</span> <span class="n">ylab</span> <span class="o">=</span> <span class="s">&quot;Rendimiento esperado portafolio&quot;</span><span class="p">)</span>
+<span class="nf">points</span><span class="p">(</span><span class="n">volatilidad_portafolio</span><span class="p">[</span><span class="m">1</span><span class="p">],</span> <span class="n">rendimiento_esperado_portafolio</span><span class="p">[</span><span class="m">1</span><span class="p">],</span> <span class="n">col</span> <span class="o">=</span> <span class="s">&quot;darkgreen&quot;</span><span class="p">,</span> <span class="n">lwd</span> <span class="o">=</span> <span class="m">5</span><span class="p">)</span>
+<span class="nf">points</span><span class="p">(</span><span class="n">volatilidad_portafolio</span><span class="p">[</span><span class="m">21</span><span class="p">],</span> <span class="n">rendimiento_esperado_portafolio</span><span class="p">[</span><span class="m">21</span><span class="p">],</span> <span class="n">col</span> <span class="o">=</span> <span class="s">&quot;darkblue&quot;</span><span class="p">,</span> <span class="n">lwd</span> <span class="o">=</span> <span class="m">5</span><span class="p">)</span>
+<span class="nf">points</span><span class="p">(</span><span class="n">volatilidad_portafolio</span><span class="p">[</span><span class="m">7</span><span class="p">],</span> <span class="n">rendimiento_esperado_portafolio</span><span class="p">[</span><span class="m">7</span><span class="p">],</span> <span class="n">col</span> <span class="o">=</span> <span class="s">&quot;black&quot;</span><span class="p">,</span> <span class="n">lwd</span> <span class="o">=</span> <span class="m">5</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/output_31_0.png"><img alt="../_images/output_31_0.png" src="../_images/output_31_0.png" style="width: 420px; height: 420px;" /></a>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">min</span><span class="p">(</span><span class="n">volatilidad_portafolio</span><span class="p">)</span>
+</pre></div>
+</div>
+0.0212871150540528</div>
+<div class="section" id="tres-activos">
+<h2>Tres activos<a class="headerlink" href="#tres-activos" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../Conformación portafolio de inversión/Conformación portafolio de inversión.html" class="btn btn-neutral float-right" title="Conformación portafolio de inversión" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../Introducción a R/1. Introducción a R.mp4.html" class="btn btn-neutral" title="Introducción a R" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Miguel.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/language_data.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

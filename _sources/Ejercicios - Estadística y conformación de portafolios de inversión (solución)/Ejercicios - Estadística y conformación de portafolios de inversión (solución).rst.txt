@@ -1,0 +1,470 @@
+Ejercicios: Estadística y conformación de portafolios de inversión.
+-------------------------------------------------------------------
+
+Descargar las siguientes acciones desde el 23 de abril de 2018 hasta el
+25 de abril de 2020:
+
+Alphabet Inc. (**GOOG**)
+
+Abbott Laboratories (**ABT**)
+
+Amazon.com, Inc. (**AMZN**)
+
+Proporciones de inversión:
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**GOOG:** 30%.
+
+**ABT:** 45%.
+
+**AMZN:** 25%.
+
+Valor de mercado del portafolio de inversión: Dos millones de dólares americanos.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**Escriba el código en R para responder los ejercicios.**
+
+Importar datos.
+~~~~~~~~~~~~~~~
+
+.. code:: r
+
+    library(quantmod)
+    library(tseries)
+
+.. code:: r
+
+    GOOG = get.hist.quote(instrument = "GOOG", start = as.Date("2018-04-23"), end= as.Date("2020-04-25"), quote = "AdjClose")
+    ABT = get.hist.quote(instrument = "ABT", start = as.Date("2018-04-23"), end= as.Date("2020-04-25"), quote = "AdjClose")
+    AMZN = get.hist.quote(instrument = "AMZN", start = as.Date("2018-04-23"), end= as.Date("2020-04-25"), quote = "AdjClose")
+
+
+.. parsed-literal::
+
+    time series ends   2020-04-24
+    time series ends   2020-04-24
+    time series ends   2020-04-24
+    
+
+Matriz de precios.
+~~~~~~~~~~~~~~~~~~
+
+.. code:: r
+
+    precios = merge(GOOG, ABT, AMZN)
+    precios = ts(precios)
+    head(precios)
+
+
+
+.. raw:: html
+
+    <table>
+    <caption>A matrix: 6 × 3 of type dbl</caption>
+    <thead>
+    	<tr><th scope=col>Adjusted.GOOG</th><th scope=col>Adjusted.ABT</th><th scope=col>Adjusted.AMZN</th></tr>
+    </thead>
+    <tbody>
+    	<tr><td>1067.45</td><td>56.90276</td><td>1517.86</td></tr>
+    	<tr><td>1019.98</td><td>56.39021</td><td>1460.09</td></tr>
+    	<tr><td>1021.18</td><td>56.71902</td><td>1460.17</td></tr>
+    	<tr><td>1040.04</td><td>57.54103</td><td>1517.96</td></tr>
+    	<tr><td>1030.05</td><td>57.59906</td><td>1572.62</td></tr>
+    	<tr><td>1017.33</td><td>56.21614</td><td>1566.13</td></tr>
+    </tbody>
+    </table>
+    
+
+
+Nombres de las acciones.
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code:: r
+
+    nombres = colnames(precios)
+    nombres
+
+
+
+.. raw:: html
+
+    <style>
+    .list-inline {list-style: none; margin:0; padding: 0}
+    .list-inline>li {display: inline-block}
+    .list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+    </style>
+    <ol class=list-inline><li>'Adjusted.GOOG'</li><li>'Adjusted.ABT'</li><li>'Adjusted.AMZN'</li></ol>
+    
+
+
+Número de acciones.
+~~~~~~~~~~~~~~~~~~~
+
+.. code:: r
+
+    acciones = ncol(precios)
+    acciones
+
+
+
+.. raw:: html
+
+    3
+
+
+Rendimientos de las acciones.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code:: r
+
+    rendimientos = diff(log(precios))
+
+Rendimientos esperado de cada acción.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code:: r
+
+    rendimientos_esperados = apply(rendimientos, 2, mean)
+    rendimientos_esperados
+
+
+
+.. raw:: html
+
+    <style>
+    .dl-inline {width: auto; margin:0; padding: 0}
+    .dl-inline>dt, .dl-inline>dd {float: none; width: auto; display: inline-block}
+    .dl-inline>dt::after {content: ":\0020"; padding-right: .5ex}
+    .dl-inline>dt:not(:first-of-type) {padding-left: .5ex}
+    </style><dl class=dl-inline><dt>Adjusted.GOOG</dt><dd>0.000358511555428326</dd><dt>Adjusted.ABT</dt><dd>0.000995225760686803</dd><dt>Adjusted.AMZN</dt><dd>0.000915676394826092</dd></dl>
+    
+
+
+Volatilidad de cada acción.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code:: r
+
+    volatilidades = apply(rendimientos, 2, sd)
+    volatilidades
+
+
+
+.. raw:: html
+
+    <style>
+    .dl-inline {width: auto; margin:0; padding: 0}
+    .dl-inline>dt, .dl-inline>dd {float: none; width: auto; display: inline-block}
+    .dl-inline>dt::after {content: ":\0020"; padding-right: .5ex}
+    .dl-inline>dt:not(:first-of-type) {padding-left: .5ex}
+    </style><dl class=dl-inline><dt>Adjusted.GOOG</dt><dd>0.019775822442102</dd><dt>Adjusted.ABT</dt><dd>0.0185336879305693</dd><dt>Adjusted.AMZN</dt><dd>0.0205433225121457</dd></dl>
+    
+
+
+Proporciones de inversión.
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code:: r
+
+    proporciones = c(0.30, 0.45, 0.25)
+    proporciones
+
+
+
+.. raw:: html
+
+    <style>
+    .list-inline {list-style: none; margin:0; padding: 0}
+    .list-inline>li {display: inline-block}
+    .list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+    </style>
+    <ol class=list-inline><li>0.3</li><li>0.45</li><li>0.25</li></ol>
+    
+
+
+Valor portafolio de inversión.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code:: r
+
+    valor_portafolio = 2000000
+
+Valor de mercado de las acciones.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code:: r
+
+    valor_mercado_acciones = valor_portafolio*proporciones
+    valor_mercado_acciones
+
+
+
+.. raw:: html
+
+    <style>
+    .list-inline {list-style: none; margin:0; padding: 0}
+    .list-inline>li {display: inline-block}
+    .list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+    </style>
+    <ol class=list-inline><li>6e+05</li><li>9e+05</li><li>5e+05</li></ol>
+    
+
+
+Matriz varianzas-covarianzas.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code:: r
+
+    covarianzas = cov(rendimientos)
+    covarianzas
+
+
+
+.. raw:: html
+
+    <table>
+    <caption>A matrix: 3 × 3 of type dbl</caption>
+    <thead>
+    	<tr><th></th><th scope=col>Adjusted.GOOG</th><th scope=col>Adjusted.ABT</th><th scope=col>Adjusted.AMZN</th></tr>
+    </thead>
+    <tbody>
+    	<tr><th scope=row>Adjusted.GOOG</th><td>0.0003910832</td><td>0.0002325487</td><td>0.0002920125</td></tr>
+    	<tr><th scope=row>Adjusted.ABT</th><td>0.0002325487</td><td>0.0003434976</td><td>0.0002083427</td></tr>
+    	<tr><th scope=row>Adjusted.AMZN</th><td>0.0002920125</td><td>0.0002083427</td><td>0.0004220281</td></tr>
+    </tbody>
+    </table>
+    
+
+
+Coeficientes de correlación.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code:: r
+
+    correlacion = cor(rendimientos)
+    correlacion
+
+
+
+.. raw:: html
+
+    <table>
+    <caption>A matrix: 3 × 3 of type dbl</caption>
+    <thead>
+    	<tr><th></th><th scope=col>Adjusted.GOOG</th><th scope=col>Adjusted.ABT</th><th scope=col>Adjusted.AMZN</th></tr>
+    </thead>
+    <tbody>
+    	<tr><th scope=row>Adjusted.GOOG</th><td>1.0000000</td><td>0.6344794</td><td>0.7187804</td></tr>
+    	<tr><th scope=row>Adjusted.ABT</th><td>0.6344794</td><td>1.0000000</td><td>0.5471997</td></tr>
+    	<tr><th scope=row>Adjusted.AMZN</th><td>0.7187804</td><td>0.5471997</td><td>1.0000000</td></tr>
+    </tbody>
+    </table>
+    
+
+
+Rendimientos del portafolio de inversión.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code:: r
+
+    rendimientos_portafolio=vector()
+    
+    for(i in 1:nrow(rendimientos)){
+        
+      rendimientos_portafolio[i] = sum(rendimientos[i,]*proporciones)
+      
+    }
+
+Rendimiento esperado del portafolio de inversión.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code:: r
+
+    rendimiento_esperado_portafolio = mean(rendimientos_portafolio)
+    rendimiento_esperado_portafolio
+
+
+
+.. raw:: html
+
+    0.000784324157644082
+
+
+Volatilidad del portafolio de inversión.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code:: r
+
+    volatilidad_portafolio = sd(rendimientos_portafolio)
+    volatilidad_portafolio
+    volatilidad_portafolio = sqrt(sum(t(proporciones)%*%covarianzas*proporciones))
+    volatilidad_portafolio
+
+
+
+.. raw:: html
+
+    0.0168700813135006
+
+
+
+.. raw:: html
+
+    0.0168700813135006
+
+
+Gráfico: precio.
+~~~~~~~~~~~~~~~~
+
+.. code:: r
+
+    plot(precios, col = "darkblue", lwd = 3, xlab = "Tiempo", main = "Precios")
+
+
+
+.. image:: output_34_0.png
+   :width: 420px
+   :height: 420px
+
+
+Gráfico: rendimientos de las acciones.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code:: r
+
+    plot(rendimientos, col = "darkblue", lwd = 3, xlab = "Tiempo", main = "Rendimientos")
+
+
+
+.. image:: output_36_0.png
+   :width: 420px
+   :height: 420px
+
+
+Gráfico: histograma de los rendimientos de las acciones.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code:: r
+
+    layout(matrix(c(1:4), nrow = 2, byrow = F))
+    
+    for(i in 1:acciones){
+        
+        hist(rendimientos[,i], breaks = 40, col = "gray", main = nombres[i], xlab = "Rendimientos", ylab = "Frecuencia")
+    }
+
+
+
+.. image:: output_38_0.png
+   :width: 420px
+   :height: 420px
+
+
+Gráfico: histograma de los rendimientos de las acciones y distribución normal con frecuencia diaria (:math:`\mu\neq 0`).
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code:: r
+
+    layout(matrix(c(1:4), nrow = 2, byrow = F))
+    
+    for(i in 1:acciones){
+        
+        hist(rendimientos[,i], breaks = 40, col = "gray", main = nombres[i], xlab = "Rendimientos", ylab = "Frecuencia", freq = F)
+        curve(dnorm(x, mean = rendimientos_esperados[i], sd = volatilidades[i]), add = T, lwd = 3)
+    }
+
+
+
+.. image:: output_40_0.png
+   :width: 420px
+   :height: 420px
+
+
+Gráfico: histograma de los rendimientos del portafolio de inversión y distribución normal con frecuencia diaria (:math:`\mu\neq 0`).
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code:: r
+
+    hist(rendimientos_portafolio, breaks = 40, col = "gray", main = "Portafolio de inversión", xlab = "Rendimientos", ylab = "Frecuencia", freq = F)
+    curve(dnorm(x, mean = rendimiento_esperado_portafolio, sd = volatilidad_portafolio), add = T, lwd = 3)
+
+
+
+.. image:: output_42_0.png
+   :width: 420px
+   :height: 420px
+
+
+Estadísticas básicas de los rendimientos.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code:: r
+
+    library(fBasics)
+
+
+.. parsed-literal::
+
+    Warning message:
+    "package 'fBasics' was built under R version 3.6.3"
+    Loading required package: timeDate
+    
+    Loading required package: timeSeries
+    
+    Warning message:
+    "package 'timeSeries' was built under R version 3.6.3"
+    
+    Attaching package: 'timeSeries'
+    
+    
+    The following object is masked from 'package:zoo':
+    
+        time<-
+    
+    
+    
+    Attaching package: 'fBasics'
+    
+    
+    The following object is masked from 'package:TTR':
+    
+        volatility
+    
+    
+    
+
+.. code:: r
+
+    basicStats(rendimientos)
+
+
+
+.. raw:: html
+
+    <table>
+    <caption>A data.frame: 16 × 3</caption>
+    <thead>
+    	<tr><th></th><th scope=col>Adjusted.GOOG</th><th scope=col>Adjusted.ABT</th><th scope=col>Adjusted.AMZN</th></tr>
+    	<tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+    </thead>
+    <tbody>
+    	<tr><th scope=row>nobs</th><td>505.000000</td><td>505.000000</td><td>505.000000</td></tr>
+    	<tr><th scope=row>NAs</th><td>  0.000000</td><td>  0.000000</td><td>  0.000000</td></tr>
+    	<tr><th scope=row>Minimum</th><td> -0.117667</td><td> -0.102982</td><td> -0.082535</td></tr>
+    	<tr><th scope=row>Maximum</th><td>  0.099380</td><td>  0.103783</td><td>  0.090254</td></tr>
+    	<tr><th scope=row>1. Quartile</th><td> -0.007049</td><td> -0.006111</td><td> -0.007920</td></tr>
+    	<tr><th scope=row>3. Quartile</th><td>  0.009849</td><td>  0.009428</td><td>  0.010054</td></tr>
+    	<tr><th scope=row>Mean</th><td>  0.000359</td><td>  0.000995</td><td>  0.000916</td></tr>
+    	<tr><th scope=row>Median</th><td>  0.000658</td><td>  0.001315</td><td>  0.001359</td></tr>
+    	<tr><th scope=row>Sum</th><td>  0.181048</td><td>  0.502589</td><td>  0.462417</td></tr>
+    	<tr><th scope=row>SE Mean</th><td>  0.000880</td><td>  0.000825</td><td>  0.000914</td></tr>
+    	<tr><th scope=row>LCL Mean</th><td> -0.001370</td><td> -0.000625</td><td> -0.000880</td></tr>
+    	<tr><th scope=row>UCL Mean</th><td>  0.002087</td><td>  0.002616</td><td>  0.002712</td></tr>
+    	<tr><th scope=row>Variance</th><td>  0.000391</td><td>  0.000343</td><td>  0.000422</td></tr>
+    	<tr><th scope=row>Stdev</th><td>  0.019776</td><td>  0.018534</td><td>  0.020543</td></tr>
+    	<tr><th scope=row>Skewness</th><td> -0.337016</td><td> -0.055698</td><td> -0.054471</td></tr>
+    	<tr><th scope=row>Kurtosis</th><td>  6.317848</td><td>  7.384039</td><td>  2.982442</td></tr>
+    </tbody>
+    </table>
+    
+

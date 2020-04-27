@@ -1,0 +1,29 @@
+Material de apoyo
+=======================================
+
+Profesor: Luis Miguel Jiménez Gómez.
+          lumjimenezgo@unal.edu.co
+
+	  luisjimenez@itm.edu.co
+
+          **Códigos en R:**
+
+Ver :download:`Introducción a R </Introducción a R/1. Introducción a R.R>`
+
+.. toctree::
+    :caption: RIESGO DE MERCADO
+    :hidden:
+    :titlesonly:
+    
+    
+    Introducción a R/1. Introducción a R.mp4
+    Diversificación de portafolios de inversión/Diversificación de portafolios de inversión
+    Conformación portafolio de inversión/Conformación portafolio de inversión
+    Volatilidad portafolio de inversión/Volatilidad portafolio de inversión
+
+.. toctree::
+    :caption: Curso 2
+    :hidden:
+    :titlesonly:
+
+    Ejercicios - Estadística y conformación de portafolios de inversión (solución)/Ejercicios - Estadística y conformación de portafolios de inversión (solución)
