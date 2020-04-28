@@ -1,0 +1,10 @@
+Introducción a R
+~~~~~~~~~~~~~~~~
+
+.. raw:: html
+
+   <video width="640" height="480" autoplay controls src="1. Introducción a R.mp4#t=25,45">
+
+.. raw:: html
+
+   </video>

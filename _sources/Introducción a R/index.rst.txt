@@ -8,7 +8,7 @@ Introducción a R
     :maxdepth: 1
     :titlesonly:
     
-
-    1. Introducción a R.mp4
+  
+    Video introducción a R/1. Introducción a R.mp4
  
-Ver código :download:`Introducción a R </Introducción a R/1. Introducción a R.R>`
+Descargue :download:`aquí </Introducción a R/1. Introducción a R.R>` el código.

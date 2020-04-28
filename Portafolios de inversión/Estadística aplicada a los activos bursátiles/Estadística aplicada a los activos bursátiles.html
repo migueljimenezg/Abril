@@ -1,0 +1,696 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Estadística aplicada a los activos bursátiles &mdash; Abril  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="Abril  documentation" href="../../index.html"/>
+        <link rel="up" title="Análisis y conformación de portafolios de inversión" href="../index.html"/>
+        <link rel="next" title="Ejercicios: Estadística y conformación de portafolios de inversión." href="../Ejercicios - Estadística y conformación de portafolios de inversión/Ejercicios - Estadística y conformación de portafolios de inversión.html"/>
+        <link rel="prev" title="Análisis y conformación de portafolios de inversión" href="../index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Abril
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">CONCEPTOS PREVIOS</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../Introducción a R/index.html">Introducción a R</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Análisis y conformación de portafolios de inversión</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Estadística aplicada a los activos bursátiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ejercicios - Estadística y conformación de portafolios de inversión/Ejercicios - Estadística y conformación de portafolios de inversión.html">Ejercicios: Estadística y conformación de portafolios de inversión.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Volatilidad portafolio de inversión/Volatilidad portafolio de inversión.html">Volatilidad portafolio de inversión</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Conformación portafolio de inversión/Conformación portafolio de inversión.html">Conformación portafolio de inversión</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Abril</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Análisis y conformación de portafolios de inversión</a> &raquo;</li>
+        
+      <li>Estadística aplicada a los activos bursátiles</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/Portafolios de inversión/Estadística aplicada a los activos bursátiles/Estadística aplicada a los activos bursátiles.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="estadistica-aplicada-a-los-activos-bursatiles">
+<h1>Estadística aplicada a los activos bursátiles<a class="headerlink" href="#estadistica-aplicada-a-los-activos-bursatiles" title="Permalink to this headline">¶</a></h1>
+<p>Utilizar el archivo Cuatro acciones 2020.csv.</p>
+<div class="section" id="importar-datos">
+<h2>Importar datos.<a class="headerlink" href="#importar-datos" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">datos</span> <span class="o">=</span> <span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;Cuatro acciones 2020.csv&quot;</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&quot;;&quot;</span><span class="p">,</span> <span class="n">dec</span> <span class="o">=</span> <span class="s">&quot;,&quot;</span><span class="p">,</span> <span class="n">header</span> <span class="o">=</span> <span class="bp">T</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">head</span><span class="p">(</span><span class="n">datos</span><span class="p">)</span>
+</pre></div>
+</div>
+<table>
+<caption>A data.frame: 6 × 5</caption>
+<thead>
+    <tr><th></th><th scope=col>Fecha</th><th scope=col>ECO</th><th scope=col>PFAVAL</th><th scope=col>ISA</th><th scope=col>NUTRESA</th></tr>
+    <tr><th></th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><th scope=row>1</th><td>26/03/2018</td><td>2775</td><td>1165</td><td>13080</td><td>25720</td></tr>
+    <tr><th scope=row>2</th><td>27/03/2018</td><td>2645</td><td>1155</td><td>13080</td><td>25700</td></tr>
+    <tr><th scope=row>3</th><td>28/03/2018</td><td>2615</td><td>1165</td><td>13320</td><td>25980</td></tr>
+    <tr><th scope=row>4</th><td>2/04/2018 </td><td>2690</td><td>1165</td><td>13420</td><td>25920</td></tr>
+    <tr><th scope=row>5</th><td>3/04/2018 </td><td>2730</td><td>1175</td><td>13660</td><td>25920</td></tr>
+    <tr><th scope=row>6</th><td>4/04/2018 </td><td>2740</td><td>1190</td><td>13560</td><td>25840</td></tr>
+</tbody>
+</table></div>
+<div class="section" id="matriz-de-precios">
+<h2>Matriz de precios.<a class="headerlink" href="#matriz-de-precios" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">precios</span> <span class="o">=</span> <span class="n">datos</span><span class="p">[,</span><span class="m">-1</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">head</span><span class="p">(</span><span class="n">precios</span><span class="p">)</span>
+</pre></div>
+</div>
+<table>
+<caption>A data.frame: 6 × 4</caption>
+<thead>
+    <tr><th></th><th scope=col>ECO</th><th scope=col>PFAVAL</th><th scope=col>ISA</th><th scope=col>NUTRESA</th></tr>
+    <tr><th></th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><th scope=row>1</th><td>2775</td><td>1165</td><td>13080</td><td>25720</td></tr>
+    <tr><th scope=row>2</th><td>2645</td><td>1155</td><td>13080</td><td>25700</td></tr>
+    <tr><th scope=row>3</th><td>2615</td><td>1165</td><td>13320</td><td>25980</td></tr>
+    <tr><th scope=row>4</th><td>2690</td><td>1165</td><td>13420</td><td>25920</td></tr>
+    <tr><th scope=row>5</th><td>2730</td><td>1175</td><td>13660</td><td>25920</td></tr>
+    <tr><th scope=row>6</th><td>2740</td><td>1190</td><td>13560</td><td>25840</td></tr>
+</tbody>
+</table></div>
+<div class="section" id="nombres-de-las-acciones">
+<h2>Nombres de las acciones.<a class="headerlink" href="#nombres-de-las-acciones" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">colnames</span></code> extrae los nombres de los encabezados.</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">nombres</span> <span class="o">=</span> <span class="nf">colnames</span><span class="p">(</span><span class="n">precios</span><span class="p">)</span>
+<span class="n">nombres</span>
+</pre></div>
+</div>
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>'ECO'</li><li>'PFAVAL'</li><li>'ISA'</li><li>'NUTRESA'</li></ol><p><code class="docutils literal notranslate"><span class="pre">ncol</span></code> cuanta cuántas columnas tiene las matrices.</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">acciones</span> <span class="o">=</span> <span class="nf">ncol</span><span class="p">(</span><span class="n">precios</span><span class="p">)</span>
+<span class="n">acciones</span>
+</pre></div>
+</div>
+4</div>
+<div class="section" id="conversion-de-la-base-de-datos-como-serie-de-tiempo">
+<h2>Conversión de la base de datos como serie de tiempo.<a class="headerlink" href="#conversion-de-la-base-de-datos-como-serie-de-tiempo" title="Permalink to this headline">¶</a></h2>
+<p>La función <code class="docutils literal notranslate"><span class="pre">ts</span></code> hace una conversión a los precios como series de
+tiempo. Este paso puede ser opcional.</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">precios</span> <span class="o">=</span> <span class="nf">ts</span><span class="p">(</span><span class="n">precios</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="grafica-de-los-precios-de-las-acciones">
+<h2>Gráfica de los precios de las acciones.<a class="headerlink" href="#grafica-de-los-precios-de-las-acciones" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="n">precios</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="s">&quot;l&quot;</span><span class="p">,</span> <span class="n">xlab</span> <span class="o">=</span> <span class="s">&quot;Tiempo&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/output_17_0.png"><img alt="../../_images/output_17_0.png" src="../../_images/output_17_0.png" style="width: 420px; height: 420px;" /></a>
+</div>
+<div class="section" id="rendimientos-de-las-acciones">
+<h2>Rendimientos de las acciones.<a class="headerlink" href="#rendimientos-de-las-acciones" title="Permalink to this headline">¶</a></h2>
+<p><strong>Rendimiento discreto:</strong></p>
+<div class="math notranslate nohighlight">
+\[Rendimiento_t=\frac{Precio_t-Precio_{t-1}}{Precio_{t-1}}=\frac{Precio_t}{Precio_{t-1}}-1\]</div>
+<p><strong>Conversión de tasas discretas a continuas:</strong></p>
+<div class="math notranslate nohighlight">
+\[log(1+r)\]</div>
+<p><strong>Rendimiento continuo o logarítmico o geométrico:</strong></p>
+<div class="math notranslate nohighlight">
+\[Rendimiento_t=log(1+Rendimiento_{discreto})\]</div>
+<div class="math notranslate nohighlight">
+\[Rendimiento_t=log\frac{Precio_t}{Precio_{t-1}}\]</div>
+<hr class="docutils" />
+<p>Los rendimientos discretos y continuos se aproximan cuando el
+rendimiento es pequeño, y los rendimientos serán pequeños si se trara de
+un horizonte de tiempo corto.</p>
+<p>En adelante, usaremos los rendimientos continuos.</p>
+<p>De las propiedades de los logaritmos tenemos:</p>
+<div class="math notranslate nohighlight">
+\[log\frac{Precio_t}{Precio_{t-1}}=log(Precio_t)-log(Precio_{t-1}\]</div>
+</div>
+<div class="section" id="matriz-de-rendimientos">
+<h2>Matriz de rendimientos.<a class="headerlink" href="#matriz-de-rendimientos" title="Permalink to this headline">¶</a></h2>
+<p>Con <code class="docutils literal notranslate"><span class="pre">log(precios[,i]</span></code> se aplica la función de logaritmo natural a
+todos los precios y con la función <code class="docutils literal notranslate"><span class="pre">diff</span></code> se calcula la diferencia de
+los logaritmos que de las propiedades de los logaritmo mencionada
+anteriormente, se llega a los rendimientos por período de cada acción</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">rendimientos</span> <span class="o">&lt;-</span> <span class="nf">matrix</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="nf">nrow</span><span class="p">(</span><span class="n">precios</span><span class="p">)</span> <span class="m">-1</span><span class="p">,</span> <span class="n">acciones</span><span class="p">)</span>
+
+<span class="nf">for</span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="n">acciones</span><span class="p">){</span>
+
+  <span class="n">rendimientos</span><span class="p">[,</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nf">diff</span><span class="p">(</span><span class="nf">log</span><span class="p">(</span><span class="n">precios</span><span class="p">[,</span><span class="n">i</span><span class="p">]))</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Cuando se aplica la función <code class="docutils literal notranslate"><span class="pre">ts</span></code> a los precios, no es necesario
+utilizar el código anterior para calcular los rendimientos. Se puede
+hacer de la siguiente manera:</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">rendimientos</span> <span class="o">=</span> <span class="nf">diff</span><span class="p">(</span><span class="nf">log</span><span class="p">(</span><span class="n">precios</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">head</span><span class="p">(</span><span class="n">rendimientos</span><span class="p">)</span>
+</pre></div>
+</div>
+<table>
+<caption>A matrix: 6 × 4 of type dbl</caption>
+<thead>
+    <tr><th scope=col>ECO</th><th scope=col>PFAVAL</th><th scope=col>ISA</th><th scope=col>NUTRESA</th></tr>
+</thead>
+<tbody>
+    <tr><td>-0.047979682</td><td>-0.008620743</td><td> 0.000000000</td><td>-0.0007779075</td></tr>
+    <tr><td>-0.011406968</td><td> 0.008620743</td><td> 0.018182319</td><td> 0.0108360193</td></tr>
+    <tr><td> 0.028277096</td><td> 0.000000000</td><td> 0.007479466</td><td>-0.0023121398</td></tr>
+    <tr><td> 0.014760416</td><td> 0.008547061</td><td> 0.017725723</td><td> 0.0000000000</td></tr>
+    <tr><td> 0.003656311</td><td> 0.012685160</td><td>-0.007347572</td><td>-0.0030911926</td></tr>
+    <tr><td> 0.000000000</td><td> 0.020790770</td><td> 0.023324673</td><td> 0.0153612852</td></tr>
+</tbody>
+</table><p>Si se tiene <span class="math notranslate nohighlight">\(n\)</span> cantidad de precios, se tendrá <span class="math notranslate nohighlight">\(n-1\)</span>
+rendimientos. Cada acción acción tiene 500 precios, entonces, se tendrán
+499 rendimientos.</p>
+<p>El tamaño de un vector o columna se calcula con <code class="docutils literal notranslate"><span class="pre">dim</span></code>.</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">dim</span><span class="p">(</span><span class="n">precios</span><span class="p">)</span>
+</pre></div>
+</div>
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>500</li><li>4</li></ol><div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">dim</span><span class="p">(</span><span class="n">rendimientos</span><span class="p">)</span>
+</pre></div>
+</div>
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>499</li><li>4</li></ol></div>
+<div class="section" id="graficas-de-los-rendimientos-de-las-acciones">
+<h2>Gráficas de los rendimientos de las acciones.<a class="headerlink" href="#graficas-de-los-rendimientos-de-las-acciones" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="n">rendimientos</span><span class="p">[,</span><span class="m">1</span><span class="p">],</span> <span class="n">t</span> <span class="o">=</span> <span class="s">&quot;h&quot;</span><span class="p">,</span> <span class="n">xlab</span> <span class="o">=</span> <span class="s">&quot;Tiempo&quot;</span><span class="p">,</span> <span class="n">ylab</span> <span class="o">=</span> <span class="s">&quot;Rendimientos&quot;</span><span class="p">,</span> <span class="n">main</span> <span class="o">=</span> <span class="n">nombres</span><span class="p">[</span><span class="m">1</span><span class="p">])</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/output_30_0.png"><img alt="../../_images/output_30_0.png" src="../../_images/output_30_0.png" style="width: 420px; height: 420px;" /></a>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="n">rendimientos</span><span class="p">[,</span><span class="m">2</span><span class="p">],</span> <span class="n">t</span> <span class="o">=</span> <span class="s">&quot;h&quot;</span><span class="p">,</span> <span class="n">xlab</span> <span class="o">=</span> <span class="s">&quot;Tiempo&quot;</span><span class="p">,</span> <span class="n">ylab</span> <span class="o">=</span> <span class="s">&quot;Rendimientos&quot;</span><span class="p">,</span> <span class="n">main</span> <span class="o">=</span> <span class="n">nombres</span><span class="p">[</span><span class="m">2</span><span class="p">])</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/output_31_0.png"><img alt="../../_images/output_31_0.png" src="../../_images/output_31_0.png" style="width: 420px; height: 420px;" /></a>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="n">rendimientos</span><span class="p">[,</span><span class="m">3</span><span class="p">],</span> <span class="n">t</span> <span class="o">=</span> <span class="s">&quot;h&quot;</span><span class="p">,</span> <span class="n">xlab</span> <span class="o">=</span> <span class="s">&quot;Tiempo&quot;</span><span class="p">,</span> <span class="n">ylab</span> <span class="o">=</span> <span class="s">&quot;Rendimientos&quot;</span><span class="p">,</span> <span class="n">main</span> <span class="o">=</span> <span class="n">nombres</span><span class="p">[</span><span class="m">3</span><span class="p">])</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/output_32_0.png"><img alt="../../_images/output_32_0.png" src="../../_images/output_32_0.png" style="width: 420px; height: 420px;" /></a>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="n">rendimientos</span><span class="p">[,</span><span class="m">4</span><span class="p">],</span> <span class="n">t</span> <span class="o">=</span> <span class="s">&quot;h&quot;</span><span class="p">,</span> <span class="n">xlab</span> <span class="o">=</span> <span class="s">&quot;Tiempo&quot;</span><span class="p">,</span> <span class="n">ylab</span> <span class="o">=</span> <span class="s">&quot;Rendimientos&quot;</span><span class="p">,</span> <span class="n">main</span> <span class="o">=</span> <span class="n">nombres</span><span class="p">[</span><span class="m">4</span><span class="p">])</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/output_33_0.png"><img alt="../../_images/output_33_0.png" src="../../_images/output_33_0.png" style="width: 420px; height: 420px;" /></a>
+<p>Los cuatro gráficos anteriores se pueden juntar en uno solo. En R se
+utiliza el siguiente código para dividir la ventana donde salen los
+gráficos. Primero se crea una matriz con las posiciones que queremos
+tener y después se muestra la matriz con <code class="docutils literal notranslate"><span class="pre">layout.show()</span></code>.</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">layout</span><span class="p">(</span><span class="nf">matrix</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">),</span><span class="n">nrow</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="n">byrow</span><span class="o">=</span><span class="bp">F</span><span class="p">))</span>
+<span class="nf">layout.show</span><span class="p">(</span><span class="m">4</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/output_35_0.png"><img alt="../../_images/output_35_0.png" src="../../_images/output_35_0.png" style="width: 420px; height: 420px;" /></a>
+<p>El siguiente código no tiene <code class="docutils literal notranslate"><span class="pre">layout.show(4)</span></code>, pero en R siempre se
+debe poner.</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">layout</span><span class="p">(</span><span class="nf">matrix</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">),</span> <span class="n">nrow</span> <span class="o">=</span> <span class="m">2</span><span class="p">,</span> <span class="n">byro</span> <span class="n">w</span><span class="o">=</span> <span class="bp">F</span><span class="p">))</span>
+
+<span class="nf">for</span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="n">acciones</span><span class="p">){</span>
+
+    <span class="nf">plot</span><span class="p">(</span><span class="n">rendimientos</span><span class="p">[,</span><span class="n">i</span><span class="p">],</span> <span class="n">t</span> <span class="o">=</span> <span class="s">&quot;h&quot;</span><span class="p">,</span> <span class="n">xlab</span> <span class="o">=</span> <span class="s">&quot;Tiempo&quot;</span><span class="p">,</span> <span class="n">ylab</span> <span class="o">=</span> <span class="s">&quot;Rendimientos&quot;</span><span class="p">,</span> <span class="n">main</span> <span class="o">=</span> <span class="n">nombres</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/output_37_0.png"><img alt="../../_images/output_37_0.png" src="../../_images/output_37_0.png" style="width: 420px; height: 420px;" /></a>
+</div>
+<div class="section" id="estadisticas-basicas-de-los-rendimientos">
+<h2>Estadísticas básicas de los rendimientos<a class="headerlink" href="#estadisticas-basicas-de-los-rendimientos" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">summary</span><span class="p">(</span><span class="n">rendimientos</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>     <span class="n">ECO</span>                 <span class="n">PFAVAL</span>                <span class="n">ISA</span>
+<span class="n">Min</span><span class="o">.</span>   <span class="p">:</span><span class="o">-</span><span class="mf">0.4065868</span>   <span class="n">Min</span><span class="o">.</span>   <span class="p">:</span><span class="o">-</span><span class="mf">0.4038136</span>   <span class="n">Min</span><span class="o">.</span>   <span class="p">:</span><span class="o">-</span><span class="mf">0.2756262</span>
+<span class="mi">1</span><span class="n">st</span> <span class="n">Qu</span><span class="o">.</span><span class="p">:</span><span class="o">-</span><span class="mf">0.0096775</span>   <span class="mi">1</span><span class="n">st</span> <span class="n">Qu</span><span class="o">.</span><span class="p">:</span><span class="o">-</span><span class="mf">0.0077671</span>   <span class="mi">1</span><span class="n">st</span> <span class="n">Qu</span><span class="o">.</span><span class="p">:</span><span class="o">-</span><span class="mf">0.0084762</span>
+<span class="n">Median</span> <span class="p">:</span> <span class="mf">0.0000000</span>   <span class="n">Median</span> <span class="p">:</span> <span class="mf">0.0000000</span>   <span class="n">Median</span> <span class="p">:</span> <span class="mf">0.0012682</span>
+<span class="n">Mean</span>   <span class="p">:</span><span class="o">-</span><span class="mf">0.0004472</span>   <span class="n">Mean</span>   <span class="p">:</span><span class="o">-</span><span class="mf">0.0003983</span>   <span class="n">Mean</span>   <span class="p">:</span> <span class="mf">0.0006398</span>
+<span class="mi">3</span><span class="n">rd</span> <span class="n">Qu</span><span class="o">.</span><span class="p">:</span> <span class="mf">0.0117059</span>   <span class="mi">3</span><span class="n">rd</span> <span class="n">Qu</span><span class="o">.</span><span class="p">:</span> <span class="mf">0.0081301</span>   <span class="mi">3</span><span class="n">rd</span> <span class="n">Qu</span><span class="o">.</span><span class="p">:</span> <span class="mf">0.0101129</span>
+<span class="n">Max</span><span class="o">.</span>   <span class="p">:</span> <span class="mf">0.1498123</span>   <span class="n">Max</span><span class="o">.</span>   <span class="p">:</span> <span class="mf">0.2058521</span>   <span class="n">Max</span><span class="o">.</span>   <span class="p">:</span> <span class="mf">0.1386834</span>
+   <span class="n">NUTRESA</span>
+<span class="n">Min</span><span class="o">.</span>   <span class="p">:</span><span class="o">-</span><span class="mf">0.105361</span>
+<span class="mi">1</span><span class="n">st</span> <span class="n">Qu</span><span class="o">.</span><span class="p">:</span><span class="o">-</span><span class="mf">0.006312</span>
+<span class="n">Median</span> <span class="p">:</span> <span class="mf">0.000000</span>
+<span class="n">Mean</span>   <span class="p">:</span><span class="o">-</span><span class="mf">0.000268</span>
+<span class="mi">3</span><span class="n">rd</span> <span class="n">Qu</span><span class="o">.</span><span class="p">:</span> <span class="mf">0.005472</span>
+<span class="n">Max</span><span class="o">.</span>   <span class="p">:</span> <span class="mf">0.065983</span>
+</pre></div>
+</div>
+<p>Se debe instalar el paquete <code class="docutils literal notranslate"><span class="pre">install.packages(&quot;fBasics&quot;)</span></code>. Utilizar el
+código anterior en R para instalar el paquete. Después de instalar, se
+llama la librería <code class="docutils literal notranslate"><span class="pre">fBasics</span></code>.</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">fBasics</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">basicStats</span><span class="p">(</span><span class="n">rendimientos</span><span class="p">)</span>
+</pre></div>
+</div>
+<table>
+<caption>A data.frame: 16 × 4</caption>
+<thead>
+    <tr><th></th><th scope=col>ECO</th><th scope=col>PFAVAL</th><th scope=col>ISA</th><th scope=col>NUTRESA</th></tr>
+    <tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><th scope=row>nobs</th><td>499.000000</td><td>499.000000</td><td>499.000000</td><td>499.000000</td></tr>
+    <tr><th scope=row>NAs</th><td>  0.000000</td><td>  0.000000</td><td>  0.000000</td><td>  0.000000</td></tr>
+    <tr><th scope=row>Minimum</th><td> -0.406587</td><td> -0.403814</td><td> -0.275626</td><td> -0.105361</td></tr>
+    <tr><th scope=row>Maximum</th><td>  0.149812</td><td>  0.205852</td><td>  0.138683</td><td>  0.065983</td></tr>
+    <tr><th scope=row>1. Quartile</th><td> -0.009678</td><td> -0.007767</td><td> -0.008476</td><td> -0.006312</td></tr>
+    <tr><th scope=row>3. Quartile</th><td>  0.011706</td><td>  0.008130</td><td>  0.010113</td><td>  0.005472</td></tr>
+    <tr><th scope=row>Mean</th><td> -0.000447</td><td> -0.000398</td><td>  0.000640</td><td> -0.000268</td></tr>
+    <tr><th scope=row>Median</th><td>  0.000000</td><td>  0.000000</td><td>  0.001268</td><td>  0.000000</td></tr>
+    <tr><th scope=row>Sum</th><td> -0.223144</td><td> -0.198765</td><td>  0.319287</td><td> -0.133754</td></tr>
+    <tr><th scope=row>SE Mean</th><td>  0.001429</td><td>  0.001278</td><td>  0.001062</td><td>  0.000627</td></tr>
+    <tr><th scope=row>LCL Mean</th><td> -0.003256</td><td> -0.002910</td><td> -0.001447</td><td> -0.001500</td></tr>
+    <tr><th scope=row>UCL Mean</th><td>  0.002361</td><td>  0.002113</td><td>  0.002727</td><td>  0.000964</td></tr>
+    <tr><th scope=row>Variance</th><td>  0.001020</td><td>  0.000816</td><td>  0.000563</td><td>  0.000196</td></tr>
+    <tr><th scope=row>Stdev</th><td>  0.031932</td><td>  0.028558</td><td>  0.023729</td><td>  0.014010</td></tr>
+    <tr><th scope=row>Skewness</th><td> -4.487458</td><td> -4.641477</td><td> -2.657806</td><td> -0.908069</td></tr>
+    <tr><th scope=row>Kurtosis</th><td> 57.943763</td><td> 87.840091</td><td> 38.693818</td><td> 11.122682</td></tr>
+</tbody>
+</table></div>
+<div class="section" id="rendimientos-esperados">
+<h2>Rendimientos esperados.<a class="headerlink" href="#rendimientos-esperados" title="Permalink to this headline">¶</a></h2>
+<p>El rendimiento esperado es el promedio de los 499 rendimientos de cada
+acción. La función <code class="docutils literal notranslate"><span class="pre">mean</span></code> calcula el promedio.</p>
+<p>El rendimiento esperado de cada acción se puede calcular de dos formas:</p>
+</div>
+<div class="section" id="forma-1">
+<h2>Forma 1:<a class="headerlink" href="#forma-1" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">rendimientos_esperados</span> <span class="o">=</span> <span class="nf">vector</span><span class="p">()</span>
+
+<span class="nf">for</span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="n">acciones</span><span class="p">){</span>
+
+    <span class="n">rendimientos_esperados</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nf">mean</span><span class="p">(</span><span class="n">rendimientos</span><span class="p">[,</span><span class="n">i</span><span class="p">])</span>
+
+<span class="p">}</span>
+<span class="n">rendimientos_esperados</span>
+</pre></div>
+</div>
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>-0.000447181465559539</li><li>-0.000398326704447035</li><li>0.000639854532799824</li><li>-0.000268043266851791</li></ol></div>
+<div class="section" id="forma-2">
+<h2>Forma 2:<a class="headerlink" href="#forma-2" title="Permalink to this headline">¶</a></h2>
+<p>Se puede utilizar la función <code class="docutils literal notranslate"><span class="pre">apply</span></code>. En esta función se debe indicar
+el valor de <code class="docutils literal notranslate"><span class="pre">1</span></code>para aplicar otra función a las filas del vector o
+matriz o el valor <code class="docutils literal notranslate"><span class="pre">2</span></code> para aplicar otra función a las columnas. En
+este caso se aplicará <code class="docutils literal notranslate"><span class="pre">mean</span></code> a las columnas de las matriz de
+rendimientos.</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">rendimientos_esperados</span> <span class="o">=</span> <span class="nf">apply</span><span class="p">(</span><span class="n">rendimientos</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="n">mean</span><span class="p">)</span>
+<span class="n">rendimientos_esperados</span>
+</pre></div>
+</div>
+<style>
+.dl-inline {width: auto; margin:0; padding: 0}
+.dl-inline>dt, .dl-inline>dd {float: none; width: auto; display: inline-block}
+.dl-inline>dt::after {content: ":\0020"; padding-right: .5ex}
+.dl-inline>dt:not(:first-of-type) {padding-left: .5ex}
+</style><dl class=dl-inline><dt>ECO</dt><dd>-0.000447181465559539</dd><dt>PFAVAL</dt><dd>-0.000398326704447035</dd><dt>ISA</dt><dd>0.000639854532799824</dd><dt>NUTRESA</dt><dd>-0.000268043266851791</dd></dl><p>La frecuencia de las series de tiempo cargadas es diaria, esto implica
+que los resultados tendrán la misma frecuencia temporal. Por tanto, los
+rendimientos son diarios.</p>
+<p><strong>Rendimiento esperado:</strong></p>
+<p><strong>ECO:</strong> -0,000447 <span class="math notranslate nohighlight">\(=\)</span> -0,0447% diario.</p>
+<p><strong>PFVAVAL:</strong> -0,000398 <span class="math notranslate nohighlight">\(=\)</span> -0,0398% diario.</p>
+<p><strong>ISA:</strong> -0,000640 <span class="math notranslate nohighlight">\(=\)</span> -0,0640% diario.</p>
+<p><strong>NUTRESA:</strong> -0,000268 <span class="math notranslate nohighlight">\(=\)</span> -0,0268% diario.</p>
+</div>
+<div class="section" id="volatilidad-o-desviacion-estandar">
+<h2>Volatilidad o desviación estándar<a class="headerlink" href="#volatilidad-o-desviacion-estandar" title="Permalink to this headline">¶</a></h2>
+<p>La volatilidad de las acciones se calculan con la función<code class="docutils literal notranslate"><span class="pre">sd</span></code>.</p>
+<p>La volatilidad de cada acción se puede calcular de dos formas:</p>
+</div>
+<div class="section" id="id1">
+<h2>Forma 1:<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">volatilidades</span> <span class="o">=</span> <span class="nf">vector</span><span class="p">()</span>
+
+<span class="nf">for</span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="n">acciones</span><span class="p">){</span>
+
+    <span class="n">volatilidades</span><span class="p">[</span><span class="n">i</span> <span class="p">]</span><span class="o">=</span> <span class="nf">sd</span><span class="p">(</span><span class="n">rendimientos</span><span class="p">[,</span><span class="n">i</span><span class="p">])</span>
+
+<span class="p">}</span>
+<span class="n">volatilidades</span>
+</pre></div>
+</div>
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>0.0319324424190137</li><li>0.0285577211893029</li><li>0.0237292026947701</li><li>0.0140104740592151</li></ol></div>
+<div class="section" id="id2">
+<h2>Forma 2:<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">volatilidades</span> <span class="o">=</span> <span class="nf">apply</span><span class="p">(</span><span class="n">rendimientos</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="n">sd</span><span class="p">)</span>
+<span class="n">volatilidades</span>
+</pre></div>
+</div>
+<style>
+.dl-inline {width: auto; margin:0; padding: 0}
+.dl-inline>dt, .dl-inline>dd {float: none; width: auto; display: inline-block}
+.dl-inline>dt::after {content: ":\0020"; padding-right: .5ex}
+.dl-inline>dt:not(:first-of-type) {padding-left: .5ex}
+</style><dl class=dl-inline><dt>ECO</dt><dd>0.0319324424190137</dd><dt>PFAVAL</dt><dd>0.0285577211893029</dd><dt>ISA</dt><dd>0.0237292026947701</dd><dt>NUTRESA</dt><dd>0.0140104740592151</dd></dl><p><strong>Volatilidad:</strong></p>
+<p><strong>ECO:</strong> 0,0319 <span class="math notranslate nohighlight">\(=\)</span> 3,19% diario.</p>
+<p><strong>PFVAVAL:</strong> 0,0286 <span class="math notranslate nohighlight">\(=\)</span> 2,86% diario.</p>
+<p><strong>ISA:</strong> 0,0237 <span class="math notranslate nohighlight">\(=\)</span> 2,37% diario.</p>
+<p><strong>NUTRESA:</strong> 0,0140 <span class="math notranslate nohighlight">\(=\)</span> 1,40% diario.</p>
+</div>
+<div class="section" id="histograma-de-los-rendimientos">
+<h2>Histograma de los rendimientos.<a class="headerlink" href="#histograma-de-los-rendimientos" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">layout</span><span class="p">(</span><span class="nf">matrix</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">),</span> <span class="n">nrow</span> <span class="o">=</span> <span class="m">2</span><span class="p">,</span> <span class="n">byrow</span> <span class="o">=</span> <span class="bp">F</span><span class="p">))</span>
+
+<span class="nf">for</span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="n">acciones</span><span class="p">){</span>
+
+    <span class="nf">hist</span><span class="p">(</span><span class="n">rendimientos</span><span class="p">[,</span><span class="n">i</span><span class="p">],</span> <span class="n">breaks</span> <span class="o">=</span> <span class="m">60</span><span class="p">,</span> <span class="n">col</span> <span class="o">=</span> <span class="s">&quot;gray&quot;</span><span class="p">,</span> <span class="n">xlab</span> <span class="o">=</span> <span class="s">&quot;Rendimientos&quot;</span><span class="p">,</span> <span class="n">ylab</span> <span class="o">=</span> <span class="s">&quot;Frecuencia&quot;</span><span class="p">,</span> <span class="n">main</span> <span class="o">=</span> <span class="n">nombres</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">freq</span> <span class="o">=</span> <span class="bp">F</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/output_59_0.png"><img alt="../../_images/output_59_0.png" src="../../_images/output_59_0.png" style="width: 420px; height: 420px;" /></a>
+</div>
+<div class="section" id="histograma-y-distribucion-normal">
+<h2>Histograma y distribución normal.<a class="headerlink" href="#histograma-y-distribucion-normal" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">layout</span><span class="p">(</span><span class="nf">matrix</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">),</span> <span class="n">nrow</span> <span class="o">=</span> <span class="m">2</span><span class="p">,</span> <span class="n">byrow</span> <span class="o">=</span> <span class="bp">F</span><span class="p">))</span>
+
+<span class="nf">for</span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="n">acciones</span><span class="p">){</span>
+
+    <span class="nf">hist</span><span class="p">(</span><span class="n">rendimientos</span><span class="p">[,</span><span class="n">i</span><span class="p">],</span> <span class="n">breaks</span> <span class="o">=</span> <span class="m">60</span><span class="p">,</span> <span class="n">col</span> <span class="o">=</span> <span class="s">&quot;gray&quot;</span><span class="p">,</span> <span class="n">xlab</span> <span class="o">=</span> <span class="s">&quot;Rendimientos&quot;</span><span class="p">,</span> <span class="n">ylab</span> <span class="o">=</span> <span class="s">&quot;Frecuencia&quot;</span><span class="p">,</span> <span class="n">main</span> <span class="o">=</span> <span class="n">nombres</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">freq</span> <span class="o">=</span> <span class="bp">F</span><span class="p">)</span>
+    <span class="nf">curve</span><span class="p">(</span><span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mean</span> <span class="o">=</span> <span class="n">rendimientos_esperados</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">sd</span> <span class="o">=</span> <span class="n">volatilidades</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span> <span class="n">add</span> <span class="o">=</span> <span class="bp">T</span><span class="p">,</span> <span class="n">lwd</span> <span class="o">=</span> <span class="m">3</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/output_61_0.png"><img alt="../../_images/output_61_0.png" src="../../_images/output_61_0.png" style="width: 420px; height: 420px;" /></a>
+</div>
+<div class="section" id="histograma-y-densidad">
+<h2>Histograma y densidad.<a class="headerlink" href="#histograma-y-densidad" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">layout</span><span class="p">(</span><span class="nf">matrix</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">),</span> <span class="n">nrow</span> <span class="o">=</span> <span class="m">2</span><span class="p">,</span> <span class="n">byrow</span> <span class="o">=</span> <span class="bp">F</span><span class="p">))</span>
+
+<span class="nf">for</span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="n">acciones</span><span class="p">){</span>
+
+    <span class="nf">hist</span><span class="p">(</span><span class="n">rendimientos</span><span class="p">[,</span><span class="n">i</span><span class="p">],</span> <span class="n">breaks</span> <span class="o">=</span> <span class="m">60</span><span class="p">,</span> <span class="n">col</span> <span class="o">=</span> <span class="s">&quot;gray&quot;</span><span class="p">,</span> <span class="n">xlab</span> <span class="o">=</span> <span class="s">&quot;Rendimientos&quot;</span><span class="p">,</span> <span class="n">ylab</span> <span class="o">=</span> <span class="s">&quot;Frecuencia&quot;</span><span class="p">,</span> <span class="n">main</span> <span class="o">=</span> <span class="n">nombres</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">freq</span> <span class="o">=</span> <span class="bp">F</span><span class="p">)</span>
+    <span class="nf">lines</span><span class="p">(</span><span class="nf">density</span><span class="p">(</span><span class="n">rendimientos</span><span class="p">[,</span><span class="n">i</span><span class="p">]),</span> <span class="n">lwd</span> <span class="o">=</span> <span class="m">3</span><span class="p">,</span> <span class="n">col</span> <span class="o">=</span> <span class="s">&quot;darkgreen&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/output_63_0.png"><img alt="../../_images/output_63_0.png" src="../../_images/output_63_0.png" style="width: 420px; height: 420px;" /></a>
+</div>
+<div class="section" id="histograma-distribucion-normal-y-densidad">
+<h2>Histograma, distribución normal y densidad.<a class="headerlink" href="#histograma-distribucion-normal-y-densidad" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">layout</span><span class="p">(</span><span class="nf">matrix</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">),</span> <span class="n">nrow</span> <span class="o">=</span> <span class="m">2</span><span class="p">,</span> <span class="n">byrow</span> <span class="o">=</span> <span class="bp">F</span><span class="p">))</span>
+
+<span class="nf">for</span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="n">acciones</span><span class="p">){</span>
+
+    <span class="nf">hist</span><span class="p">(</span><span class="n">rendimientos</span><span class="p">[,</span><span class="n">i</span><span class="p">],</span> <span class="n">breaks</span> <span class="o">=</span> <span class="m">60</span><span class="p">,</span> <span class="n">col</span> <span class="o">=</span> <span class="s">&quot;gray&quot;</span><span class="p">,</span> <span class="n">xlab</span> <span class="o">=</span> <span class="s">&quot;Rendimientos&quot;</span><span class="p">,</span> <span class="n">ylab</span> <span class="o">=</span> <span class="s">&quot;Frecuencia&quot;</span><span class="p">,</span> <span class="n">main</span> <span class="o">=</span> <span class="n">nombres</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">freq</span> <span class="o">=</span> <span class="bp">F</span><span class="p">)</span>
+    <span class="nf">curve</span><span class="p">(</span><span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mean</span> <span class="o">=</span> <span class="n">rendimientos_esperados</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">sd</span> <span class="o">=</span> <span class="n">volatilidades</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span> <span class="n">add</span> <span class="o">=</span> <span class="bp">T</span><span class="p">,</span> <span class="n">lwd</span> <span class="o">=</span> <span class="m">3</span><span class="p">)</span>
+    <span class="nf">lines</span><span class="p">(</span><span class="nf">density</span><span class="p">(</span><span class="n">rendimientos</span><span class="p">[,</span><span class="n">i</span><span class="p">]),</span> <span class="n">lwd</span> <span class="o">=</span> <span class="m">3</span><span class="p">,</span> <span class="n">col</span> <span class="o">=</span> <span class="s">&quot;darkgreen&quot;</span><span class="p">)</span>
+    <span class="nf">legend</span><span class="p">(</span><span class="s">&quot;topleft&quot;</span><span class="p">,</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;Distribución Normal&quot;</span><span class="p">,</span> <span class="s">&quot;Distribución empírica&quot;</span><span class="p">),</span> <span class="n">lty</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">),</span> <span class="n">lwd</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">3</span><span class="p">,</span><span class="m">3</span><span class="p">),</span> <span class="n">col</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;black&quot;</span><span class="p">,</span> <span class="s">&quot;darkgreen&quot;</span><span class="p">),</span> <span class="n">bty</span> <span class="o">=</span> <span class="s">&quot;n&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/output_65_0.png"><img alt="../../_images/output_65_0.png" src="../../_images/output_65_0.png" style="width: 420px; height: 420px;" /></a>
+</div>
+<div class="section" id="analisis-de-normalidad">
+<h2>Análisis de normalidad.<a class="headerlink" href="#analisis-de-normalidad" title="Permalink to this headline">¶</a></h2>
+<p>Se hace una comparación de cada cuatíl de la distribución empírica con
+respecto a la distribución normal. La línea recta es una guía.</p>
+<p>Estas gráficas se llaman Q-Q plot.</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">layout</span><span class="p">(</span><span class="nf">matrix</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">),</span> <span class="n">nrow</span> <span class="o">=</span> <span class="m">2</span><span class="p">,</span> <span class="n">byrow</span> <span class="o">=</span> <span class="bp">F</span><span class="p">))</span>
+
+<span class="nf">for</span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="n">acciones</span><span class="p">){</span>
+
+    <span class="nf">qqnorm</span><span class="p">(</span><span class="n">rendimientos</span><span class="p">[,</span><span class="n">i</span><span class="p">],</span> <span class="n">main</span> <span class="o">=</span> <span class="n">nombres</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="nf">qqline</span><span class="p">(</span><span class="n">rendimientos</span><span class="p">[,</span><span class="n">i</span><span class="p">])</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/output_68_0.png"><img alt="../../_images/output_68_0.png" src="../../_images/output_68_0.png" style="width: 420px; height: 420px;" /></a>
+</div>
+<div class="section" id="covarianza">
+<h2>Covarianza<a class="headerlink" href="#covarianza" title="Permalink to this headline">¶</a></h2>
+<p>Es una medida de relación lineal entre dos variables aleatorios
+describiendo el movimiento conjunto entre éstas.</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">covarianza</span> <span class="o">=</span> <span class="nf">cov</span><span class="p">(</span><span class="n">rendimientos</span><span class="p">)</span>
+<span class="n">covarianza</span>
+</pre></div>
+</div>
+<table>
+<caption>A matrix: 4 × 4 of type dbl</caption>
+<thead>
+    <tr><th></th><th scope=col>ECO</th><th scope=col>PFAVAL</th><th scope=col>ISA</th><th scope=col>NUTRESA</th></tr>
+</thead>
+<tbody>
+    <tr><th scope=row>ECO</th><td>0.0010196809</td><td>0.0005939468</td><td>0.0001160327</td><td>0.0001493216</td></tr>
+    <tr><th scope=row>PFAVAL</th><td>0.0005939468</td><td>0.0008155434</td><td>0.0001564360</td><td>0.0001322689</td></tr>
+    <tr><th scope=row>ISA</th><td>0.0001160327</td><td>0.0001564360</td><td>0.0005630751</td><td>0.0001519996</td></tr>
+    <tr><th scope=row>NUTRESA</th><td>0.0001493216</td><td>0.0001322689</td><td>0.0001519996</td><td>0.0001962934</td></tr>
+</tbody>
+</table></div>
+<div class="section" id="correlacion">
+<h2>Correlación<a class="headerlink" href="#correlacion" title="Permalink to this headline">¶</a></h2>
+<p>Mide el grado de movimiento conjunto entre dos variables o la relación
+lineal entre ambas en un rango entre -1 y +1.</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">correlacion</span> <span class="o">=</span> <span class="nf">cor</span><span class="p">(</span><span class="n">rendimientos</span><span class="p">)</span>
+<span class="n">correlacion</span>
+</pre></div>
+</div>
+<table>
+<caption>A matrix: 4 × 4 of type dbl</caption>
+<thead>
+    <tr><th></th><th scope=col>ECO</th><th scope=col>PFAVAL</th><th scope=col>ISA</th><th scope=col>NUTRESA</th></tr>
+</thead>
+<tbody>
+    <tr><th scope=row>ECO</th><td>1.0000000</td><td>0.6513161</td><td>0.1531317</td><td>0.3337626</td></tr>
+    <tr><th scope=row>PFAVAL</th><td>0.6513161</td><td>1.0000000</td><td>0.2308501</td><td>0.3305836</td></tr>
+    <tr><th scope=row>ISA</th><td>0.1531317</td><td>0.2308501</td><td>1.0000000</td><td>0.4572004</td></tr>
+    <tr><th scope=row>NUTRESA</th><td>0.3337626</td><td>0.3305836</td><td>0.4572004</td><td>1.0000000</td></tr>
+</tbody>
+</table></div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../Ejercicios - Estadística y conformación de portafolios de inversión/Ejercicios - Estadística y conformación de portafolios de inversión.html" class="btn btn-neutral float-right" title="Ejercicios: Estadística y conformación de portafolios de inversión." accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../index.html" class="btn btn-neutral" title="Análisis y conformación de portafolios de inversión" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Miguel.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/language_data.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

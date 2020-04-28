@@ -1,8 +1,34 @@
-Portafolios de inversión
--------------------------------------------
+Análisis y conformación de portafolios de inversión
+======================================================
+
+1. Conceptos de estadística
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. toctree::
+    :maxdepth: 2
+    :titlesonly:
 
 
+    Estadística aplicada a los activos bursátiles/Estadística aplicada a los activos bursátiles
 
+Descargue :download:`aquí <Estadística aplicada a los activos bursátiles/Estadística aplicada a los activos bursátiles.r>` el código.
+
+Descargue :download:`aquí <Estadística aplicada a los activos bursátiles/2. Conceptos estadísticos para portafolios de inversión V2.pdf>` las presentaciones.
+
+
+**Ejercicios sobre conceptos de estadística aplicados a los activos bursátiles**
+
+
+.. toctree::
+    :maxdepth: 2
+    :titlesonly:
+
+
+    Ejercicios - Estadística y conformación de portafolios de inversión/Ejercicios - Estadística y conformación de portafolios de inversión
+
+
+2. Volatilidad portafolios de inversión
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
     :maxdepth: 2
@@ -11,15 +37,10 @@ Portafolios de inversión
 
     Volatilidad portafolio de inversión/Volatilidad portafolio de inversión
  
-Ver código :download:`Volatilidad portafolio de inversión <Volatilidad portafolio de inversión/Volatilidad portafolio de inversión.r>`
+Descargue :download:`aquí <Volatilidad portafolio de inversión/Volatilidad portafolio de inversión.r>` el código.
 
-.. toctree::
-    :maxdepth: 2
-    :titlesonly:
-
-    Diversificación de portafolios de inversión/Diversificación de portafolios de inversión
-
-Ver código :download:`Diversificación de portafolios de inversión <Diversificación de portafolios de inversión/Diversificación de portafolios de inversión.r>`
+3. Conformación de portafolios de inversión
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
     :maxdepth: 2
@@ -27,4 +48,4 @@ Ver código :download:`Diversificación de portafolios de inversión <Diversific
 
     Conformación portafolio de inversión/Conformación portafolio de inversión
 
-Ver código :download:`Conformación portafolio de inversión <Conformación portafolio de inversión/Conformación portafolio de inversión.r>`
+Descargue :download:`aquí <Conformación portafolio de inversión/Conformación portafolio de inversión.r>` el código.
