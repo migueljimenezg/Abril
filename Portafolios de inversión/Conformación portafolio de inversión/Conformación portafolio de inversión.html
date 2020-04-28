@@ -1,0 +1,567 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Conformación portafolio de inversión &mdash; Abril  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="Abril  documentation" href="../../index.html"/>
+        <link rel="up" title="Portafolios de inversión" href="../index.html"/>
+        <link rel="prev" title="Diversificación de portafolios de inversión" href="../Diversificación de portafolios de inversión/Diversificación de portafolios de inversión.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Abril
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">RIESGO DE MERCADO</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../Introducción a R/index.html">Introducción a R</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Portafolios de inversión</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../Volatilidad portafolio de inversión/Volatilidad portafolio de inversión.html">Volatilidad portafolio de inversión</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Diversificación de portafolios de inversión/Diversificación de portafolios de inversión.html">Diversificación de portafolios de inversión</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Conformación portafolio de inversión</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Abril</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Portafolios de inversión</a> &raquo;</li>
+        
+      <li>Conformación portafolio de inversión</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/Portafolios de inversión/Conformación portafolio de inversión/Conformación portafolio de inversión.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="conformacion-portafolio-de-inversion">
+<h1>Conformación portafolio de inversión<a class="headerlink" href="#conformacion-portafolio-de-inversion" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="importar-datos">
+<h2>Importar datos.<a class="headerlink" href="#importar-datos" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">datos</span> <span class="o">=</span> <span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;Cuatro acciones 2020.csv&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s">&quot;;&quot;</span><span class="p">,</span> <span class="n">dec</span><span class="o">=</span><span class="s">&quot;,&quot;</span><span class="p">,</span> <span class="n">header</span> <span class="o">=</span> <span class="bp">T</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="matriz-de-precios">
+<h2>Matriz de precios.<a class="headerlink" href="#matriz-de-precios" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">precios</span> <span class="o">=</span> <span class="n">datos</span><span class="p">[,</span><span class="m">-1</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">nombres</span> <span class="o">=</span> <span class="nf">colnames</span><span class="p">(</span><span class="n">precios</span><span class="p">)</span>
+<span class="n">nombres</span>
+</pre></div>
+</div>
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>'ECO'</li><li>'PFVAVAL'</li><li>'ISA'</li><li>'NUTRESA'</li></ol><div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">acciones</span> <span class="o">=</span> <span class="nf">ncol</span><span class="p">(</span><span class="n">precios</span><span class="p">)</span>
+<span class="n">acciones</span>
+</pre></div>
+</div>
+4<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">precios</span> <span class="o">=</span> <span class="nf">ts</span><span class="p">(</span><span class="n">precios</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="matriz-de-rendimientos">
+<h2>Matriz de rendimientos.<a class="headerlink" href="#matriz-de-rendimientos" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">rendimientos</span> <span class="o">=</span> <span class="nf">diff</span><span class="p">(</span><span class="nf">log</span><span class="p">(</span><span class="n">precios</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="coeficientes-de-correlacion">
+<h2>Coeficientes de correlación<a class="headerlink" href="#coeficientes-de-correlacion" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">correlacion</span> <span class="o">=</span> <span class="nf">cor</span><span class="p">(</span><span class="n">rendimientos</span><span class="p">)</span>
+<span class="n">correlacion</span>
+</pre></div>
+</div>
+<table>
+<caption>A matrix: 4 × 4 of type dbl</caption>
+<thead>
+    <tr><th></th><th scope=col>ECO</th><th scope=col>PFVAVAL</th><th scope=col>ISA</th><th scope=col>NUTRESA</th></tr>
+</thead>
+<tbody>
+    <tr><th scope=row>ECO</th><td>1.0000000</td><td>0.6513161</td><td>0.1531317</td><td>0.3337626</td></tr>
+    <tr><th scope=row>PFVAVAL</th><td>0.6513161</td><td>1.0000000</td><td>0.2308501</td><td>0.3305836</td></tr>
+    <tr><th scope=row>ISA</th><td>0.1531317</td><td>0.2308501</td><td>1.0000000</td><td>0.4572004</td></tr>
+    <tr><th scope=row>NUTRESA</th><td>0.3337626</td><td>0.3305836</td><td>0.4572004</td><td>1.0000000</td></tr>
+</tbody>
+</table></div>
+<div class="section" id="rendimientos-esperado-de-cada-accion">
+<h2>Rendimientos esperado de cada acción.<a class="headerlink" href="#rendimientos-esperado-de-cada-accion" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">rendimientos_esperados</span> <span class="o">=</span> <span class="nf">apply</span><span class="p">(</span><span class="n">rendimientos</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="n">mean</span><span class="p">)</span>
+<span class="n">rendimientos_esperados</span>
+</pre></div>
+</div>
+<style>
+.dl-inline {width: auto; margin:0; padding: 0}
+.dl-inline>dt, .dl-inline>dd {float: none; width: auto; display: inline-block}
+.dl-inline>dt::after {content: ":\0020"; padding-right: .5ex}
+.dl-inline>dt:not(:first-of-type) {padding-left: .5ex}
+</style><dl class=dl-inline><dt>ECO</dt><dd>-0.000447181465559539</dd><dt>PFVAVAL</dt><dd>-0.000398326704447035</dd><dt>ISA</dt><dd>0.000639854532799824</dd><dt>NUTRESA</dt><dd>-0.000268043266851791</dd></dl></div>
+<div class="section" id="grafico-comparacion-rendimientos-esperados-de-las-acciones">
+<h2>Gráfico comparación rendimientos esperados de las acciones<a class="headerlink" href="#grafico-comparacion-rendimientos-esperados-de-las-acciones" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">barplot</span><span class="p">(</span><span class="n">rendimientos_esperados</span><span class="p">,</span> <span class="n">horiz</span> <span class="o">=</span> <span class="bp">T</span><span class="p">,</span> <span class="n">main</span><span class="o">=</span><span class="s">&quot;Rendimientos esperados de las acciones&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/output_15_0.png"><img alt="../../_images/output_15_0.png" src="../../_images/output_15_0.png" style="width: 420px; height: 420px;" /></a>
+</div>
+<div class="section" id="volatilidad-de-cada-accion">
+<h2>Volatilidad de cada acción.<a class="headerlink" href="#volatilidad-de-cada-accion" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">volatilidades</span> <span class="o">=</span> <span class="nf">apply</span><span class="p">(</span><span class="n">rendimientos</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="n">sd</span><span class="p">)</span>
+<span class="n">volatilidades</span>
+</pre></div>
+</div>
+<style>
+.dl-inline {width: auto; margin:0; padding: 0}
+.dl-inline>dt, .dl-inline>dd {float: none; width: auto; display: inline-block}
+.dl-inline>dt::after {content: ":\0020"; padding-right: .5ex}
+.dl-inline>dt:not(:first-of-type) {padding-left: .5ex}
+</style><dl class=dl-inline><dt>ECO</dt><dd>0.0319324424190137</dd><dt>PFVAVAL</dt><dd>0.0285577211893029</dd><dt>ISA</dt><dd>0.0237292026947701</dd><dt>NUTRESA</dt><dd>0.0140104740592151</dd></dl></div>
+<div class="section" id="grafico-comparacion-volatilidades-de-las-acciones">
+<h2>Gráfico comparación volatilidades de las acciones<a class="headerlink" href="#grafico-comparacion-volatilidades-de-las-acciones" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">barplot</span><span class="p">(</span><span class="n">volatilidades</span><span class="p">,</span><span class="n">horiz</span> <span class="o">=</span> <span class="bp">T</span><span class="p">,</span> <span class="n">main</span><span class="o">=</span><span class="s">&quot;Volatilidades de las acciones&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/output_19_0.png"><img alt="../../_images/output_19_0.png" src="../../_images/output_19_0.png" style="width: 420px; height: 420px;" /></a>
+</div>
+<div class="section" id="portafolio-n-1">
+<h2>Portafolio N° 1<a class="headerlink" href="#portafolio-n-1" title="Permalink to this headline">¶</a></h2>
+<p>Los portafolios de inversión se conforman con la compra de acciones. Los
+inversionistas invierten su dinero en adquirir cierta cantidad de
+acciones. Se tendrá el supuesto que sólo se realizan operaciones de
+compra y no operaciones de venta en corto.</p>
+<p>Para determinar la composición exacta del portafolio de inversión se
+debe multiplicar la cantidad de acciones compradas por el último precio
+de mercado.</p>
+<p>El número de acciones por cada activo financiera está representado por
+el vector <code class="docutils literal notranslate"><span class="pre">numero_acciones</span></code> y el último precio de mercado por <code class="docutils literal notranslate"><span class="pre">s</span></code>.
+La letra viene del nombre precio <em>spot</em>. Para determinar el valor de
+mercado de cada una de las acciones se hará la multiplicación:
+<code class="docutils literal notranslate"><span class="pre">numero_acciones*s</span></code>, lo cual se llamará <code class="docutils literal notranslate"><span class="pre">valor_mercado_acciones</span></code>.</p>
+<p>De esta manera, el valor de mercado del portafolio,
+<code class="docutils literal notranslate"><span class="pre">valor_portafolio</span></code>, será la suma del valor de mercado de cada una de
+las acciones. Por último, la conformación del portafolio de inversión
+estará representada por las proporciones de inversión que tenga cada una
+de las acciones.</p>
+</div>
+<div class="section" id="ultimo-precio-de-las-acciones">
+<h2>Último precio de las acciones<a class="headerlink" href="#ultimo-precio-de-las-acciones" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="nf">tail</span><span class="p">(</span><span class="n">precios</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span>
+<span class="n">s</span> <span class="o">=</span> <span class="nf">as.numeric</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="n">s</span>
+</pre></div>
+</div>
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>2220</li><li>955</li><li>18000</li><li>22500</li></ol><p>La acción de ECO tiene un precio 2.220 COP, PFAVAL de 955 COP, ISA de
+18.000 COP y NUTRESA de 22.500 COP.</p>
+</div>
+<div class="section" id="numero-de-acciones-portafolio-n-1">
+<h2>Número de acciones portafolio N° 1<a class="headerlink" href="#numero-de-acciones-portafolio-n-1" title="Permalink to this headline">¶</a></h2>
+<p>Sopongamos que se en el portafolio de inversión se realizaron las
+siguientes compras:</p>
+<p>ECO: 150.000 acciones.</p>
+<p>PFAVAL: 300.000 acciones.</p>
+<p>ISA: 40.000 acciones.</p>
+<p>NUTRESA: 70.000 acciones.</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">numero_acciones</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">150000</span><span class="p">,</span><span class="m">300000</span><span class="p">,</span><span class="m">40000</span><span class="p">,</span><span class="m">70000</span><span class="p">)</span>
+<span class="n">numero_acciones</span>
+</pre></div>
+</div>
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>150000</li><li>3e+05</li><li>40000</li><li>70000</li></ol></div>
+<div class="section" id="valor-de-mercado-de-las-acciones-portafolio-n-1">
+<h2>Valor de mercado de las acciones portafolio N° 1<a class="headerlink" href="#valor-de-mercado-de-las-acciones-portafolio-n-1" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">valor_mercado_acciones</span> <span class="o">=</span> <span class="n">numero_acciones</span><span class="o">*</span><span class="n">s</span>
+<span class="n">valor_mercado_acciones</span>
+</pre></div>
+</div>
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>3.33e+08</li><li>286500000</li><li>7.2e+08</li><li>1.575e+09</li></ol><p>Lo invertido en ECO tiene un valor de 333.000.000 COP, en PFAVAL de
+286.500.000 COP, en ISA de 720.000.000 COP y NUTRESA de 157.500.000</p>
+</div>
+<div class="section" id="valor-de-mercado-portafolio-de-inversion-portafolio-n-1">
+<h2>Valor de mercado portafolio de inversión portafolio N° 1<a class="headerlink" href="#valor-de-mercado-portafolio-de-inversion-portafolio-n-1" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">valor_portafolio</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">valor_mercado_acciones</span><span class="p">)</span>
+<span class="n">valor_portafolio</span>
+</pre></div>
+</div>
+2914500000<p>El portafolio de inversión tiene un valor de mercado de 2.914.500.000
+COP.</p>
+</div>
+<div class="section" id="proporciones-de-inversion-portafolio-n-1">
+<h2>Proporciones de inversión portafolio N° 1<a class="headerlink" href="#proporciones-de-inversion-portafolio-n-1" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">proporciones</span> <span class="o">=</span> <span class="n">valor_mercado_acciones</span><span class="o">/</span><span class="n">valor_portafolio</span>
+<span class="n">proporciones</span>
+</pre></div>
+</div>
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>0.114256304683479</li><li>0.0983015954709213</li><li>0.24704065877509</li><li>0.540401441070509</li></ol><p>La conformación del portafolio de inversión es la siguiente,
+aproximadamente:</p>
+<p>ECO: 11,43%</p>
+<p>PFAVAL: 9,83%</p>
+<p>ISA: 24,70%</p>
+<p>NUTRESA: 54,04%</p>
+<p>La suma de las proporciones de inversión debe dar 100% porque se tiene
+el supuesto que se invierte todo el dinero disponible y no se realizan
+ventas en corto. Con las ventas en corto el porcentaje sería más del
+100% porque se estaría apalancado.</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">sum</span><span class="p">(</span><span class="n">proporciones</span><span class="p">)</span>
+</pre></div>
+</div>
+1<div class="math notranslate nohighlight">
+\[\sum_{i=1}^nW_i=1\]</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="grafica-de-proporciones-de-inversion-portafolio-n-1">
+<h2>Gráfica de proporciones de inversión portafolio N° 1<a class="headerlink" href="#grafica-de-proporciones-de-inversion-portafolio-n-1" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">pie</span><span class="p">(</span><span class="n">proporciones</span><span class="p">,</span> <span class="n">nombres</span><span class="p">,</span> <span class="n">main</span><span class="o">=</span><span class="s">&quot;Proporciones de inversión portafolio N° 1&quot;</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;darkgreen&quot;</span><span class="p">,</span><span class="s">&quot;darkblue&quot;</span><span class="p">,</span><span class="s">&quot;darkgray&quot;</span><span class="p">,</span><span class="s">&quot;darkred&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/output_41_0.png"><img alt="../../_images/output_41_0.png" src="../../_images/output_41_0.png" style="width: 420px; height: 420px;" /></a>
+</div>
+<div class="section" id="rendimientos-del-portafolio-de-inversion-n-1">
+<h2>Rendimientos del portafolio de inversión N° 1<a class="headerlink" href="#rendimientos-del-portafolio-de-inversion-n-1" title="Permalink to this headline">¶</a></h2>
+<p>El rendimiento del portafolio de inversión es el promedio ponderado de
+cada uno de los rendimientos de las acciones por los porcentajes de las
+proporciones de inversión.</p>
+<div class="math notranslate nohighlight">
+\[R_P=\sum_{i=1}^nW_iR_i\]</div>
+<hr class="docutils" />
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">rendimientos_portafolio</span> <span class="o">=</span> <span class="nf">vector</span><span class="p">()</span>
+
+<span class="nf">for</span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="nf">nrow</span><span class="p">(</span><span class="n">rendimientos</span><span class="p">)){</span>
+
+  <span class="n">rendimientos_portafolio</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">rendimientos</span><span class="p">[</span><span class="n">i</span><span class="p">,]</span><span class="o">*</span><span class="n">proporciones</span><span class="p">)</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">head</span><span class="p">(</span><span class="n">rendimientos_portafolio</span><span class="p">,</span> <span class="m">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>-0.00674979626464658</li><li>0.00989168735951183</li><li>0.00382908516429467</li><li>0.00690563441971709</li><li>-0.00182090582806878</li><li>0.0161071689440197</li><li>0.00338501947733235</li><li>0.014328020875826</li><li>0.00356937173801299</li><li>0.0071767045753624</li></ol></div>
+<div class="section" id="rendimiento-esperado-del-portafolio-de-inversion-n-1">
+<h2>Rendimiento esperado del portafolio de inversión N° 1<a class="headerlink" href="#rendimiento-esperado-del-portafolio-de-inversion-n-1" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">rendimiento_esperado_portafolio</span> <span class="o">=</span> <span class="nf">mean</span><span class="p">(</span><span class="n">rendimientos_portafolio</span><span class="p">)</span>
+<span class="n">rendimiento_esperado_portafolio</span>
+</pre></div>
+</div>
+-7.70303347164522e-05<p>El rendimiento esperado del portafolio de inversión es de -0,00007703%
+diario.</p>
+</div>
+<div class="section" id="volatilidad-del-portafolio-de-inversion-portafolio-n-1">
+<h2>Volatilidad del portafolio de inversión portafolio N° 1<a class="headerlink" href="#volatilidad-del-portafolio-de-inversion-portafolio-n-1" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">volatilidad_portafolio</span> <span class="o">=</span> <span class="nf">sd</span><span class="p">(</span><span class="n">rendimientos_portafolio</span><span class="p">)</span>
+<span class="n">volatilidad_portafolio</span>
+</pre></div>
+</div>
+0.0146098313397769<p>La volatilidad del portafolio de inversión es de 1,46% diaria.</p>
+</div>
+<div class="section" id="grafico-comparacion-rendimientos-esperados-con-portafolio-n-1">
+<h2>Gráfico comparación rendimientos esperados con portafolio N° 1<a class="headerlink" href="#grafico-comparacion-rendimientos-esperados-con-portafolio-n-1" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">barplot</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">rendimientos_esperados</span><span class="p">,</span> <span class="n">rendimiento_esperado_portafolio</span><span class="p">),</span> <span class="n">horiz</span> <span class="o">=</span> <span class="bp">T</span><span class="p">,</span> <span class="n">main</span> <span class="o">=</span> <span class="s">&quot;Rendimientos esperados de las acciones\n y del portafolio de inversión N° 1&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/output_54_0.png"><img alt="../../_images/output_54_0.png" src="../../_images/output_54_0.png" style="width: 420px; height: 420px;" /></a>
+</div>
+<div class="section" id="grafico-comparacion-volatilidades-con-portafolio-n-1">
+<h2>Gráfico comparación volatilidades con portafolio N° 1<a class="headerlink" href="#grafico-comparacion-volatilidades-con-portafolio-n-1" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">barplot</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">volatilidades</span><span class="p">,</span><span class="n">volatilidad_portafolio</span><span class="p">),</span> <span class="n">horiz</span> <span class="o">=</span> <span class="bp">T</span><span class="p">,</span> <span class="n">main</span> <span class="o">=</span> <span class="s">&quot;Volatilidades de las acciones\n y del portafolio de inversión N° 1&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/output_56_0.png"><img alt="../../_images/output_56_0.png" src="../../_images/output_56_0.png" style="width: 420px; height: 420px;" /></a>
+</div>
+<div class="section" id="portafolio-n-2">
+<h2>Portafolio N° 2<a class="headerlink" href="#portafolio-n-2" title="Permalink to this headline">¶</a></h2>
+<p>Por practicidad, se hace análisis de los portafolios de inversión a
+partir de las proporciones de inversión sin tener en cuenta la cantidad
+de acciones en cada activo. Esto se hace como una aproximación a los
+porcentajes de inversión reales.</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">proporciones</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">0.20</span><span class="p">,</span><span class="m">0.30</span><span class="p">,</span><span class="m">0.15</span><span class="p">,</span><span class="m">0.35</span><span class="p">)</span>
+<span class="n">proporciones</span>
+</pre></div>
+</div>
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>0.2</li><li>0.3</li><li>0.15</li><li>0.35</li></ol><div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">sum</span><span class="p">(</span><span class="n">proporciones</span><span class="p">)</span>
+</pre></div>
+</div>
+1</div>
+<div class="section" id="grafica-de-proporciones-de-inversion-portafolio-n-2">
+<h2>Gráfica de proporciones de inversión portafolio N° 2<a class="headerlink" href="#grafica-de-proporciones-de-inversion-portafolio-n-2" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">pie</span><span class="p">(</span><span class="n">proporciones</span><span class="p">,</span> <span class="n">nombres</span><span class="p">,</span> <span class="n">main</span><span class="o">=</span><span class="s">&quot;Proporciones de inversión&quot;</span><span class="p">,</span> <span class="n">col</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;darkgreen&quot;</span><span class="p">,</span><span class="s">&quot;darkblue&quot;</span><span class="p">,</span><span class="s">&quot;darkgray&quot;</span><span class="p">,</span><span class="s">&quot;darkred&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/output_62_0.png"><img alt="../../_images/output_62_0.png" src="../../_images/output_62_0.png" style="width: 420px; height: 420px;" /></a>
+</div>
+<div class="section" id="rendimientos-del-portafolio-de-inversion-portafolio-n-2">
+<h2>Rendimientos del portafolio de inversión portafolio N° 2<a class="headerlink" href="#rendimientos-del-portafolio-de-inversion-portafolio-n-2" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">rendimientos_portafolio</span><span class="o">=</span><span class="nf">vector</span><span class="p">()</span>
+
+<span class="nf">for</span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="nf">nrow</span><span class="p">(</span><span class="n">rendimientos</span><span class="p">)){</span>
+
+  <span class="n">rendimientos_portafolio</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">rendimientos</span><span class="p">[</span><span class="n">i</span><span class="p">,]</span><span class="o">*</span><span class="n">proporciones</span><span class="p">)</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="rendimiento-esperado-del-portafolio-de-inversion-n-2">
+<h2>Rendimiento esperado del portafolio de inversión N° 2<a class="headerlink" href="#rendimiento-esperado-del-portafolio-de-inversion-n-2" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">rendimiento_esperado_portafolio</span> <span class="o">=</span> <span class="nf">mean</span><span class="p">(</span><span class="n">rendimientos_portafolio</span><span class="p">)</span>
+<span class="n">rendimiento_esperado_portafolio</span>
+</pre></div>
+</div>
+-0.000206771267924171<p>El rendimiento esperado del portafolio de inversión es de -0,0207%
+diario.</p>
+</div>
+<div class="section" id="id1">
+<h2>Volatilidad del portafolio de inversión portafolio N° 1<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">volatilidad_portafolio</span> <span class="o">=</span> <span class="nf">sd</span><span class="p">(</span><span class="n">rendimientos_portafolio</span><span class="p">)</span>
+<span class="n">volatilidad_portafolio</span>
+</pre></div>
+</div>
+0.0175458696925969<p>La volatilidad del portafolio de inversión es de 1,75% diaria.</p>
+</div>
+<div class="section" id="grafico-comparacion-rendimientos-esperados-con-portafolio-n-2">
+<h2>Gráfico comparación rendimientos esperados con portafolio N° 2<a class="headerlink" href="#grafico-comparacion-rendimientos-esperados-con-portafolio-n-2" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">barplot</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">rendimientos_esperados</span><span class="p">,</span><span class="n">rendimiento_esperado_portafolio</span><span class="p">),</span> <span class="n">horiz</span> <span class="o">=</span> <span class="bp">T</span><span class="p">,</span> <span class="n">main</span><span class="o">=</span><span class="s">&quot;Rendimientos esperados de las acciones\n y del portafolio de inversión N° 2&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/output_72_0.png"><img alt="../../_images/output_72_0.png" src="../../_images/output_72_0.png" style="width: 420px; height: 420px;" /></a>
+</div>
+<div class="section" id="grafico-comparacion-volatilidades-con-portafolio-n-2">
+<h2>Gráfico comparación volatilidades con portafolio N° 2<a class="headerlink" href="#grafico-comparacion-volatilidades-con-portafolio-n-2" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">barplot</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">volatilidades</span><span class="p">,</span><span class="n">volatilidad_portafolio</span><span class="p">),</span> <span class="n">horiz</span> <span class="o">=</span> <span class="bp">T</span><span class="p">,</span> <span class="n">main</span><span class="o">=</span><span class="s">&quot;Volatilidades de las acciones\n y del portafolio de inversión N° 2&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/output_74_0.png"><img alt="../../_images/output_74_0.png" src="../../_images/output_74_0.png" style="width: 420px; height: 420px;" /></a>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../Diversificación de portafolios de inversión/Diversificación de portafolios de inversión.html" class="btn btn-neutral" title="Diversificación de portafolios de inversión" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Miguel.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/language_data.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

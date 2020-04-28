@@ -1,0 +1,369 @@
+Diversificación de portafolios de inversión
+-------------------------------------------
+
+Importar datos.
+~~~~~~~~~~~~~~~
+
+.. code:: r
+
+    library(quantmod)
+    library(tseries)
+
+Se conformaran varios portafolios de inversión con las acciones Netflix
+y Apple. Se descargarán datos de dos años.
+
+.. code:: r
+
+    NFLX = get.hist.quote(instrument = "NFLX", start = as.Date("2018-04-16"), end= as.Date("2020-04-15"), quote = "AdjClose")
+    
+    AAPL = get.hist.quote(instrument = "AAPL", start = as.Date("2018-04-16"), end= as.Date("2020-04-15"), quote = "AdjClose", provider = c("yahoo"))
+
+
+.. parsed-literal::
+
+    time series ends   2020-04-14
+    time series ends   2020-04-14
+    
+
+Matriz de precios.
+~~~~~~~~~~~~~~~~~~
+
+.. code:: r
+
+    precios = merge(NFLX, AAPL)
+
+.. code:: r
+
+    precios = ts(precios)
+
+.. code:: r
+
+    dim(precios)
+
+
+
+.. raw:: html
+
+    <style>
+    .list-inline {list-style: none; margin:0; padding: 0}
+    .list-inline>li {display: inline-block}
+    .list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+    </style>
+    <ol class=list-inline><li>503</li><li>2</li></ol>
+    
+
+
+.. code:: r
+
+    plot(precios, xlab = "Tiempo", main = "Precios")
+
+
+
+.. image:: output_9_0.png
+   :width: 420px
+   :height: 420px
+
+
+Matriz de rendimientos.
+~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code:: r
+
+    rendimientos = diff(log(precios))
+
+.. code:: r
+
+    plot(rendimientos, xlab = "Tiempo", main = "Rendimientos")
+
+
+
+.. image:: output_12_0.png
+   :width: 420px
+   :height: 420px
+
+
+Rendimiento esperado de cada acción.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code:: r
+
+    rendimientos_esperados = apply(rendimientos, 2, mean)
+    rendimientos_esperados
+
+
+
+.. raw:: html
+
+    <style>
+    .dl-inline {width: auto; margin:0; padding: 0}
+    .dl-inline>dt, .dl-inline>dd {float: none; width: auto; display: inline-block}
+    .dl-inline>dt::after {content: ":\0020"; padding-right: .5ex}
+    .dl-inline>dt:not(:first-of-type) {padding-left: .5ex}
+    </style><dl class=dl-inline><dt>NFLX</dt><dd>0.000588432586323178</dd><dt>AAPL</dt><dd>0.00103249413623901</dd></dl>
+    
+
+
+Volatilidad de cada acción.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code:: r
+
+    volatilidades = apply(rendimientos, 2, sd)
+    volatilidades
+
+
+
+.. raw:: html
+
+    <style>
+    .dl-inline {width: auto; margin:0; padding: 0}
+    .dl-inline>dt, .dl-inline>dd {float: none; width: auto; display: inline-block}
+    .dl-inline>dt::after {content: ":\0020"; padding-right: .5ex}
+    .dl-inline>dt:not(:first-of-type) {padding-left: .5ex}
+    </style><dl class=dl-inline><dt>NFLX</dt><dd>0.0269586803690924</dd><dt>AAPL</dt><dd>0.0225446855418197</dd></dl>
+    
+
+
+Matriz de coeficientes de correlación.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code:: r
+
+    correlacion = cor(rendimientos)
+    correlacion
+
+
+
+.. raw:: html
+
+    <table>
+    <caption>A matrix: 2 × 2 of type dbl</caption>
+    <thead>
+    	<tr><th></th><th scope=col>NFLX</th><th scope=col>AAPL</th></tr>
+    </thead>
+    <tbody>
+    	<tr><th scope=row>NFLX</th><td>1.0000000</td><td>0.5432898</td></tr>
+    	<tr><th scope=row>AAPL</th><td>0.5432898</td><td>1.0000000</td></tr>
+    </tbody>
+    </table>
+    
+
+
+Matriz de varianzas-covarianzas.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code:: r
+
+    covarianzas = cov(rendimientos)
+    covarianzas
+
+
+
+.. raw:: html
+
+    <table>
+    <caption>A matrix: 2 × 2 of type dbl</caption>
+    <thead>
+    	<tr><th></th><th scope=col>NFLX</th><th scope=col>AAPL</th></tr>
+    </thead>
+    <tbody>
+    	<tr><th scope=row>NFLX</th><td>0.0007267704</td><td>0.0003301979</td></tr>
+    	<tr><th scope=row>AAPL</th><td>0.0003301979</td><td>0.0005082628</td></tr>
+    </tbody>
+    </table>
+    
+
+
+Portafolios de inversión
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+Se conformaran varios portafolios de inversión cambiando las
+proporciones de inversión.
+
+.. code:: r
+
+    proporciones_NFLX = seq(0, 1, 0.05)
+    proporciones_AAPL = seq(1, 0, -0.05)
+    
+    proporciones = cbind(proporciones_NFLX, proporciones_AAPL)
+    proporciones
+
+
+
+.. raw:: html
+
+    <table>
+    <caption>A matrix: 21 × 2 of type dbl</caption>
+    <thead>
+    	<tr><th scope=col>proporciones_NFLX</th><th scope=col>proporciones_AAPL</th></tr>
+    </thead>
+    <tbody>
+    	<tr><td>0.00</td><td>1.00</td></tr>
+    	<tr><td>0.05</td><td>0.95</td></tr>
+    	<tr><td>0.10</td><td>0.90</td></tr>
+    	<tr><td>0.15</td><td>0.85</td></tr>
+    	<tr><td>0.20</td><td>0.80</td></tr>
+    	<tr><td>0.25</td><td>0.75</td></tr>
+    	<tr><td>0.30</td><td>0.70</td></tr>
+    	<tr><td>0.35</td><td>0.65</td></tr>
+    	<tr><td>0.40</td><td>0.60</td></tr>
+    	<tr><td>0.45</td><td>0.55</td></tr>
+    	<tr><td>0.50</td><td>0.50</td></tr>
+    	<tr><td>0.55</td><td>0.45</td></tr>
+    	<tr><td>0.60</td><td>0.40</td></tr>
+    	<tr><td>0.65</td><td>0.35</td></tr>
+    	<tr><td>0.70</td><td>0.30</td></tr>
+    	<tr><td>0.75</td><td>0.25</td></tr>
+    	<tr><td>0.80</td><td>0.20</td></tr>
+    	<tr><td>0.85</td><td>0.15</td></tr>
+    	<tr><td>0.90</td><td>0.10</td></tr>
+    	<tr><td>0.95</td><td>0.05</td></tr>
+    	<tr><td>1.00</td><td>0.00</td></tr>
+    </tbody>
+    </table>
+    
+
+
+.. code:: r
+
+    dim(proporciones)
+
+
+
+.. raw:: html
+
+    <style>
+    .list-inline {list-style: none; margin:0; padding: 0}
+    .list-inline>li {display: inline-block}
+    .list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+    </style>
+    <ol class=list-inline><li>21</li><li>2</li></ol>
+    
+
+
+.. code:: r
+
+    dim(t(proporciones[2,]))
+
+
+
+.. raw:: html
+
+    <style>
+    .list-inline {list-style: none; margin:0; padding: 0}
+    .list-inline>li {display: inline-block}
+    .list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+    </style>
+    <ol class=list-inline><li>1</li><li>2</li></ol>
+    
+
+
+.. code:: r
+
+    volatilidad_portafolio = vector()
+    
+    for(i in 1: nrow(proporciones)){
+        
+        volatilidad_portafolio[i] = sqrt(sum(proporciones[i,]%*%covarianzas*t(proporciones[i,])))
+    }
+    
+    volatilidad_portafolio
+
+
+
+.. raw:: html
+
+    <style>
+    .list-inline {list-style: none; margin:0; padding: 0}
+    .list-inline>li {display: inline-block}
+    .list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+    </style>
+    <ol class=list-inline><li>0.0225446855418197</li><li>0.0221786597557738</li><li>0.0218722709856205</li><li>0.0216280538814209</li><li>0.0214481322834895</li><li>0.0213341329640011</li><li>0.0212871150540528</li><li>0.0213075219686964</li><li>0.0213951607774204</li><li>0.0215492112166559</li><li>0.021768263379324</li><li>0.0220503801365505</li><li>0.0223931780885237</li><li>0.022793919644622</li><li>0.0232496087655217</li><li>0.0237570837826817</li><li>0.0243131022102914</li><li>0.0249144142102919</li><li>0.0255578230473392</li><li>0.0262402322687776</li><li>0.0269586803690924</li></ol>
+    
+
+
+.. code:: r
+
+    rendimientos_portafolio = matrix(, nrow(rendimientos), nrow(proporciones))
+    
+    for(j in 1:nrow(proporciones)){
+      
+      for(i in 1:nrow(rendimientos)){
+        
+        rendimientos_portafolio[i,j] = sum(rendimientos[i,]*proporciones[j,])
+        
+    }}
+
+.. code:: r
+
+    dim(rendimientos_portafolio)
+
+
+
+.. raw:: html
+
+    <style>
+    .list-inline {list-style: none; margin:0; padding: 0}
+    .list-inline>li {display: inline-block}
+    .list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+    </style>
+    <ol class=list-inline><li>502</li><li>21</li></ol>
+    
+
+
+.. code:: r
+
+    rendimiento_esperado_portafolio = apply(rendimientos_portafolio, 2, mean)
+    rendimiento_esperado_portafolio
+
+
+
+.. raw:: html
+
+    <style>
+    .list-inline {list-style: none; margin:0; padding: 0}
+    .list-inline>li {display: inline-block}
+    .list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+    </style>
+    <ol class=list-inline><li>0.00103249413623901</li><li>0.00101029105874321</li><li>0.000988087981247423</li><li>0.000965884903751631</li><li>0.00094368182625584</li><li>0.000921478748760049</li><li>0.000899275671264257</li><li>0.000877072593768466</li><li>0.000854869516272674</li><li>0.000832666438776883</li><li>0.000810463361281092</li><li>0.0007882602837853</li><li>0.000766057206289509</li><li>0.000743854128793718</li><li>0.000721651051297926</li><li>0.000699447973802135</li><li>0.000677244896306343</li><li>0.000655041818810552</li><li>0.000632838741314761</li><li>0.000610635663818969</li><li>0.000588432586323178</li></ol>
+    
+
+
+.. code:: r
+
+    plot(volatilidad_portafolio, rendimiento_esperado_portafolio, xlab = "Volatilidad portafolio", ylab = "Rendimiento esperado portafolio")
+
+
+
+.. image:: output_30_0.png
+   :width: 420px
+   :height: 420px
+
+
+.. code:: r
+
+    plot(volatilidad_portafolio, rendimiento_esperado_portafolio, xlab = "Volatilidad portafolio", ylab = "Rendimiento esperado portafolio")
+    points(volatilidad_portafolio[1], rendimiento_esperado_portafolio[1], col = "darkgreen", lwd = 5)
+    points(volatilidad_portafolio[21], rendimiento_esperado_portafolio[21], col = "darkblue", lwd = 5)
+    points(volatilidad_portafolio[7], rendimiento_esperado_portafolio[7], col = "black", lwd = 5)
+
+
+
+.. image:: output_31_0.png
+   :width: 420px
+   :height: 420px
+
+
+.. code:: r
+
+    min(volatilidad_portafolio)
+
+
+
+.. raw:: html
+
+    0.0212871150540528
+
+
+Tres activos
+~~~~~~~~~~~~
