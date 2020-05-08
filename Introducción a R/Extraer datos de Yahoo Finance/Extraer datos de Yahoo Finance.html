@@ -1,0 +1,587 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Extraer datos de Yahoo Finance &mdash; Cursos  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="Cursos  documentation" href="../../index.html"/>
+        <link rel="up" title="Introducción a R" href="../index.html"/>
+        <link rel="next" title="Análisis y conformación de portafolios de inversión" href="../../Portafolios de inversión/index.html"/>
+        <link rel="prev" title="Introducción a R" href="../index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Cursos
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">CONCEPTOS PREVIOS</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Introducción a R</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Extraer datos de Yahoo Finance</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Portafolios de inversión/index.html">Análisis y conformación de portafolios de inversión</a></li>
+</ul>
+<p class="caption"><span class="caption-text">RIESGO DE MERCADO</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Riesgo de mercado/Introducción Gestión del Riesgo/index.html">Introducción a la Gestión del Riesgo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Riesgo de mercado/VaR Delta-Normal/index.html">VaR varianzas-covarianzas o Delta-Normal</a></li>
+</ul>
+<p class="caption"><span class="caption-text">PORTAFOLIOS DE INVERSIÓN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Portafolios de inversión2/Mercado financiero/index.html">Mercado financiero</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Portafolios de inversión2/Trading/index.html">Análisis técnico</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Cursos</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Introducción a R</a> &raquo;</li>
+        
+      <li>Extraer datos de Yahoo Finance</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/Introducción a R/Extraer datos de Yahoo Finance/Extraer datos de Yahoo Finance.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="extraer-datos-de-yahoo-finance">
+<h1>Extraer datos de Yahoo Finance<a class="headerlink" href="#extraer-datos-de-yahoo-finance" title="Permalink to this headline">¶</a></h1>
+<p>Existen códigos en R que extraen información de algunas páginas web. Los
+paquetes <code class="docutils literal notranslate"><span class="pre">quantmod</span></code> y <code class="docutils literal notranslate"><span class="pre">tseries</span></code> nos ayudan a descargar los
+históricos de los precios de las acciones directamente desde la página
+de <em>Yahoo Finance.</em></p>
+<p>Estos paquetes se deben instalar de la siguiente manera:</p>
+<p><code class="docutils literal notranslate"><span class="pre">install.packages('quantmod')</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">install.packages(&quot;tseries&quot;)</span></code></p>
+<p>Para usar las librerías de estos paquetes debemos activarlos en R de la
+siguiente forma:</p>
+<p><code class="docutils literal notranslate"><span class="pre">library(quantmod)</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">library(tseries)</span></code></p>
+<div class="section" id="getsymbols-para-descargar-precios-de-acciones">
+<h2><code class="docutils literal notranslate"><span class="pre">getSymbols</span></code> para descargar precios de acciones<a class="headerlink" href="#getsymbols-para-descargar-precios-de-acciones" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">quantmod</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Dentro de esta librería se usa la función <code class="docutils literal notranslate"><span class="pre">getSymbols</span></code>.</p>
+</div>
+<div class="section" id="descargar-precios-con-fechas-especificas">
+<h2>Descargar precios con fechas específicas<a class="headerlink" href="#descargar-precios-con-fechas-especificas" title="Permalink to this headline">¶</a></h2>
+<p>El siguiente ejemplo extrae los precios de las acciones de Netflix y
+Apple desde el primero de enero de 2015 hasta el 14 de abril de 2020.
+Note que descarga hasta un día bursátil antes del indicado, que fue el
+15 de abril de 2020.</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">getSymbols</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;NFLX&quot;</span><span class="p">,</span><span class="s">&quot;AAPL&quot;</span><span class="p">),</span> <span class="n">from</span> <span class="o">=</span> <span class="s">&quot;2015-01-01&quot;</span><span class="p">,</span> <span class="n">to</span> <span class="o">=</span> <span class="s">&quot;2020-04-15&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>'NFLX'</li><li>'AAPL'</li></ol><p>El resultado del código anterior muestra que existen dos objetos que
+almacenan los precios de las acciones descargadas. Estos objetos tienen
+el nombre de <code class="docutils literal notranslate"><span class="pre">NFLX</span></code> y <code class="docutils literal notranslate"><span class="pre">AAPL</span></code>, que son los nemotécnicos de las
+acciones.</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">head</span><span class="p">(</span><span class="n">NFLX</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>           <span class="n">NFLX</span><span class="o">.</span><span class="n">Open</span> <span class="n">NFLX</span><span class="o">.</span><span class="n">High</span> <span class="n">NFLX</span><span class="o">.</span><span class="n">Low</span> <span class="n">NFLX</span><span class="o">.</span><span class="n">Close</span> <span class="n">NFLX</span><span class="o">.</span><span class="n">Volume</span> <span class="n">NFLX</span><span class="o">.</span><span class="n">Adjusted</span>
+<span class="mi">2015</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span>  <span class="mf">49.15143</span>  <span class="mf">50.33143</span> <span class="mf">48.73143</span>   <span class="mf">49.84857</span>    <span class="mi">13475000</span>      <span class="mf">49.84857</span>
+<span class="mi">2015</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">05</span>  <span class="mf">49.25857</span>  <span class="mf">49.25857</span> <span class="mf">47.14714</span>   <span class="mf">47.31143</span>    <span class="mi">18165000</span>      <span class="mf">47.31143</span>
+<span class="mi">2015</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">06</span>  <span class="mf">47.34714</span>  <span class="mf">47.64000</span> <span class="mf">45.66143</span>   <span class="mf">46.50143</span>    <span class="mi">16037700</span>      <span class="mf">46.50143</span>
+<span class="mi">2015</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">07</span>  <span class="mf">47.34714</span>  <span class="mf">47.42143</span> <span class="mf">46.27143</span>   <span class="mf">46.74286</span>     <span class="mi">9849700</span>      <span class="mf">46.74286</span>
+<span class="mi">2015</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">08</span>  <span class="mf">47.12000</span>  <span class="mf">47.83571</span> <span class="mf">46.47857</span>   <span class="mf">47.78000</span>     <span class="mi">9601900</span>      <span class="mf">47.78000</span>
+<span class="mi">2015</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">09</span>  <span class="mf">47.63143</span>  <span class="mf">48.02000</span> <span class="mf">46.89857</span>   <span class="mf">47.04143</span>     <span class="mi">9578100</span>      <span class="mf">47.04143</span>
+</pre></div>
+</div>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">head</span><span class="p">(</span><span class="n">AAPL</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>           <span class="n">AAPL</span><span class="o">.</span><span class="n">Open</span> <span class="n">AAPL</span><span class="o">.</span><span class="n">High</span> <span class="n">AAPL</span><span class="o">.</span><span class="n">Low</span> <span class="n">AAPL</span><span class="o">.</span><span class="n">Close</span> <span class="n">AAPL</span><span class="o">.</span><span class="n">Volume</span> <span class="n">AAPL</span><span class="o">.</span><span class="n">Adjusted</span>
+<span class="mi">2015</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span>    <span class="mf">111.39</span>    <span class="mf">111.44</span>   <span class="mf">107.35</span>     <span class="mf">109.33</span>    <span class="mi">53204600</span>     <span class="mf">100.21645</span>
+<span class="mi">2015</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">05</span>    <span class="mf">108.29</span>    <span class="mf">108.65</span>   <span class="mf">105.41</span>     <span class="mf">106.25</span>    <span class="mi">64285500</span>      <span class="mf">97.39318</span>
+<span class="mi">2015</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">06</span>    <span class="mf">106.54</span>    <span class="mf">107.43</span>   <span class="mf">104.63</span>     <span class="mf">106.26</span>    <span class="mi">65797100</span>      <span class="mf">97.40237</span>
+<span class="mi">2015</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">07</span>    <span class="mf">107.20</span>    <span class="mf">108.20</span>   <span class="mf">106.70</span>     <span class="mf">107.75</span>    <span class="mi">40105900</span>      <span class="mf">98.76815</span>
+<span class="mi">2015</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">08</span>    <span class="mf">109.23</span>    <span class="mf">112.15</span>   <span class="mf">108.70</span>     <span class="mf">111.89</span>    <span class="mi">59364500</span>     <span class="mf">102.56307</span>
+<span class="mi">2015</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">09</span>    <span class="mf">112.67</span>    <span class="mf">113.25</span>   <span class="mf">110.21</span>     <span class="mf">112.01</span>    <span class="mi">53699500</span>     <span class="mf">102.67305</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="descargar-precios-hasta-la-fecha-actual">
+<h2>Descargar precios hasta la fecha actual<a class="headerlink" href="#descargar-precios-hasta-la-fecha-actual" title="Permalink to this headline">¶</a></h2>
+<p>El siguiente ejemplo descarga los precios de las acciones de Netflix y
+Apple desde el primero de enero de 2015 hasta el día que se corre el
+código, hasta el día de hoy. Esto se hace colocando la fecha del sistema
+con <code class="docutils literal notranslate"><span class="pre">to</span> <span class="pre">=</span> <span class="pre">Sys.Date()</span></code>.</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">getSymbols</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;NFLX&quot;</span><span class="p">,</span><span class="s">&quot;AAPL&quot;</span><span class="p">),</span> <span class="n">from</span><span class="o">=</span><span class="s">&quot;2015-01-01&quot;</span><span class="p">,</span> <span class="n">to</span> <span class="o">=</span> <span class="nf">Sys.Date</span><span class="p">())</span>
+</pre></div>
+</div>
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>'NFLX'</li><li>'AAPL'</li></ol><p>Los precios descargados se trabajará solo con la columna de los precios
+ajustados <code class="docutils literal notranslate"><span class="pre">.Adjusted</span></code> que es la columna <code class="docutils literal notranslate"><span class="pre">6</span></code>. De cada uno de los
+objetos que se descargaron y que contienen los precios de las acciones
+se deberá extraer sólo la columna de los precios descargados y se
+guardaran en objeto que se llamará <code class="docutils literal notranslate"><span class="pre">precios</span></code>.</p>
+<p>La función <code class="docutils literal notranslate"><span class="pre">merge</span></code> une los vectores en uno solo objeto que sería una
+matriz.</p>
+</div>
+<div class="section" id="matriz-de-precios">
+<h2>Matriz de precios.<a class="headerlink" href="#matriz-de-precios" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">precios</span> <span class="o">=</span> <span class="nf">merge</span><span class="p">(</span> <span class="n">NFLX</span><span class="p">[,</span><span class="m">6</span><span class="p">],</span> <span class="n">AAPL</span><span class="p">[,</span><span class="m">6</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">precios</span> <span class="o">=</span> <span class="nf">ts</span><span class="p">(</span><span class="n">precios</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">head</span><span class="p">(</span><span class="n">precios</span><span class="p">)</span>
+</pre></div>
+</div>
+<table>
+<caption>A matrix: 6 × 2 of type dbl</caption>
+<thead>
+    <tr><th scope=col>NFLX.Adjusted</th><th scope=col>AAPL.Adjusted</th></tr>
+</thead>
+<tbody>
+    <tr><td>49.84857</td><td>100.21645</td></tr>
+    <tr><td>47.31143</td><td> 97.39318</td></tr>
+    <tr><td>46.50143</td><td> 97.40237</td></tr>
+    <tr><td>46.74286</td><td> 98.76815</td></tr>
+    <tr><td>47.78000</td><td>102.56307</td></tr>
+    <tr><td>47.04143</td><td>102.67305</td></tr>
+</tbody>
+</table><div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">dim</span><span class="p">(</span><span class="n">precios</span><span class="p">)</span>
+</pre></div>
+</div>
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>1337</li><li>2</li></ol><p>De cada acción se descargó 1337 filas que corresponden a 1337 precios.</p>
+</div>
+<div class="section" id="grafico-del-precio">
+<h2>Gráfico del precio<a class="headerlink" href="#grafico-del-precio" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="n">precios</span><span class="p">,</span> <span class="n">main</span> <span class="o">=</span> <span class="s">&quot;Precios&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/output_22_0.png"><img alt="../../_images/output_22_0.png" src="../../_images/output_22_0.png" style="width: 420px; height: 420px;" /></a>
+</div>
+<div class="section" id="matriz-de-rendimientos">
+<h2>Matriz de rendimientos<a class="headerlink" href="#matriz-de-rendimientos" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">rendimientos</span> <span class="o">=</span> <span class="nf">diff</span><span class="p">(</span><span class="nf">log</span><span class="p">(</span><span class="n">precios</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">head</span><span class="p">(</span><span class="n">rendimientos</span><span class="p">)</span>
+</pre></div>
+</div>
+<table>
+<caption>A matrix: 6 × 2 of type dbl</caption>
+<thead>
+    <tr><th scope=col>NFLX.Adjusted</th><th scope=col>AAPL.Adjusted</th></tr>
+</thead>
+<tbody>
+    <tr><td>-0.052237977</td><td>-2.857619e-02</td></tr>
+    <tr><td>-0.017268873</td><td> 9.438614e-05</td></tr>
+    <tr><td> 0.005178495</td><td> 1.392460e-02</td></tr>
+    <tr><td> 0.021945626</td><td> 3.770276e-02</td></tr>
+    <tr><td>-0.015578461</td><td> 1.071722e-03</td></tr>
+    <tr><td>-0.032280783</td><td>-2.494930e-02</td></tr>
+</tbody>
+</table><div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">dim</span><span class="p">(</span><span class="n">rendimientos</span><span class="p">)</span>
+</pre></div>
+</div>
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>1336</li><li>2</li></ol><div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">head</span><span class="p">(</span><span class="n">rendimientos</span><span class="p">)</span>
+</pre></div>
+</div>
+<table>
+<caption>A matrix: 6 × 2 of type dbl</caption>
+<thead>
+    <tr><th scope=col>NFLX.Adjusted</th><th scope=col>AAPL.Adjusted</th></tr>
+</thead>
+<tbody>
+    <tr><td>-0.052237977</td><td>-2.857619e-02</td></tr>
+    <tr><td>-0.017268873</td><td> 9.438614e-05</td></tr>
+    <tr><td> 0.005178495</td><td> 1.392460e-02</td></tr>
+    <tr><td> 0.021945626</td><td> 3.770276e-02</td></tr>
+    <tr><td>-0.015578461</td><td> 1.071722e-03</td></tr>
+    <tr><td>-0.032280783</td><td>-2.494930e-02</td></tr>
+</tbody>
+</table></div>
+<div class="section" id="grafico-de-rendimientos">
+<h2>Gráfico de rendimientos<a class="headerlink" href="#grafico-de-rendimientos" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="n">rendimientos</span><span class="p">,</span> <span class="n">main</span> <span class="o">=</span> <span class="s">&quot;Rendimientos&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/output_29_0.png"><img alt="../../_images/output_29_0.png" src="../../_images/output_29_0.png" style="width: 420px; height: 420px;" /></a>
+</div>
+<div class="section" id="tseries-para-descargar-precios-de-acciones">
+<h2><code class="docutils literal notranslate"><span class="pre">tseries</span></code> para descargar precios de acciones<a class="headerlink" href="#tseries-para-descargar-precios-de-acciones" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">quantmod</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">tseries</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Dentro de esa librería se usa la función <code class="docutils literal notranslate"><span class="pre">get.hist.quote</span></code>.</p>
+<p>A diferencia que la función <code class="docutils literal notranslate"><span class="pre">getSymbols</span></code>, se debe repetir el código
+por cada acción que se quiera descargar y es posible sólo descargar la
+columna del precio ajustado con <code class="docutils literal notranslate"><span class="pre">quote</span> <span class="pre">=</span> <span class="pre">&quot;AdjClose&quot;</span></code>.</p>
+</div>
+<div class="section" id="id1">
+<h2>Descargar precios con fechas específicas<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>El siguiente ejemplo extrae los precios de las acciones de Netflix y
+Apple desde el primero de enero de 2015 hasta el 14 de abril de 2020.
+Note que descarga hasta un día bursátil antes del indicado, que fue el
+15 de abril de 2020.</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">NFLX</span> <span class="o">=</span> <span class="nf">get.hist.quote</span><span class="p">(</span><span class="n">instrument</span> <span class="o">=</span> <span class="s">&quot;NFLX&quot;</span><span class="p">,</span> <span class="n">start</span> <span class="o">=</span> <span class="nf">as.Date</span><span class="p">(</span><span class="s">&quot;2015-01-01&quot;</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span> <span class="nf">as.Date</span><span class="p">(</span><span class="s">&quot;2020-04-15&quot;</span><span class="p">),</span> <span class="n">quote</span> <span class="o">=</span> <span class="s">&quot;AdjClose&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">time</span> <span class="n">series</span> <span class="n">starts</span> <span class="mi">2015</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span>
+<span class="n">time</span> <span class="n">series</span> <span class="n">ends</span>   <span class="mi">2020</span><span class="o">-</span><span class="mi">04</span><span class="o">-</span><span class="mi">14</span>
+</pre></div>
+</div>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">head</span><span class="p">(</span><span class="n">NFLX</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>           <span class="n">Adjusted</span>
+<span class="mi">2015</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span> <span class="mf">49.84857</span>
+<span class="mi">2015</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">05</span> <span class="mf">47.31143</span>
+<span class="mi">2015</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">06</span> <span class="mf">46.50143</span>
+<span class="mi">2015</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">07</span> <span class="mf">46.74286</span>
+<span class="mi">2015</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">08</span> <span class="mf">47.78000</span>
+<span class="mi">2015</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">09</span> <span class="mf">47.04143</span>
+</pre></div>
+</div>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">AAPL</span> <span class="o">=</span> <span class="nf">get.hist.quote</span><span class="p">(</span><span class="n">instrument</span> <span class="o">=</span> <span class="s">&quot;AAPL&quot;</span><span class="p">,</span> <span class="n">start</span> <span class="o">=</span> <span class="nf">as.Date</span><span class="p">(</span><span class="s">&quot;2015-01-01&quot;</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span> <span class="nf">as.Date</span><span class="p">(</span><span class="s">&quot;2020-04-15&quot;</span><span class="p">),</span> <span class="n">quote</span> <span class="o">=</span> <span class="s">&quot;AdjClose&quot;</span><span class="p">,</span> <span class="n">provider</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;yahoo&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">time</span> <span class="n">series</span> <span class="n">starts</span> <span class="mi">2015</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span>
+<span class="n">time</span> <span class="n">series</span> <span class="n">ends</span>   <span class="mi">2020</span><span class="o">-</span><span class="mi">04</span><span class="o">-</span><span class="mi">14</span>
+</pre></div>
+</div>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">head</span><span class="p">(</span><span class="n">AAPL</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>            <span class="n">Adjusted</span>
+<span class="mi">2015</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span> <span class="mf">100.21645</span>
+<span class="mi">2015</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">05</span>  <span class="mf">97.39318</span>
+<span class="mi">2015</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">06</span>  <span class="mf">97.40237</span>
+<span class="mi">2015</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">07</span>  <span class="mf">98.76815</span>
+<span class="mi">2015</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">08</span> <span class="mf">102.56307</span>
+<span class="mi">2015</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">09</span> <span class="mf">102.67305</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>Descargar precios hasta la fecha actual<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>El siguiente ejemplo descarga los precios de las acciones de Netflix y
+Apple desde el primero de enero de 2015 hasta el día que se corre el
+código, hasta el día de hoy. Esto se hace colocando la fecha del sistema
+con <code class="docutils literal notranslate"><span class="pre">to</span> <span class="pre">=</span> <span class="pre">Sys.Date()</span></code>.</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">NFLX</span> <span class="o">=</span> <span class="nf">get.hist.quote</span><span class="p">(</span><span class="n">instrument</span> <span class="o">=</span> <span class="s">&quot;NFLX&quot;</span><span class="p">,</span> <span class="n">start</span> <span class="o">=</span> <span class="nf">as.Date</span><span class="p">(</span><span class="s">&quot;2015-01-01&quot;</span><span class="p">),</span> <span class="n">end</span> <span class="o">=</span> <span class="nf">Sys.Date</span><span class="p">(),</span> <span class="n">quote</span> <span class="o">=</span> <span class="s">&quot;AdjClose&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">time</span> <span class="n">series</span> <span class="n">starts</span> <span class="mi">2015</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span>
+<span class="n">time</span> <span class="n">series</span> <span class="n">ends</span>   <span class="mi">2020</span><span class="o">-</span><span class="mi">04</span><span class="o">-</span><span class="mi">24</span>
+</pre></div>
+</div>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">AAPL</span> <span class="o">=</span> <span class="nf">get.hist.quote</span><span class="p">(</span><span class="n">instrument</span> <span class="o">=</span> <span class="s">&quot;AAPL&quot;</span><span class="p">,</span> <span class="n">start</span> <span class="o">=</span> <span class="nf">as.Date</span><span class="p">(</span><span class="s">&quot;2015-01-01&quot;</span><span class="p">),</span> <span class="n">end</span> <span class="o">=</span> <span class="nf">Sys.Date</span><span class="p">(),</span> <span class="n">quote</span> <span class="o">=</span> <span class="s">&quot;AdjClose&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">time</span> <span class="n">series</span> <span class="n">starts</span> <span class="mi">2015</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span>
+<span class="n">time</span> <span class="n">series</span> <span class="n">ends</span>   <span class="mi">2020</span><span class="o">-</span><span class="mi">04</span><span class="o">-</span><span class="mi">24</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>Matriz de precios.<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">precios</span> <span class="o">=</span> <span class="nf">merge</span><span class="p">(</span> <span class="n">NFLX</span><span class="p">,</span> <span class="n">AAPL</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">precios</span> <span class="o">=</span> <span class="nf">ts</span><span class="p">(</span><span class="n">precios</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">head</span><span class="p">(</span><span class="n">precios</span><span class="p">)</span>
+</pre></div>
+</div>
+<table>
+<caption>A matrix: 6 × 2 of type dbl</caption>
+<thead>
+    <tr><th scope=col>Adjusted.NFLX</th><th scope=col>Adjusted.AAPL</th></tr>
+</thead>
+<tbody>
+    <tr><td>49.84857</td><td>100.21645</td></tr>
+    <tr><td>47.31143</td><td> 97.39318</td></tr>
+    <tr><td>46.50143</td><td> 97.40237</td></tr>
+    <tr><td>46.74286</td><td> 98.76815</td></tr>
+    <tr><td>47.78000</td><td>102.56307</td></tr>
+    <tr><td>47.04143</td><td>102.67305</td></tr>
+</tbody>
+</table><div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">dim</span><span class="p">(</span><span class="n">precios</span><span class="p">)</span>
+</pre></div>
+</div>
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>1337</li><li>2</li></ol><p>De cada acción se descargó 1337 filas que corresponden a 1337 precios.</p>
+</div>
+<div class="section" id="id4">
+<h2>Gráfico del precio<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="n">precios</span><span class="p">,</span> <span class="n">main</span> <span class="o">=</span> <span class="s">&quot;Precios&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/output_52_0.png"><img alt="../../_images/output_52_0.png" src="../../_images/output_52_0.png" style="width: 420px; height: 420px;" /></a>
+</div>
+<div class="section" id="id5">
+<h2>Matriz de rendimientos.<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">rendimientos</span> <span class="o">=</span> <span class="nf">diff</span><span class="p">(</span><span class="nf">log</span><span class="p">(</span><span class="n">precios</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">head</span><span class="p">(</span><span class="n">rendimientos</span><span class="p">)</span>
+</pre></div>
+</div>
+<table>
+<caption>A matrix: 6 × 2 of type dbl</caption>
+<thead>
+    <tr><th scope=col>Adjusted.NFLX</th><th scope=col>Adjusted.AAPL</th></tr>
+</thead>
+<tbody>
+    <tr><td>-0.052237977</td><td>-2.857619e-02</td></tr>
+    <tr><td>-0.017268873</td><td> 9.438614e-05</td></tr>
+    <tr><td> 0.005178495</td><td> 1.392460e-02</td></tr>
+    <tr><td> 0.021945626</td><td> 3.770276e-02</td></tr>
+    <tr><td>-0.015578461</td><td> 1.071722e-03</td></tr>
+    <tr><td>-0.032280783</td><td>-2.494930e-02</td></tr>
+</tbody>
+</table><p>Se observa que los nombres de la matriz de rendimientos tienen los
+mismos nombres que la matriz de precios.</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">dim</span><span class="p">(</span><span class="n">rendimientos</span><span class="p">)</span>
+</pre></div>
+</div>
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>1336</li><li>2</li></ol></div>
+<div class="section" id="id6">
+<h2>Gráfico de rendimientos<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="n">rendimientos</span><span class="p">,</span> <span class="n">main</span> <span class="o">=</span> <span class="s">&quot;Rendimientos&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/output_59_0.png"><img alt="../../_images/output_59_0.png" src="../../_images/output_59_0.png" style="width: 420px; height: 420px;" /></a>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../Portafolios de inversión/index.html" class="btn btn-neutral float-right" title="Análisis y conformación de portafolios de inversión" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../index.html" class="btn btn-neutral" title="Introducción a R" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Miguel Jiménez.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/language_data.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

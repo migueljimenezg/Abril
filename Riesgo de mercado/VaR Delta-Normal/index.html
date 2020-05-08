@@ -1,0 +1,349 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>VaR varianzas-covarianzas o Delta-Normal &mdash; Cursos  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="Cursos  documentation" href="../../index.html"/>
+        <link rel="next" title="Distribución normal" href="Distribución normal/Distribución normal.html"/>
+        <link rel="prev" title="Introducción a la Gestión del Riesgo" href="../Introducción Gestión del Riesgo/index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Cursos
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">CONCEPTOS PREVIOS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Introducción a R/index.html">Introducción a R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Portafolios de inversión/index.html">Análisis y conformación de portafolios de inversión</a></li>
+</ul>
+<p class="caption"><span class="caption-text">RIESGO DE MERCADO</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Introducción Gestión del Riesgo/index.html">Introducción a la Gestión del Riesgo</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">VaR varianzas-covarianzas o Delta-Normal</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Distribución normal/Distribución normal.html">Distribución normal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="VaR varianzas-covarianzas/VaR método Delta-Normal o varianzas-covarianzas.html">VaR método Delta-Normal o varianzas-covarianzas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Taller 1/Taller N° 1 - VaR método Delta-Normal o varianzas-covarianzas.html">Taller N° 1: VaR método Delta-Normal o varianzas-covarianzas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Taller 2/Taller N° 2 - VaR método Delta-Normal o varianzas-covarianzas.html">Taller N° 2: VaR método Delta-Normal o varianzas-covarianzas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Ejercicios - VaR Delta-Normal/Ejercicios - VaR Delta-Normal.html">Ejercicios: VaR Delta-Normal</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">PORTAFOLIOS DE INVERSIÓN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Portafolios de inversión2/Mercado financiero/index.html">Mercado financiero</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Portafolios de inversión2/Trading/index.html">Análisis técnico</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Cursos</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>VaR varianzas-covarianzas o Delta-Normal</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/Riesgo de mercado/VaR Delta-Normal/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="var-varianzas-covarianzas-o-delta-normal">
+<h1>VaR varianzas-covarianzas o Delta-Normal<a class="headerlink" href="#var-varianzas-covarianzas-o-delta-normal" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Descargue</strong> <a class="reference download internal" download="" href="../../_downloads/760172d815454da7686da8191fa153de/Cuatro acciones 2020.csv"><code class="xref download docutils literal notranslate"><span class="pre">aquí</span></code></a> archvio <code class="docutils literal notranslate"><span class="pre">Cuatro</span> <span class="pre">acciones</span> <span class="pre">2020.csv</span></code>.</p></li>
+<li><p><strong>Descargue</strong> <a class="reference download internal" download="" href="../../_downloads/46b424a610230f477c6c5e9470507a64/3. VaR Varianzas-Covarianzas V2.pdf"><code class="xref download docutils literal notranslate"><span class="pre">aquí</span></code></a> las presentaciones.</p></li>
+</ul>
+</div></blockquote>
+<div class="section" id="distribucion-normal">
+<h2>1. Distribución normal<a class="headerlink" href="#distribucion-normal" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Distribución normal/Distribución normal.html">Distribución normal</a></li>
+</ul>
+</div>
+<ul class="simple">
+<li><p>Descargue <a class="reference download internal" download="" href="../../_downloads/c99c7b3743bbcbc445e472bca80b3e3d/Distribución normal.r"><code class="xref download docutils literal notranslate"><span class="pre">aquí</span></code></a> el código.</p></li>
+<li><p><strong>Ver video</strong> — <a class="reference external" href="https://youtu.be/UxL4HIZUJtI">aquí</a>.</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="calculo-del-var-sin-promedios-y-con-promedios">
+<h2>2. Cálculo del VaR sin promedios y con promedios<a class="headerlink" href="#calculo-del-var-sin-promedios-y-con-promedios" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="VaR varianzas-covarianzas/VaR método Delta-Normal o varianzas-covarianzas.html">VaR método Delta-Normal o varianzas-covarianzas</a></li>
+</ul>
+</div>
+<ul class="simple">
+<li><p>Descargue <a class="reference download internal" download="" href="../../_downloads/5d15fa59d928ad76771d8ab7e4578e77/VaR método Delta-Normal o varianzas-covarianzas.r"><code class="xref download docutils literal notranslate"><span class="pre">aquí</span></code></a> el código.</p></li>
+<li><p><strong>Ver video</strong> — <a class="reference external" href="https://youtu.be/_J-r6XJddQ4">aquí</a>.</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="taller-n-1">
+<h2>3. Taller N° 1<a class="headerlink" href="#taller-n-1" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Taller 1/Taller N° 1 - VaR método Delta-Normal o varianzas-covarianzas.html">Taller N° 1: VaR método Delta-Normal o varianzas-covarianzas</a></li>
+</ul>
+</div>
+<ul class="simple">
+<li><p>Descargue <a class="reference download internal" download="" href="../../_downloads/b821c2f1db40d2ecf308b3f13b0997b1/Taller N° 1 - VaR método Delta-Normal o varianzas-covarianzas.r"><code class="xref download docutils literal notranslate"><span class="pre">aquí</span></code></a> el código.</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="taller-n-2">
+<h2>4. Taller N° 2<a class="headerlink" href="#taller-n-2" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Taller 2/Taller N° 2 - VaR método Delta-Normal o varianzas-covarianzas.html">Taller N° 2: VaR método Delta-Normal o varianzas-covarianzas</a></li>
+</ul>
+</div>
+<ul class="simple">
+<li><p>Descargue <a class="reference download internal" download="" href="../../_downloads/cc9075754bec9f7270494fdc91293d75/Taller N° 2 - VaR método Delta-Normal o varianzas-covarianzas.r"><code class="xref download docutils literal notranslate"><span class="pre">aquí</span></code></a> el código.</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="ejercicios">
+<h2>5. Ejercicios<a class="headerlink" href="#ejercicios" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Ejercicios - VaR Delta-Normal/Ejercicios - VaR Delta-Normal.html">Ejercicios: VaR Delta-Normal</a></li>
+</ul>
+</div>
+</div></blockquote>
+<p><strong>Lecturas</strong></p>
+<dl class="footnote brackets">
+<dt class="label" id="f1"><span class="brackets">1</span></dt>
+<dd><p><strong>Tema: Distribución normal.</strong> Introducción al análisis de riesgo financiero. Julio Cesar Alonso y Luis Berggrun.</p>
+<ul class="simple">
+<li><p><strong>Descargue</strong> <a class="reference download internal" download="" href="../../_downloads/f52928b5c528dcf403785212486456a1/Distribución normal-Alonso y Berggrun.pdf"><code class="xref download docutils literal notranslate"><span class="pre">aquí</span></code></a> el documentos.</p></li>
+</ul>
+</dd>
+<dt class="label" id="f2"><span class="brackets">2</span></dt>
+<dd><p><strong>Capítulo 2: Rendimiento y riesgo.</strong> Medición y control de riesgos financieros. Alfonso De Lara Haro.</p>
+<ul class="simple">
+<li><p><strong>Descargue</strong> <a class="reference download internal" download="" href="../../_downloads/c7e1cd9fab2ca7f014d6bc34b93f3c56/Rendimiento y riesgo-De Lara Haro.pdf"><code class="xref download docutils literal notranslate"><span class="pre">aquí</span></code></a> el capítulo.</p></li>
+</ul>
+</dd>
+<dt class="label" id="f3"><span class="brackets">3</span></dt>
+<dd><p><strong>Tema: VaR Delta-Normal.</strong> Medición y control de riesgos financieros. Alfonso De Lara Haro.</p>
+<ul class="simple">
+<li><p><strong>Descargue</strong> <a class="reference download internal" download="" href="../../_downloads/b7b764d2bacfe82a6d0d5b91ac888c76/VaR Delta-Normal-De Lara Haro.pdf"><code class="xref download docutils literal notranslate"><span class="pre">aquí</span></code></a> el documento.</p></li>
+</ul>
+</dd>
+<dt class="label" id="f4"><span class="brackets">4</span></dt>
+<dd><p><strong>Tema: VaR Delta-Normal.</strong> Introducción al análisis de riesgo financiero. Julio Cesar Alonso y Luis Berggrun.</p>
+<ul class="simple">
+<li><p><strong>Descargue</strong> <a class="reference download internal" download="" href="../../_downloads/9c80e065c5367c0084c0ffb3dbae53e8/VaR Delta-Normal-Alonso y Berggrun.pdf"><code class="xref download docutils literal notranslate"><span class="pre">aquí</span></code></a> el documentos.</p></li>
+</ul>
+</dd>
+</dl>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Distribución normal/Distribución normal.html" class="btn btn-neutral float-right" title="Distribución normal" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../Introducción Gestión del Riesgo/index.html" class="btn btn-neutral" title="Introducción a la Gestión del Riesgo" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Miguel Jiménez.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/language_data.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

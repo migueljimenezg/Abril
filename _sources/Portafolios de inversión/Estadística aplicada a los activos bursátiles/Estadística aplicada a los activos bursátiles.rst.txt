@@ -157,7 +157,7 @@ En adelante, usaremos los rendimientos continuos.
 
 De las propiedades de los logaritmos tenemos:
 
-.. math:: log\frac{Precio_t}{Precio_{t-1}}=log(Precio_t)-log(Precio_{t-1}
+.. math:: log\frac{Precio_t}{Precio_{t-1}}=log(Precio_t)-log(Precio_{t-1})
 
 Matriz de rendimientos.
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -320,7 +320,7 @@ debe poner.
 .. code:: r
 
     layout(matrix(c(1:4), nrow = 2, byro w= F))
-    
+    layout.show(4)
     for(i in 1:acciones){
         
         plot(rendimientos[,i], t = "h", xlab = "Tiempo", ylab = "Rendimientos", main = nombres[i])

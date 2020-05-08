@@ -1,7 +1,7 @@
 Material de apoyo
 =======================================
 
-          Profesor: Luis Miguel Jiménez Gómez.
+          Profesor: Miguel Jiménez.
 
           lumjimenezgo@unal.edu.co
 
@@ -17,3 +17,26 @@ Material de apoyo
     
     Introducción a R/index
     Portafolios de inversión/index
+
+
+.. toctree::
+    :caption: RIESGO DE MERCADO
+    :titlesonly:
+    :hidden:
+
+    
+    Riesgo de mercado/Introducción Gestión del Riesgo/index
+    Riesgo de mercado/VaR Delta-Normal/index
+
+
+.. toctree::
+    :caption: PORTAFOLIOS DE INVERSIÓN
+    :titlesonly:
+    :hidden:
+
+    Portafolios de inversión2/Mercado financiero/index
+    Portafolios de inversión2/Trading/index.rst
+    
+
+
+

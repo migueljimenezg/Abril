@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Estadística aplicada a los activos bursátiles &mdash; Abril  documentation</title>
+  <title>Estadística aplicada a los activos bursátiles &mdash; Cursos  documentation</title>
   
 
   
@@ -35,9 +35,9 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="Abril  documentation" href="../../index.html"/>
+    <link rel="top" title="Cursos  documentation" href="../../index.html"/>
         <link rel="up" title="Análisis y conformación de portafolios de inversión" href="../index.html"/>
-        <link rel="next" title="Ejercicios: Estadística y conformación de portafolios de inversión." href="../Ejercicios - Estadística y conformación de portafolios de inversión/Ejercicios - Estadística y conformación de portafolios de inversión.html"/>
+        <link rel="next" title="Estadística y conformación de portafolios de inversión." href="../Ejercicios - Estadística y conformación de portafolios de inversión/Ejercicios - Estadística y conformación de portafolios de inversión.html"/>
         <link rel="prev" title="Análisis y conformación de portafolios de inversión" href="../index.html"/> 
 
   
@@ -57,7 +57,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> Abril
+            <a href="../../index.html" class="icon icon-home"> Cursos
           
 
           
@@ -92,11 +92,21 @@
 <li class="toctree-l1"><a class="reference internal" href="../../Introducción a R/index.html">Introducción a R</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Análisis y conformación de portafolios de inversión</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Estadística aplicada a los activos bursátiles</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Ejercicios - Estadística y conformación de portafolios de inversión/Ejercicios - Estadística y conformación de portafolios de inversión.html">Ejercicios: Estadística y conformación de portafolios de inversión.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ejercicios - Estadística y conformación de portafolios de inversión/Ejercicios - Estadística y conformación de portafolios de inversión.html">Estadística y conformación de portafolios de inversión.</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Volatilidad portafolio de inversión/Volatilidad portafolio de inversión.html">Volatilidad portafolio de inversión</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Conformación portafolio de inversión/Conformación portafolio de inversión.html">Conformación portafolio de inversión</a></li>
 </ul>
 </li>
+</ul>
+<p class="caption"><span class="caption-text">RIESGO DE MERCADO</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Riesgo de mercado/Introducción Gestión del Riesgo/index.html">Introducción a la Gestión del Riesgo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Riesgo de mercado/VaR Delta-Normal/index.html">VaR varianzas-covarianzas o Delta-Normal</a></li>
+</ul>
+<p class="caption"><span class="caption-text">PORTAFOLIOS DE INVERSIÓN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Portafolios de inversión2/Mercado financiero/index.html">Mercado financiero</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Portafolios de inversión2/Trading/index.html">Análisis técnico</a></li>
 </ul>
 
             
@@ -111,7 +121,7 @@
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../index.html">Abril</a>
+          <a href="../../index.html">Cursos</a>
         
       </nav>
 
@@ -264,7 +274,7 @@ un horizonte de tiempo corto.</p>
 <p>En adelante, usaremos los rendimientos continuos.</p>
 <p>De las propiedades de los logaritmos tenemos:</p>
 <div class="math notranslate nohighlight">
-\[log\frac{Precio_t}{Precio_{t-1}}=log(Precio_t)-log(Precio_{t-1}\]</div>
+\[log\frac{Precio_t}{Precio_{t-1}}=log(Precio_t)-log(Precio_{t-1})\]</div>
 </div>
 <div class="section" id="matriz-de-rendimientos">
 <h2>Matriz de rendimientos.<a class="headerlink" href="#matriz-de-rendimientos" title="Permalink to this headline">¶</a></h2>
@@ -354,7 +364,7 @@ tener y después se muestra la matriz con <code class="docutils literal notransl
 <p>El siguiente código no tiene <code class="docutils literal notranslate"><span class="pre">layout.show(4)</span></code>, pero en R siempre se
 debe poner.</p>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">layout</span><span class="p">(</span><span class="nf">matrix</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">),</span> <span class="n">nrow</span> <span class="o">=</span> <span class="m">2</span><span class="p">,</span> <span class="n">byro</span> <span class="n">w</span><span class="o">=</span> <span class="bp">F</span><span class="p">))</span>
-
+<span class="nf">layout.show</span><span class="p">(</span><span class="m">4</span><span class="p">)</span>
 <span class="nf">for</span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="n">acciones</span><span class="p">){</span>
 
     <span class="nf">plot</span><span class="p">(</span><span class="n">rendimientos</span><span class="p">[,</span><span class="n">i</span><span class="p">],</span> <span class="n">t</span> <span class="o">=</span> <span class="s">&quot;h&quot;</span><span class="p">,</span> <span class="n">xlab</span> <span class="o">=</span> <span class="s">&quot;Tiempo&quot;</span><span class="p">,</span> <span class="n">ylab</span> <span class="o">=</span> <span class="s">&quot;Rendimientos&quot;</span><span class="p">,</span> <span class="n">main</span> <span class="o">=</span> <span class="n">nombres</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
@@ -517,7 +527,7 @@ rendimientos son diarios.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="../../_images/output_59_0.png"><img alt="../../_images/output_59_0.png" src="../../_images/output_59_0.png" style="width: 420px; height: 420px;" /></a>
+<a class="reference internal image-reference" href="../../_images/output_59_01.png"><img alt="../../_images/output_59_01.png" src="../../_images/output_59_01.png" style="width: 420px; height: 420px;" /></a>
 </div>
 <div class="section" id="histograma-y-distribucion-normal">
 <h2>Histograma y distribución normal.<a class="headerlink" href="#histograma-y-distribucion-normal" title="Permalink to this headline">¶</a></h2>
@@ -628,7 +638,7 @@ lineal entre ambas en un rango entre -1 y +1.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../Ejercicios - Estadística y conformación de portafolios de inversión/Ejercicios - Estadística y conformación de portafolios de inversión.html" class="btn btn-neutral float-right" title="Ejercicios: Estadística y conformación de portafolios de inversión." accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../Ejercicios - Estadística y conformación de portafolios de inversión/Ejercicios - Estadística y conformación de portafolios de inversión.html" class="btn btn-neutral float-right" title="Estadística y conformación de portafolios de inversión." accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../index.html" class="btn btn-neutral" title="Análisis y conformación de portafolios de inversión" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -640,7 +650,7 @@ lineal entre ambas en un rango entre -1 y +1.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2020, Miguel.
+        &copy; Copyright 2020, Miguel Jiménez.
 
     </p>
   </div>

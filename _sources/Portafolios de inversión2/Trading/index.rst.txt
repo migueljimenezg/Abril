@@ -1,0 +1,36 @@
+Análisis técnico
+--------------------------------
+
+    * **Descargue** :download:`aquí <3. Análisis técnico.pdf>` las presentaciones.
+
+    * **Ver video** 1. Velas japonesas `aquí <https://youtu.be/mttlJnzlkU0>`_.
+
+    * **Ver video** 2. Tendencias parte 1 `aquí <https://youtu.be/Dvsd4eP9Gws>`_.
+
+    * **Ver video** 3. Tendencias parte 2 `aquí <https://youtu.be/_5K3_jnFSc4>`_.
+
+    * **Ver video** 4. Soportes y resistencias `aquí <https://youtu.be/sMJ0JW74C3E>`_.
+
+    * **Ver video** 5. Volumen `aquí <https://youtu.be/-pxWElk2IbI>`_.
+
+    * **Ver video** 6. Medias móviles `aquí <https://youtu.be/-G1BD4HIP1c>`_.
+
+    * **Ver video** 7. Oscilador MACD `aquí <https://youtu.be/6RDC0ENbSVg>`_.
+
+    * **Ver video** 8. Indicador RSI `aquí <https://youtu.be/wW_n73J0F-Y>`_.
+
+    * **Ver video** 9. Indicador Estocástico `aquí <https://youtu.be/WWvipYSy8zg>`_.
+
+    * **Ver video** 10. Análisis Futuro ES parte 1 `aquí <https://youtu.be/QtsezBDXqEk>`_.
+
+    * **Ver video** 11. Análisis Futuro ES parte 2 `aquí <https://youtu.be/nv_0Wel57mo>`_.
+
+    * **Ver video** 12. Análisis Futuro ES parte 3 `aquí <https://youtu.be/a_BuRXSHshQ>`_.
+
+    * **Ver video** 13. Estrategia 1 `aquí <https://youtu.be/BMVe9v-75FQ>`_.
+
+    * **Ver video** 14. Estrategia 2 `aquí <https://youtu.be/E28rgD-nfJA>`_.
+
+    * **Ver video** 15. Estrategia 3 `aquí <https://youtu.be/ZPaZwlRLxe4>`_.
+
+    * **Ver video** 16. Estrategia 4 `aquí <https://youtu.be/_r9dY-clPVg>`_.

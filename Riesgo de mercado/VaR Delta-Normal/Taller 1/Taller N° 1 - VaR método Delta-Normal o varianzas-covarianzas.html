@@ -1,0 +1,714 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Taller N° 1: VaR método Delta-Normal o varianzas-covarianzas &mdash; Cursos  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="Cursos  documentation" href="../../../index.html"/>
+        <link rel="up" title="VaR varianzas-covarianzas o Delta-Normal" href="../index.html"/>
+        <link rel="next" title="Taller N° 2: VaR método Delta-Normal o varianzas-covarianzas" href="../Taller 2/Taller N° 2 - VaR método Delta-Normal o varianzas-covarianzas.html"/>
+        <link rel="prev" title="VaR método Delta-Normal o varianzas-covarianzas" href="../VaR varianzas-covarianzas/VaR método Delta-Normal o varianzas-covarianzas.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Cursos
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">CONCEPTOS PREVIOS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Introducción a R/index.html">Introducción a R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Portafolios de inversión/index.html">Análisis y conformación de portafolios de inversión</a></li>
+</ul>
+<p class="caption"><span class="caption-text">RIESGO DE MERCADO</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../Introducción Gestión del Riesgo/index.html">Introducción a la Gestión del Riesgo</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">VaR varianzas-covarianzas o Delta-Normal</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../Distribución normal/Distribución normal.html">Distribución normal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../VaR varianzas-covarianzas/VaR método Delta-Normal o varianzas-covarianzas.html">VaR método Delta-Normal o varianzas-covarianzas</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Taller N° 1: VaR método Delta-Normal o varianzas-covarianzas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Taller 2/Taller N° 2 - VaR método Delta-Normal o varianzas-covarianzas.html">Taller N° 2: VaR método Delta-Normal o varianzas-covarianzas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ejercicios - VaR Delta-Normal/Ejercicios - VaR Delta-Normal.html">Ejercicios: VaR Delta-Normal</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">PORTAFOLIOS DE INVERSIÓN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Portafolios de inversión2/Mercado financiero/index.html">Mercado financiero</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Portafolios de inversión2/Trading/index.html">Análisis técnico</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Cursos</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">VaR varianzas-covarianzas o Delta-Normal</a> &raquo;</li>
+        
+      <li>Taller N° 1: VaR método Delta-Normal o varianzas-covarianzas</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/Riesgo de mercado/VaR Delta-Normal/Taller 1/Taller N° 1 - VaR método Delta-Normal o varianzas-covarianzas.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="taller-n-1-var-metodo-delta-normal-o-varianzas-covarianzas">
+<h1>Taller N° 1: VaR método Delta-Normal o varianzas-covarianzas<a class="headerlink" href="#taller-n-1-var-metodo-delta-normal-o-varianzas-covarianzas" title="Permalink to this headline">¶</a></h1>
+<p>Portafolio de inversión conformado por las siguientes acciones:</p>
+<ol class="arabic simple">
+<li><p>Facebook, Inc. (FB).</p></li>
+<li><p>The Coca-Cola Company (KO).</p></li>
+<li><p>Kellogg Company (K).</p></li>
+<li><p>Ford Motor Company (F).</p></li>
+<li><p>McDonald’s Corporation (MCD).</p></li>
+</ol>
+<p>Utilizar una base de datos de precios diarios desde primero de abril de
+2018 hasta el 21 de abril de 2020.</p>
+<div class="section" id="importar-datos-desde-yahoo-finance">
+<h2>Importar datos desde <em>Yahoo Finance.</em><a class="headerlink" href="#importar-datos-desde-yahoo-finance" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">quantmod</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">tseries</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>La fecha final debe ser el 22 de abril de 2020 para que descargue hasta
+el 21 de abril de 2020.</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">FB</span> <span class="o">=</span> <span class="nf">get.hist.quote</span><span class="p">(</span><span class="n">instrument</span> <span class="o">=</span> <span class="s">&quot;FB&quot;</span><span class="p">,</span> <span class="n">start</span> <span class="o">=</span> <span class="nf">as.Date</span><span class="p">(</span><span class="s">&quot;2018-04-01&quot;</span><span class="p">),</span> <span class="n">end</span> <span class="o">=</span> <span class="nf">as.Date</span><span class="p">(</span><span class="s">&quot;2020-04-22&quot;</span><span class="p">),</span> <span class="n">quote</span> <span class="o">=</span> <span class="s">&quot;AdjClose&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">time</span> <span class="n">series</span> <span class="n">starts</span> <span class="mi">2018</span><span class="o">-</span><span class="mi">04</span><span class="o">-</span><span class="mi">02</span>
+<span class="n">time</span> <span class="n">series</span> <span class="n">ends</span>   <span class="mi">2020</span><span class="o">-</span><span class="mi">04</span><span class="o">-</span><span class="mi">21</span>
+</pre></div>
+</div>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">KO</span> <span class="o">=</span> <span class="nf">get.hist.quote</span><span class="p">(</span><span class="n">instrument</span> <span class="o">=</span> <span class="s">&quot;KO&quot;</span><span class="p">,</span> <span class="n">start</span> <span class="o">=</span> <span class="nf">as.Date</span><span class="p">(</span><span class="s">&quot;2018-04-01&quot;</span><span class="p">),</span> <span class="n">end</span> <span class="o">=</span> <span class="nf">as.Date</span><span class="p">(</span><span class="s">&quot;2020-04-22&quot;</span><span class="p">),</span> <span class="n">quote</span> <span class="o">=</span> <span class="s">&quot;AdjClose&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">time</span> <span class="n">series</span> <span class="n">starts</span> <span class="mi">2018</span><span class="o">-</span><span class="mi">04</span><span class="o">-</span><span class="mi">02</span>
+<span class="n">time</span> <span class="n">series</span> <span class="n">ends</span>   <span class="mi">2020</span><span class="o">-</span><span class="mi">04</span><span class="o">-</span><span class="mi">21</span>
+</pre></div>
+</div>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">K</span> <span class="o">=</span> <span class="nf">get.hist.quote</span><span class="p">(</span><span class="n">instrument</span> <span class="o">=</span> <span class="s">&quot;K&quot;</span><span class="p">,</span> <span class="n">start</span> <span class="o">=</span> <span class="nf">as.Date</span><span class="p">(</span><span class="s">&quot;2018-04-01&quot;</span><span class="p">),</span> <span class="n">end</span> <span class="o">=</span> <span class="nf">as.Date</span><span class="p">(</span><span class="s">&quot;2020-04-22&quot;</span><span class="p">),</span> <span class="n">quote</span> <span class="o">=</span> <span class="s">&quot;AdjClose&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">time</span> <span class="n">series</span> <span class="n">starts</span> <span class="mi">2018</span><span class="o">-</span><span class="mi">04</span><span class="o">-</span><span class="mi">02</span>
+<span class="n">time</span> <span class="n">series</span> <span class="n">ends</span>   <span class="mi">2020</span><span class="o">-</span><span class="mi">04</span><span class="o">-</span><span class="mi">21</span>
+</pre></div>
+</div>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="bp">F</span> <span class="o">=</span> <span class="nf">get.hist.quote</span><span class="p">(</span><span class="n">instrument</span> <span class="o">=</span> <span class="s">&quot;F&quot;</span><span class="p">,</span> <span class="n">start</span> <span class="o">=</span> <span class="nf">as.Date</span><span class="p">(</span><span class="s">&quot;2018-04-01&quot;</span><span class="p">),</span> <span class="n">end</span> <span class="o">=</span> <span class="nf">as.Date</span><span class="p">(</span><span class="s">&quot;2020-04-22&quot;</span><span class="p">),</span> <span class="n">quote</span> <span class="o">=</span> <span class="s">&quot;AdjClose&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">time</span> <span class="n">series</span> <span class="n">starts</span> <span class="mi">2018</span><span class="o">-</span><span class="mi">04</span><span class="o">-</span><span class="mi">02</span>
+<span class="n">time</span> <span class="n">series</span> <span class="n">ends</span>   <span class="mi">2020</span><span class="o">-</span><span class="mi">04</span><span class="o">-</span><span class="mi">21</span>
+</pre></div>
+</div>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">MCD</span> <span class="o">=</span> <span class="nf">get.hist.quote</span><span class="p">(</span><span class="n">instrument</span> <span class="o">=</span> <span class="s">&quot;MCD&quot;</span><span class="p">,</span> <span class="n">start</span> <span class="o">=</span> <span class="nf">as.Date</span><span class="p">(</span><span class="s">&quot;2018-04-01&quot;</span><span class="p">),</span> <span class="n">end</span> <span class="o">=</span> <span class="nf">as.Date</span><span class="p">(</span><span class="s">&quot;2020-04-22&quot;</span><span class="p">),</span> <span class="n">quote</span> <span class="o">=</span> <span class="s">&quot;AdjClose&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">time</span> <span class="n">series</span> <span class="n">starts</span> <span class="mi">2018</span><span class="o">-</span><span class="mi">04</span><span class="o">-</span><span class="mi">02</span>
+<span class="n">time</span> <span class="n">series</span> <span class="n">ends</span>   <span class="mi">2020</span><span class="o">-</span><span class="mi">04</span><span class="o">-</span><span class="mi">21</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="matriz-de-precios">
+<h2>Matriz de precios.<a class="headerlink" href="#matriz-de-precios" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">precios</span> <span class="o">=</span> <span class="nf">merge</span><span class="p">(</span><span class="n">FB</span><span class="p">,</span> <span class="n">KO</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="bp">F</span><span class="p">,</span> <span class="n">MCD</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">precios</span> <span class="o">=</span> <span class="nf">ts</span><span class="p">(</span><span class="n">precios</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">head</span><span class="p">(</span><span class="n">precios</span><span class="p">)</span>
+</pre></div>
+</div>
+<table>
+<caption>A matrix: 6 × 5 of type dbl</caption>
+<thead>
+    <tr><th scope=col>Adjusted.FB</th><th scope=col>Adjusted.KO</th><th scope=col>Adjusted.K</th><th scope=col>Adjusted.F</th><th scope=col>Adjusted.MCD</th></tr>
+</thead>
+<tbody>
+    <tr><td>155.39</td><td>39.97908</td><td>58.67940</td><td> 9.572072</td><td>150.2097</td></tr>
+    <tr><td>156.11</td><td>40.64431</td><td>58.91181</td><td> 9.827681</td><td>152.7620</td></tr>
+    <tr><td>155.10</td><td>41.45009</td><td>60.36206</td><td> 9.986334</td><td>154.0287</td></tr>
+    <tr><td>159.34</td><td>41.59999</td><td>60.01810</td><td>10.003963</td><td>156.1430</td></tr>
+    <tr><td>157.20</td><td>41.15026</td><td>59.72060</td><td> 9.854123</td><td>153.5716</td></tr>
+    <tr><td>157.93</td><td>41.06593</td><td>59.94373</td><td> 9.915821</td><td>153.5525</td></tr>
+</tbody>
+</table><div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">dim</span><span class="p">(</span><span class="n">precios</span><span class="p">)</span>
+</pre></div>
+</div>
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>518</li><li>5</li></ol><p>Se cargaron cinco acciones cada una con 518 precios.</p>
+</div>
+<div class="section" id="numero-de-acciones">
+<h2>Número de acciones.<a class="headerlink" href="#numero-de-acciones" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">acciones</span> <span class="o">=</span> <span class="nf">ncol</span><span class="p">(</span><span class="n">precios</span><span class="p">)</span>
+<span class="n">acciones</span>
+</pre></div>
+</div>
+5</div>
+<div class="section" id="matriz-de-rendimientos">
+<h2>Matriz de rendimientos.<a class="headerlink" href="#matriz-de-rendimientos" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">rendimientos</span> <span class="o">=</span> <span class="nf">diff</span><span class="p">(</span><span class="nf">log</span><span class="p">(</span><span class="n">precios</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">dim</span><span class="p">(</span><span class="n">rendimientos</span><span class="p">)</span>
+</pre></div>
+</div>
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>517</li><li>5</li></ol><p>Hay 517 rendimientos por acción.</p>
+</div>
+<div class="section" id="s-0-precio-actual-de-cada-accion">
+<h2><span class="math notranslate nohighlight">\(S_0:\)</span>Precio actual de cada acción.<a class="headerlink" href="#s-0-precio-actual-de-cada-accion" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="nf">tail</span><span class="p">(</span><span class="n">precios</span><span class="p">,</span><span class="m">1</span><span class="p">)</span>
+<span class="n">s</span> <span class="o">=</span> <span class="nf">as.numeric</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="n">s</span>
+</pre></div>
+</div>
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>170.800003</li><li>45.380001</li><li>65.519997</li><li>4.77</li><li>177.580002</li></ol></div>
+<div class="section" id="numero-de-acciones-del-portafolio-de-inversion">
+<h2>Número de acciones del portafolio de inversión.<a class="headerlink" href="#numero-de-acciones-del-portafolio-de-inversion" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">numero_acciones</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">2000</span><span class="p">,</span> <span class="m">5000</span><span class="p">,</span> <span class="m">2000</span><span class="p">,</span> <span class="m">10000</span><span class="p">,</span> <span class="m">1000</span><span class="p">)</span>
+<span class="n">numero_acciones</span>
+</pre></div>
+</div>
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>2000</li><li>5000</li><li>2000</li><li>10000</li><li>1000</li></ol></div>
+<div class="section" id="valor-de-mercado-de-cada-accion">
+<h2>Valor de mercado de cada acción.<a class="headerlink" href="#valor-de-mercado-de-cada-accion" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">valor_mercado_acciones</span> <span class="o">=</span> <span class="n">numero_acciones</span><span class="o">*</span><span class="n">s</span>
+<span class="n">valor_mercado_acciones</span>
+</pre></div>
+</div>
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>341600.006</li><li>226900.005</li><li>131039.994</li><li>47700</li><li>177580.002</li></ol></div>
+<div class="section" id="valor-de-mercado-del-portafolio-de-inversion">
+<h2>Valor de mercado del portafolio de inversión.<a class="headerlink" href="#valor-de-mercado-del-portafolio-de-inversion" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">valor_portafolio</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">valor_mercado_acciones</span><span class="p">)</span>
+<span class="n">valor_portafolio</span>
+</pre></div>
+</div>
+924820.007</div>
+<div class="section" id="proporciones-de-inversion">
+<h2>Proporciones de inversión.<a class="headerlink" href="#proporciones-de-inversion" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">proporciones</span> <span class="o">=</span> <span class="n">valor_mercado_acciones</span><span class="o">/</span><span class="n">valor_portafolio</span>
+<span class="n">proporciones</span>
+</pre></div>
+</div>
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>0.369369178234052</li><li>0.245345043665345</li><li>0.141692429887062</li><li>0.0515776039001717</li><li>0.192015744313369</li></ol><div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">sum</span><span class="p">(</span><span class="n">proporciones</span><span class="p">)</span>
+</pre></div>
+</div>
+1</div>
+<div class="section" id="mu-rendimiento-esperado-de-cada-accion">
+<h2><span class="math notranslate nohighlight">\(\mu:\)</span> Rendimiento esperado de cada acción.<a class="headerlink" href="#mu-rendimiento-esperado-de-cada-accion" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">rendimientos_esperados</span> <span class="o">=</span> <span class="nf">apply</span><span class="p">(</span><span class="n">rendimientos</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="n">mean</span><span class="p">)</span>
+<span class="n">rendimientos_esperados</span>
+</pre></div>
+</div>
+<style>
+.dl-inline {width: auto; margin:0; padding: 0}
+.dl-inline>dt, .dl-inline>dd {float: none; width: auto; display: inline-block}
+.dl-inline>dt::after {content: ":\0020"; padding-right: .5ex}
+.dl-inline>dt:not(:first-of-type) {padding-left: .5ex}
+</style><dl class=dl-inline><dt>Adjusted.FB</dt><dd>0.000182892107457737</dd><dt>Adjusted.KO</dt><dd>0.000245096874340001</dd><dt>Adjusted.K</dt><dd>0.000213281718456249</dd><dt>Adjusted.F</dt><dd>-0.00134720190920034</dd><dt>Adjusted.MCD</dt><dd>0.000323770015717806</dd></dl></div>
+<div class="section" id="sigma-volatilidad-de-cada-accion">
+<h2><span class="math notranslate nohighlight">\(\sigma:\)</span>Volatilidad de cada acción.<a class="headerlink" href="#sigma-volatilidad-de-cada-accion" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">volatilidades</span> <span class="o">=</span> <span class="nf">apply</span><span class="p">(</span><span class="n">rendimientos</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="n">sd</span><span class="p">)</span>
+<span class="n">volatilidades</span>
+</pre></div>
+</div>
+<style>
+.dl-inline {width: auto; margin:0; padding: 0}
+.dl-inline>dt, .dl-inline>dd {float: none; width: auto; display: inline-block}
+.dl-inline>dt::after {content: ":\0020"; padding-right: .5ex}
+.dl-inline>dt:not(:first-of-type) {padding-left: .5ex}
+</style><dl class=dl-inline><dt>Adjusted.FB</dt><dd>0.0241525297957338</dd><dt>Adjusted.KO</dt><dd>0.0156387694263754</dd><dt>Adjusted.K</dt><dd>0.0174954301099754</dd><dt>Adjusted.F</dt><dd>0.0241075471398262</dd><dt>Adjusted.MCD</dt><dd>0.0188911968226452</dd></dl></div>
+<div class="section" id="matriz-varianzas-covarianzas">
+<h2>Matriz varianzas-covarianzas.<a class="headerlink" href="#matriz-varianzas-covarianzas" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">covarianzas</span> <span class="o">=</span> <span class="nf">cov</span><span class="p">(</span><span class="n">rendimientos</span><span class="p">)</span>
+<span class="n">covarianzas</span>
+</pre></div>
+</div>
+<table>
+<caption>A matrix: 5 × 5 of type dbl</caption>
+<thead>
+    <tr><th></th><th scope=col>Adjusted.FB</th><th scope=col>Adjusted.KO</th><th scope=col>Adjusted.K</th><th scope=col>Adjusted.F</th><th scope=col>Adjusted.MCD</th></tr>
+</thead>
+<tbody>
+    <tr><th scope=row>Adjusted.FB</th><td>5.833447e-04</td><td>0.0001283637</td><td>6.003727e-05</td><td>2.767284e-04</td><td>2.073810e-04</td></tr>
+    <tr><th scope=row>Adjusted.KO</th><td>1.283637e-04</td><td>0.0002445711</td><td>1.304013e-04</td><td>1.783455e-04</td><td>1.617992e-04</td></tr>
+    <tr><th scope=row>Adjusted.K</th><td>6.003727e-05</td><td>0.0001304013</td><td>3.060901e-04</td><td>9.705181e-05</td><td>8.338019e-05</td></tr>
+    <tr><th scope=row>Adjusted.F</th><td>2.767284e-04</td><td>0.0001783455</td><td>9.705181e-05</td><td>5.811738e-04</td><td>2.592786e-04</td></tr>
+    <tr><th scope=row>Adjusted.MCD</th><td>2.073810e-04</td><td>0.0001617992</td><td>8.338019e-05</td><td>2.592786e-04</td><td>3.568773e-04</td></tr>
+</tbody>
+</table></div>
+<div class="section" id="coeficientes-de-correlacion">
+<h2>Coeficientes de correlación.<a class="headerlink" href="#coeficientes-de-correlacion" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">correlaciones</span> <span class="o">=</span> <span class="nf">cor</span><span class="p">(</span><span class="n">rendimientos</span><span class="p">)</span>
+<span class="n">correlaciones</span>
+</pre></div>
+</div>
+<table>
+<caption>A matrix: 5 × 5 of type dbl</caption>
+<thead>
+    <tr><th></th><th scope=col>Adjusted.FB</th><th scope=col>Adjusted.KO</th><th scope=col>Adjusted.K</th><th scope=col>Adjusted.F</th><th scope=col>Adjusted.MCD</th></tr>
+</thead>
+<tbody>
+    <tr><th scope=row>Adjusted.FB</th><td>1.0000000</td><td>0.3398419</td><td>0.1420802</td><td>0.4752675</td><td>0.4545136</td></tr>
+    <tr><th scope=row>Adjusted.KO</th><td>0.3398419</td><td>1.0000000</td><td>0.4766006</td><td>0.4730496</td><td>0.5476642</td></tr>
+    <tr><th scope=row>Adjusted.K</th><td>0.1420802</td><td>0.4766006</td><td>1.0000000</td><td>0.2301050</td><td>0.2522777</td></tr>
+    <tr><th scope=row>Adjusted.F</th><td>0.4752675</td><td>0.4730496</td><td>0.2301050</td><td>1.0000000</td><td>0.5693170</td></tr>
+    <tr><th scope=row>Adjusted.MCD</th><td>0.4545136</td><td>0.5476642</td><td>0.2522777</td><td>0.5693170</td><td>1.0000000</td></tr>
+</tbody>
+</table></div>
+<div class="section" id="rendimientos-del-portafolio-de-inversion">
+<h2>Rendimientos del portafolio de inversión.<a class="headerlink" href="#rendimientos-del-portafolio-de-inversion" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">rendimientos_portafolio</span><span class="o">=</span><span class="nf">vector</span><span class="p">()</span>
+
+<span class="nf">for</span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="nf">nrow</span><span class="p">(</span><span class="n">rendimientos</span><span class="p">)){</span>
+
+  <span class="n">rendimientos_portafolio</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">rendimientos</span><span class="p">[</span><span class="n">i</span><span class="p">,]</span><span class="o">*</span><span class="n">proporciones</span><span class="p">)</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="rendimiento-esperado-del-portafolio-de-inversion">
+<h2>Rendimiento esperado del portafolio de inversión<a class="headerlink" href="#rendimiento-esperado-del-portafolio-de-inversion" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">rendimiento_esperado_portafolio</span> <span class="o">=</span> <span class="nf">mean</span><span class="p">(</span><span class="n">rendimientos_portafolio</span><span class="p">)</span>
+<span class="n">rendimiento_esperado_portafolio</span>
+</pre></div>
+</div>
+0.000150591909821015</div>
+<div class="section" id="volatilidad-del-portafolio-de-inversion">
+<h2>Volatilidad del portafolio de inversión<a class="headerlink" href="#volatilidad-del-portafolio-de-inversion" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">volatilidad_portafolio</span> <span class="o">=</span> <span class="nf">sd</span><span class="p">(</span><span class="n">rendimientos_portafolio</span><span class="p">)</span>
+<span class="n">volatilidad_portafolio</span>
+</pre></div>
+</div>
+0.0149861836259204</div>
+<div class="section" id="volatilidad-del-portafolio-a-partir-de-la-matriz-de-varianzas-covarianzas">
+<h2>Volatilidad del portafolio a partir de la matriz de varianzas-covarianzas<a class="headerlink" href="#volatilidad-del-portafolio-a-partir-de-la-matriz-de-varianzas-covarianzas" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">volatilidad_portafolio</span> <span class="o">=</span> <span class="nf">sqrt</span><span class="p">(</span><span class="nf">sum</span><span class="p">(</span><span class="nf">t</span><span class="p">(</span><span class="n">proporciones</span><span class="p">)</span><span class="o">%*%</span><span class="n">covarianzas</span><span class="o">*</span><span class="n">proporciones</span><span class="p">))</span>
+<span class="n">volatilidad_portafolio</span>
+</pre></div>
+</div>
+0.0149861836259204</div>
+<div class="section" id="preguntas">
+<h2>Preguntas<a class="headerlink" href="#preguntas" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Una semana tiene 5 días bursátiles.</p></li>
+<li><p>Un mes tiene 20 días bursátiles.</p></li>
+<li><p>Un año tiene 250 días bursátiles.</p></li>
+<li><p>Un mes tiene 4 semanas.</p></li>
+<li><p>Un año tiene 52 semanas.</p></li>
+</ul>
+</div>
+<div class="section" id="con-un-nivel-de-confianza-del-95-cual-es-el-var-sin-promedios-semanal-de-la-accion-de-fb-en-terminos-monetarios">
+<h2>1. Con un nivel de confianza del 95%, ¿Cuál es el VaR (sin promedios) semanal de la acción de FB en términos monetarios?<a class="headerlink" href="#con-un-nivel-de-confianza-del-95-cual-es-el-var-sin-promedios-semanal-de-la-accion-de-fb-en-terminos-monetarios" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">NC</span> <span class="o">=</span> <span class="m">0.95</span>
+<span class="n">t</span> <span class="o">=</span> <span class="m">5</span>
+</pre></div>
+</div>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">VaR_individuales_sin_promedios</span> <span class="o">=</span> <span class="n">valor_mercado_acciones</span><span class="o">*</span><span class="n">volatilidades</span><span class="o">*</span><span class="nf">qnorm</span><span class="p">(</span><span class="n">NC</span><span class="p">)</span><span class="o">*</span><span class="nf">sqrt</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="n">VaR_individuales_sin_promedios</span><span class="p">[</span><span class="m">1</span><span class="p">]</span>
+</pre></div>
+</div>
+<strong>Adjusted.FB:</strong> 30345.3922167117</div>
+<div class="section" id="con-un-nivel-de-confianza-del-95-cual-es-el-var-sin-promedios-semanal-de-la-accion-de-f-en-terminos-monetarios">
+<h2>2. Con un nivel de confianza del 95%, ¿Cuál es el VaR (sin promedios) semanal de la acción de F en términos monetarios?<a class="headerlink" href="#con-un-nivel-de-confianza-del-95-cual-es-el-var-sin-promedios-semanal-de-la-accion-de-f-en-terminos-monetarios" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">NC</span> <span class="o">=</span> <span class="m">0.95</span>
+<span class="n">t</span> <span class="o">=</span> <span class="m">5</span>
+</pre></div>
+</div>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">VaR_individuales_sin_promedios</span> <span class="o">=</span> <span class="n">valor_mercado_acciones</span><span class="o">*</span><span class="n">volatilidades</span><span class="o">*</span><span class="nf">qnorm</span><span class="p">(</span><span class="n">NC</span><span class="p">)</span><span class="o">*</span><span class="nf">sqrt</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="n">VaR_individuales_sin_promedios</span><span class="p">[</span><span class="m">4</span><span class="p">]</span>
+</pre></div>
+</div>
+<strong>Adjusted.F:</strong> 4229.44773575843</div>
+<div class="section" id="con-un-nivel-de-confianza-del-99-cual-es-el-var-sin-promedios-semanal-de-la-accion-de-mcd-en-terminos-monetarios">
+<h2>3. Con un nivel de confianza del 99%, ¿Cuál es el VaR (sin promedios) semanal de la acción de MCD en términos monetarios?<a class="headerlink" href="#con-un-nivel-de-confianza-del-99-cual-es-el-var-sin-promedios-semanal-de-la-accion-de-mcd-en-terminos-monetarios" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">NC</span> <span class="o">=</span> <span class="m">0.99</span>
+<span class="n">t</span> <span class="o">=</span> <span class="m">5</span>
+</pre></div>
+</div>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">VaR_individuales_sin_promedios</span> <span class="o">=</span> <span class="n">valor_mercado_acciones</span><span class="o">*</span><span class="n">volatilidades</span><span class="o">*</span><span class="nf">qnorm</span><span class="p">(</span><span class="n">NC</span><span class="p">)</span><span class="o">*</span><span class="nf">sqrt</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="n">VaR_individuales_sin_promedios</span><span class="p">[</span><span class="m">5</span><span class="p">]</span>
+</pre></div>
+</div>
+<strong>Adjusted.MCD:</strong> 17450.7135496633</div>
+<div class="section" id="con-un-nivel-de-confianza-del-99-cual-es-el-var-sin-promedios-semanal-de-la-accion-de-k-en-terminos-monetarios">
+<h2>4. Con un nivel de confianza del 99%, ¿Cuál es el VaR (sin promedios) semanal de la acción de K en términos monetarios?<a class="headerlink" href="#con-un-nivel-de-confianza-del-99-cual-es-el-var-sin-promedios-semanal-de-la-accion-de-k-en-terminos-monetarios" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">NC</span> <span class="o">=</span> <span class="m">0.99</span>
+<span class="n">t</span> <span class="o">=</span> <span class="m">5</span>
+</pre></div>
+</div>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">VaR_individuales_sin_promedios</span> <span class="o">=</span> <span class="n">valor_mercado_acciones</span><span class="o">*</span><span class="n">volatilidades</span><span class="o">*</span><span class="nf">qnorm</span><span class="p">(</span><span class="n">NC</span><span class="p">)</span><span class="o">*</span><span class="nf">sqrt</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="n">VaR_individuales_sin_promedios</span><span class="p">[</span><span class="m">3</span><span class="p">]</span>
+</pre></div>
+</div>
+<strong>Adjusted.K:</strong> 11925.8172108399</div>
+<div class="section" id="con-un-nivel-de-confianza-del-99-cual-es-el-var-sin-promedios-semanal-del-portafolio-de-inversion-en-terminos-monetarios">
+<h2>5. Con un nivel de confianza del 99%, ¿Cuál es el VaR (sin promedios) semanal del portafolio de inversión en términos monetarios?<a class="headerlink" href="#con-un-nivel-de-confianza-del-99-cual-es-el-var-sin-promedios-semanal-del-portafolio-de-inversion-en-terminos-monetarios" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">NC</span> <span class="o">=</span> <span class="m">0.99</span>
+<span class="n">t</span> <span class="o">=</span> <span class="m">5</span>
+</pre></div>
+</div>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">VaR_portafolio_sin_promedios</span> <span class="o">=</span> <span class="nf">sqrt</span><span class="p">(</span><span class="nf">sum</span><span class="p">(</span><span class="nf">t</span><span class="p">(</span><span class="n">VaR_individuales_sin_promedios</span><span class="p">)</span><span class="o">%*%</span><span class="n">correlaciones</span><span class="o">*</span><span class="n">VaR_individuales_sin_promedios</span><span class="p">))</span>
+<span class="n">VaR_portafolio_sin_promedios</span>
+</pre></div>
+</div>
+72095.4615456764</div>
+<div class="section" id="con-un-nivel-de-confianza-del-99-cual-es-el-var-sin-promedios-diario-de-la-accion-f-en-terminos-monetarios">
+<h2>6. Con un nivel de confianza del 99%, ¿Cuál es el VaR (sin promedios) diario de la acción F en términos monetarios?<a class="headerlink" href="#con-un-nivel-de-confianza-del-99-cual-es-el-var-sin-promedios-diario-de-la-accion-f-en-terminos-monetarios" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">NC</span> <span class="o">=</span> <span class="m">0.99</span>
+<span class="n">t</span> <span class="o">=</span> <span class="m">1</span>
+</pre></div>
+</div>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">VaR_individuales_sin_promedios</span> <span class="o">=</span> <span class="n">valor_mercado_acciones</span><span class="o">*</span><span class="n">volatilidades</span><span class="o">*</span><span class="nf">qnorm</span><span class="p">(</span><span class="n">NC</span><span class="p">)</span><span class="o">*</span><span class="nf">sqrt</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="n">VaR_individuales_sin_promedios</span><span class="p">[</span><span class="m">1</span><span class="p">]</span>
+</pre></div>
+</div>
+<strong>Adjusted.FB:</strong> 19193.5431918965</div>
+<div class="section" id="con-un-nivel-de-confianza-del-99-cual-es-el-var-sin-promedios-diario-de-la-accion-ko-en-terminos-monetarios">
+<h2>7. Con un nivel de confianza del 99%, ¿Cuál es el VaR (sin promedios) diario de la acción KO en términos monetarios?<a class="headerlink" href="#con-un-nivel-de-confianza-del-99-cual-es-el-var-sin-promedios-diario-de-la-accion-ko-en-terminos-monetarios" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">NC</span> <span class="o">=</span> <span class="m">0.99</span>
+<span class="n">t</span> <span class="o">=</span> <span class="m">1</span>
+</pre></div>
+</div>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">VaR_individuales_sin_promedios</span> <span class="o">=</span> <span class="n">valor_mercado_acciones</span><span class="o">*</span><span class="n">volatilidades</span><span class="o">*</span><span class="nf">qnorm</span><span class="p">(</span><span class="n">NC</span><span class="p">)</span><span class="o">*</span><span class="nf">sqrt</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="n">VaR_individuales_sin_promedios</span><span class="p">[</span><span class="m">2</span><span class="p">]</span>
+</pre></div>
+</div>
+<strong>Adjusted.KO:</strong> 8254.89854784487</div>
+<div class="section" id="con-un-nivel-de-confianza-del-97-5-cual-es-el-var-sin-promedios-diario-del-portafolio-de-inversion-en-terminos-monetarios">
+<h2>8. Con un nivel de confianza del 97,5%, ¿Cuál es el VaR (sin promedios) diario del portafolio de inversión en términos monetarios?<a class="headerlink" href="#con-un-nivel-de-confianza-del-97-5-cual-es-el-var-sin-promedios-diario-del-portafolio-de-inversion-en-terminos-monetarios" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">NC</span> <span class="o">=</span> <span class="m">0.975</span>
+<span class="n">t</span> <span class="o">=</span> <span class="m">1</span>
+</pre></div>
+</div>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">VaR_portafolio_sin_promedios</span> <span class="o">=</span> <span class="nf">sqrt</span><span class="p">(</span><span class="nf">sum</span><span class="p">(</span><span class="nf">t</span><span class="p">(</span><span class="n">VaR_individuales_sin_promedios</span><span class="p">)</span><span class="o">%*%</span><span class="n">correlaciones</span><span class="o">*</span><span class="n">VaR_individuales_sin_promedios</span><span class="p">))</span>
+<span class="n">VaR_portafolio_sin_promedios</span>
+</pre></div>
+</div>
+32242.0705770709</div>
+<div class="section" id="con-un-nivel-de-confianza-del-99-cual-es-el-var-con-promedios-mensual-de-la-accion-ko-en-terminos-monetarios">
+<h2>9. Con un nivel de confianza del 99%, ¿Cuál es el VaR (con promedios) mensual de la acción KO en términos monetarios?<a class="headerlink" href="#con-un-nivel-de-confianza-del-99-cual-es-el-var-con-promedios-mensual-de-la-accion-ko-en-terminos-monetarios" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">NC</span> <span class="o">=</span> <span class="m">0.99</span>
+<span class="n">t</span> <span class="o">=</span> <span class="m">5</span>
+</pre></div>
+</div>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">VaR_individuales_con_promedios</span> <span class="o">=</span> <span class="n">valor_mercado_acciones</span><span class="o">*</span><span class="nf">abs</span><span class="p">(</span><span class="n">rendimientos_esperados</span><span class="o">*</span><span class="n">t</span><span class="o">+</span><span class="nf">qnorm</span><span class="p">(</span><span class="m">1</span><span class="o">-</span><span class="n">NC</span><span class="p">,</span><span class="n">sd</span><span class="o">=</span><span class="n">volatilidades</span><span class="o">*</span><span class="nf">sqrt</span><span class="p">(</span><span class="n">t</span><span class="p">)))</span>
+<span class="n">VaR_individuales_con_promedios</span><span class="p">[</span><span class="m">2</span><span class="p">]</span>
+</pre></div>
+</div>
+<strong>Adjusted.KO:</strong> 18180.4518902793</div>
+<div class="section" id="con-un-nivel-de-confianza-del-95-cual-es-el-var-con-promedios-mensual-de-la-accion-f-en-terminos-monetarios">
+<h2>10. Con un nivel de confianza del 95%, ¿Cuál es el VaR (con promedios) mensual de la acción F en términos monetarios?<a class="headerlink" href="#con-un-nivel-de-confianza-del-95-cual-es-el-var-con-promedios-mensual-de-la-accion-f-en-terminos-monetarios" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">NC</span> <span class="o">=</span> <span class="m">0.95</span>
+<span class="n">t</span> <span class="o">=</span> <span class="m">20</span>
+</pre></div>
+</div>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">VaR_individuales_con_promedios</span> <span class="o">=</span> <span class="n">valor_mercado_acciones</span><span class="o">*</span><span class="nf">abs</span><span class="p">(</span><span class="n">rendimientos_esperados</span><span class="o">*</span><span class="n">t</span><span class="o">+</span><span class="nf">qnorm</span><span class="p">(</span><span class="m">1</span><span class="o">-</span><span class="n">NC</span><span class="p">,</span><span class="n">sd</span><span class="o">=</span><span class="n">volatilidades</span><span class="o">*</span><span class="nf">sqrt</span><span class="p">(</span><span class="n">t</span><span class="p">)))</span>
+<span class="n">VaR_individuales_con_promedios</span><span class="p">[</span><span class="m">4</span><span class="p">]</span>
+</pre></div>
+</div>
+<strong>Adjusted.F:</strong> 9744.12609289399</div>
+<div class="section" id="con-un-nivel-de-confianza-del-99-cual-es-el-var-con-promedios-mensual-del-portafolio-de-inversion-en-terminos-monetarios">
+<h2>11. Con un nivel de confianza del 99%, ¿Cuál es el VaR (con promedios) mensual del portafolio de inversión en términos monetarios?<a class="headerlink" href="#con-un-nivel-de-confianza-del-99-cual-es-el-var-con-promedios-mensual-del-portafolio-de-inversion-en-terminos-monetarios" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">NC</span> <span class="o">=</span> <span class="m">0.99</span>
+<span class="n">t</span> <span class="o">=</span> <span class="m">20</span>
+</pre></div>
+</div>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">VaR_portafolio_con_promedios</span> <span class="o">=</span> <span class="nf">sqrt</span><span class="p">(</span><span class="nf">sum</span><span class="p">(</span><span class="nf">t</span><span class="p">(</span><span class="n">VaR_individuales_con_promedios</span><span class="p">)</span><span class="o">%*%</span><span class="n">correlaciones</span><span class="o">*</span><span class="n">VaR_individuales_con_promedios</span><span class="p">))</span>
+<span class="n">VaR_portafolio_con_promedios</span>
+</pre></div>
+</div>
+99847.268555128</div>
+<div class="section" id="con-un-nivel-de-confianza-del-98-cual-es-el-var-con-promedios-mensual-del-portafolio-de-inversion-en-terminos-monetarios">
+<h2>12. Con un nivel de confianza del 98%, ¿Cuál es el VaR (con promedios) mensual del portafolio de inversión en términos monetarios?<a class="headerlink" href="#con-un-nivel-de-confianza-del-98-cual-es-el-var-con-promedios-mensual-del-portafolio-de-inversion-en-terminos-monetarios" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">NC</span> <span class="o">=</span> <span class="m">0.98</span>
+<span class="n">t</span> <span class="o">=</span> <span class="m">20</span>
+</pre></div>
+</div>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">VaR_portafolio_con_promedios</span> <span class="o">=</span> <span class="nf">sqrt</span><span class="p">(</span><span class="nf">sum</span><span class="p">(</span><span class="nf">t</span><span class="p">(</span><span class="n">VaR_individuales_con_promedios</span><span class="p">)</span><span class="o">%*%</span><span class="n">correlaciones</span><span class="o">*</span><span class="n">VaR_individuales_con_promedios</span><span class="p">))</span>
+<span class="n">VaR_portafolio_con_promedios</span>
+</pre></div>
+</div>
+99847.268555128</div>
+<div class="section" id="con-un-nivel-de-confianza-del-99-cual-es-el-beneficios-por-diversificacion-bd-diario-del-portafolio-de-inversion-en-terminos-monetarios">
+<h2>13. Con un nivel de confianza del 99%, ¿Cuál es el Beneficios por Diversificación (BD) diario del portafolio de inversión en términos monetarios?<a class="headerlink" href="#con-un-nivel-de-confianza-del-99-cual-es-el-beneficios-por-diversificacion-bd-diario-del-portafolio-de-inversion-en-terminos-monetarios" title="Permalink to this headline">¶</a></h2>
+<p><strong>Nota: usar el método de VaR (sin promedios).</strong></p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">NC</span> <span class="o">=</span> <span class="m">0.99</span>
+<span class="n">t</span> <span class="o">=</span> <span class="m">1</span>
+</pre></div>
+</div>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">VaR_individuales_sin_promedios</span> <span class="o">=</span> <span class="n">valor_mercado_acciones</span><span class="o">*</span><span class="n">volatilidades</span><span class="o">*</span><span class="nf">qnorm</span><span class="p">(</span><span class="n">NC</span><span class="p">)</span><span class="o">*</span><span class="nf">sqrt</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+
+<span class="n">VaR_portafolio_sin_promedios</span> <span class="o">=</span> <span class="nf">sqrt</span><span class="p">(</span><span class="nf">sum</span><span class="p">(</span><span class="nf">t</span><span class="p">(</span><span class="n">VaR_individuales_sin_promedios</span><span class="p">)</span><span class="o">%*%</span><span class="n">correlaciones</span><span class="o">*</span><span class="n">VaR_individuales_sin_promedios</span><span class="p">))</span>
+
+<span class="n">suma_VaR_individuales_sin_promedios</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">VaR_individuales_sin_promedios</span><span class="p">)</span>
+
+<span class="n">BD_sin_promedios</span><span class="o">=</span><span class="n">suma_VaR_individuales_sin_promedios</span><span class="o">-</span><span class="n">VaR_portafolio_sin_promedios</span>
+<span class="n">BD_sin_promedios</span>
+</pre></div>
+</div>
+11019.0923148587</div>
+<div class="section" id="id1">
+<h2>14. Con un nivel de confianza del 99%, ¿Cuál es el Beneficios por Diversificación (BD) diario del portafolio de inversión en términos monetarios?<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p><strong>Nota: usar el método de VaR (con promedios).</strong></p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">NC</span> <span class="o">=</span> <span class="m">0.99</span>
+<span class="n">t</span> <span class="o">=</span> <span class="m">1</span>
+</pre></div>
+</div>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">VaR_individuales_con_promedios</span> <span class="o">=</span> <span class="n">valor_mercado_acciones</span><span class="o">*</span><span class="nf">abs</span><span class="p">(</span><span class="n">rendimientos_esperados</span><span class="o">*</span><span class="n">t</span><span class="o">+</span><span class="nf">qnorm</span><span class="p">(</span><span class="m">1</span><span class="o">-</span><span class="n">NC</span><span class="p">,</span><span class="n">sd</span><span class="o">=</span><span class="n">volatilidades</span><span class="o">*</span><span class="nf">sqrt</span><span class="p">(</span><span class="n">t</span><span class="p">)))</span>
+
+<span class="n">VaR_portafolio_con_promedios</span> <span class="o">=</span> <span class="nf">sqrt</span><span class="p">(</span><span class="nf">sum</span><span class="p">(</span><span class="nf">t</span><span class="p">(</span><span class="n">VaR_individuales_con_promedios</span><span class="p">)</span><span class="o">%*%</span><span class="n">correlaciones</span><span class="o">*</span><span class="n">VaR_individuales_con_promedios</span><span class="p">))</span>
+
+<span class="n">suma_VaR_individuales_con_promedios</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">VaR_individuales_con_promedios</span><span class="p">)</span>
+
+<span class="n">BD_con_promedios</span> <span class="o">=</span> <span class="n">suma_VaR_individuales_con_promedios</span><span class="o">-</span><span class="n">VaR_portafolio_con_promedios</span>
+<span class="n">BD_con_promedios</span>
+</pre></div>
+</div>
+10985.3150146617</div>
+<div class="section" id="graficos">
+<h2>Gráficos<a class="headerlink" href="#graficos" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="precios-de-las-acciones">
+<h2>Precios de las acciones.<a class="headerlink" href="#precios-de-las-acciones" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="n">precios</span><span class="p">,</span> <span class="n">col</span> <span class="o">=</span> <span class="s">&quot;darkblue&quot;</span><span class="p">,</span> <span class="n">lwd</span> <span class="o">=</span> <span class="m">2</span><span class="p">,</span> <span class="n">xlab</span> <span class="o">=</span> <span class="s">&quot;Tiempo&quot;</span><span class="p">,</span> <span class="n">main</span> <span class="o">=</span> <span class="s">&quot;Precios&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../../_images/output_96_0.png"><img alt="../../../_images/output_96_0.png" src="../../../_images/output_96_0.png" style="width: 420px; height: 420px;" /></a>
+</div>
+<div class="section" id="rendimientos-de-las-acciones">
+<h2>Rendimientos de las acciones.<a class="headerlink" href="#rendimientos-de-las-acciones" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="n">rendimientos</span><span class="p">,</span> <span class="n">col</span> <span class="o">=</span> <span class="s">&quot;darkblue&quot;</span><span class="p">,</span> <span class="n">lwd</span> <span class="o">=</span> <span class="m">2</span><span class="p">,</span> <span class="n">xlab</span> <span class="o">=</span> <span class="s">&quot;Tiempo&quot;</span><span class="p">,</span> <span class="n">main</span> <span class="o">=</span> <span class="s">&quot;Rendimientos&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../../_images/output_98_0.png"><img alt="../../../_images/output_98_0.png" src="../../../_images/output_98_0.png" style="width: 420px; height: 420px;" /></a>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../Taller 2/Taller N° 2 - VaR método Delta-Normal o varianzas-covarianzas.html" class="btn btn-neutral float-right" title="Taller N° 2: VaR método Delta-Normal o varianzas-covarianzas" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../VaR varianzas-covarianzas/VaR método Delta-Normal o varianzas-covarianzas.html" class="btn btn-neutral" title="VaR método Delta-Normal o varianzas-covarianzas" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Miguel Jiménez.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../../_static/language_data.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

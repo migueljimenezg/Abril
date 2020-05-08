@@ -1,4 +1,4 @@
-Ejercicios: Estadística y conformación de portafolios de inversión.
+Estadística y conformación de portafolios de inversión.
 -------------------------------------------------------------------
 
 Descargar las siguientes acciones desde el 23 de abril de 2018 hasta el

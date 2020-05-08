@@ -1,0 +1,878 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>VaR método Delta-Normal o varianzas-covarianzas &mdash; Cursos  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="Cursos  documentation" href="../../../index.html"/>
+        <link rel="up" title="VaR varianzas-covarianzas o Delta-Normal" href="../index.html"/>
+        <link rel="next" title="Taller N° 1: VaR método Delta-Normal o varianzas-covarianzas" href="../Taller 1/Taller N° 1 - VaR método Delta-Normal o varianzas-covarianzas.html"/>
+        <link rel="prev" title="Distribución normal" href="../Distribución normal/Distribución normal.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Cursos
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">CONCEPTOS PREVIOS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Introducción a R/index.html">Introducción a R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Portafolios de inversión/index.html">Análisis y conformación de portafolios de inversión</a></li>
+</ul>
+<p class="caption"><span class="caption-text">RIESGO DE MERCADO</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../Introducción Gestión del Riesgo/index.html">Introducción a la Gestión del Riesgo</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">VaR varianzas-covarianzas o Delta-Normal</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../Distribución normal/Distribución normal.html">Distribución normal</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">VaR método Delta-Normal o varianzas-covarianzas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Taller 1/Taller N° 1 - VaR método Delta-Normal o varianzas-covarianzas.html">Taller N° 1: VaR método Delta-Normal o varianzas-covarianzas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Taller 2/Taller N° 2 - VaR método Delta-Normal o varianzas-covarianzas.html">Taller N° 2: VaR método Delta-Normal o varianzas-covarianzas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ejercicios - VaR Delta-Normal/Ejercicios - VaR Delta-Normal.html">Ejercicios: VaR Delta-Normal</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">PORTAFOLIOS DE INVERSIÓN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Portafolios de inversión2/Mercado financiero/index.html">Mercado financiero</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Portafolios de inversión2/Trading/index.html">Análisis técnico</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Cursos</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">VaR varianzas-covarianzas o Delta-Normal</a> &raquo;</li>
+        
+      <li>VaR método Delta-Normal o varianzas-covarianzas</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/Riesgo de mercado/VaR Delta-Normal/VaR varianzas-covarianzas/VaR método Delta-Normal o varianzas-covarianzas.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="var-metodo-delta-normal-o-varianzas-covarianzas">
+<h1>VaR método Delta-Normal o varianzas-covarianzas<a class="headerlink" href="#var-metodo-delta-normal-o-varianzas-covarianzas" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="importar-datos">
+<h2>Importar datos.<a class="headerlink" href="#importar-datos" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">datos</span> <span class="o">=</span> <span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;Cuatro acciones 2020.csv&quot;</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&quot;;&quot;</span><span class="p">,</span> <span class="n">dec</span> <span class="o">=</span> <span class="s">&quot;,&quot;</span><span class="p">,</span> <span class="n">header</span> <span class="o">=</span> <span class="bp">T</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="matriz-de-precios">
+<h2>Matriz de precios.<a class="headerlink" href="#matriz-de-precios" title="Permalink to this headline">¶</a></h2>
+<p>Crear una matriz con los valores de los precios de las acciones:
+<code class="docutils literal notranslate"><span class="pre">[,-1]</span></code> elimina la primera columna de la matriz <code class="docutils literal notranslate"><span class="pre">datos</span></code> que
+corresponde a las fechas. Quedan solo los precios.</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">precios</span> <span class="o">=</span> <span class="n">datos</span><span class="p">[,</span><span class="m">-1</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">head</span><span class="p">(</span><span class="n">precios</span><span class="p">)</span>
+</pre></div>
+</div>
+<table>
+<caption>A data.frame: 6 × 4</caption>
+<thead>
+    <tr><th></th><th scope=col>ECO</th><th scope=col>PFAVAL</th><th scope=col>ISA</th><th scope=col>NUTRESA</th></tr>
+    <tr><th></th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><th scope=row>1</th><td>2775</td><td>1165</td><td>13080</td><td>25720</td></tr>
+    <tr><th scope=row>2</th><td>2645</td><td>1155</td><td>13080</td><td>25700</td></tr>
+    <tr><th scope=row>3</th><td>2615</td><td>1165</td><td>13320</td><td>25980</td></tr>
+    <tr><th scope=row>4</th><td>2690</td><td>1165</td><td>13420</td><td>25920</td></tr>
+    <tr><th scope=row>5</th><td>2730</td><td>1175</td><td>13660</td><td>25920</td></tr>
+    <tr><th scope=row>6</th><td>2740</td><td>1190</td><td>13560</td><td>25840</td></tr>
+</tbody>
+</table><div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">precios</span> <span class="o">=</span> <span class="nf">ts</span><span class="p">(</span><span class="n">precios</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">dim</span><span class="p">(</span><span class="n">precios</span><span class="p">)</span>
+</pre></div>
+</div>
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>500</li><li>4</li></ol><p>Se cargaron cuatro acciones y 500 precios por acción.</p>
+</div>
+<div class="section" id="nombres-de-las-acciones">
+<h2>Nombres de las acciones.<a class="headerlink" href="#nombres-de-las-acciones" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">nombres</span> <span class="o">=</span> <span class="nf">colnames</span><span class="p">(</span><span class="n">precios</span><span class="p">)</span>
+<span class="n">nombres</span>
+</pre></div>
+</div>
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>'ECO'</li><li>'PFAVAL'</li><li>'ISA'</li><li>'NUTRESA'</li></ol></div>
+<div class="section" id="numero-de-acciones">
+<h2>Número de acciones.<a class="headerlink" href="#numero-de-acciones" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">acciones</span> <span class="o">=</span> <span class="nf">ncol</span><span class="p">(</span><span class="n">precios</span><span class="p">)</span>
+<span class="n">acciones</span>
+</pre></div>
+</div>
+4</div>
+<div class="section" id="matriz-de-rendimientos">
+<h2>Matriz de rendimientos.<a class="headerlink" href="#matriz-de-rendimientos" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight">
+\[Rendimiento_t=log\frac{Precio_t}{Precio_{t-1}}\]</div>
+<div class="math notranslate nohighlight">
+\[log\frac{Precio_t}{Precio_{t-1}}=log(Precio_t)-log(Precio_{t-1})\]</div>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">rendimientos</span> <span class="o">=</span> <span class="nf">diff</span><span class="p">(</span><span class="nf">log</span><span class="p">(</span><span class="n">precios</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">dim</span><span class="p">(</span><span class="n">rendimientos</span><span class="p">)</span>
+</pre></div>
+</div>
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>499</li><li>4</li></ol><p>Hay 499 rendimientos por acción.</p>
+</div>
+<div class="section" id="s-0-precio-actual-de-cada-accion">
+<h2><span class="math notranslate nohighlight">\(S_0:\)</span>Precio actual de cada acción.<a class="headerlink" href="#s-0-precio-actual-de-cada-accion" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="nf">tail</span><span class="p">(</span><span class="n">precios</span><span class="p">,</span><span class="m">1</span><span class="p">)</span>
+<span class="n">s</span> <span class="o">=</span> <span class="nf">as.numeric</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="n">s</span>
+</pre></div>
+</div>
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>2220</li><li>955</li><li>18000</li><li>22500</li></ol><p>El precio de ECO es de 2.220 COP, de PFAVAL 955 COP, ISA de 18.000 COP y
+NUTRESA de 22.500 COP.</p>
+</div>
+<div class="section" id="numero-de-acciones-del-portafolio-de-inversion">
+<h2>Número de acciones del portafolio de inversión.<a class="headerlink" href="#numero-de-acciones-del-portafolio-de-inversion" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">numero_acciones</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">180000</span><span class="p">,</span><span class="m">5000</span><span class="p">,</span><span class="m">12000</span><span class="p">,</span><span class="m">9000</span><span class="p">)</span>
+<span class="n">numero_acciones</span>
+</pre></div>
+</div>
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>180000</li><li>5000</li><li>12000</li><li>9000</li></ol></div>
+<div class="section" id="valor-de-mercado-de-cada-accion">
+<h2>Valor de mercado de cada acción.<a class="headerlink" href="#valor-de-mercado-de-cada-accion" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">valor_mercado_acciones</span> <span class="o">=</span> <span class="n">numero_acciones</span><span class="o">*</span><span class="n">s</span>
+<span class="n">valor_mercado_acciones</span>
+</pre></div>
+</div>
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>399600000</li><li>4775000</li><li>2.16e+08</li><li>202500000</li></ol><p><strong>ECO:</strong> $ 399.600.000.</p>
+<p><strong>PFAVAL:</strong> $ 4.775.000.</p>
+<p><strong>ISA:</strong> $ 216.000.000.</p>
+<p><strong>NUTRESA:</strong> $ 202.500.000.</p>
+</div>
+<div class="section" id="valor-de-mercado-del-portafolio-de-inversion">
+<h2>Valor de mercado del portafolio de inversión.<a class="headerlink" href="#valor-de-mercado-del-portafolio-de-inversion" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">valor_portafolio</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">valor_mercado_acciones</span><span class="p">)</span>
+<span class="n">valor_portafolio</span>
+</pre></div>
+</div>
+822875000<p>El portafolio de inversión está valorado en $ 822.875.000.</p>
+</div>
+<div class="section" id="proporciones-de-inversion">
+<h2>Proporciones de inversión.<a class="headerlink" href="#proporciones-de-inversion" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">proporciones</span> <span class="o">=</span> <span class="n">valor_mercado_acciones</span><span class="o">/</span><span class="n">valor_portafolio</span>
+<span class="n">proporciones</span>
+</pre></div>
+</div>
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>0.485614461491721</li><li>0.00580282545951694</li><li>0.262494303509038</li><li>0.246088409539724</li></ol><p><strong>ECO:</strong> 48,56%.</p>
+<p><strong>PFAVAL:</strong> 0,580%.</p>
+<p><strong>ISA:</strong> 26,25%.</p>
+<p><strong>NUTRESA:</strong> 24,61%.</p>
+<div class="math notranslate nohighlight">
+\[\sum_{i=1}^nw_i=1\]</div>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">sum</span><span class="p">(</span><span class="n">proporciones</span><span class="p">)</span>
+</pre></div>
+</div>
+1</div>
+<div class="section" id="mu-rendimiento-esperado-de-cada-accion">
+<h2><span class="math notranslate nohighlight">\(\mu:\)</span> Rendimiento esperado de cada acción.<a class="headerlink" href="#mu-rendimiento-esperado-de-cada-accion" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">rendimientos_esperados</span> <span class="o">=</span> <span class="nf">apply</span><span class="p">(</span><span class="n">rendimientos</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="n">mean</span><span class="p">)</span>
+<span class="n">rendimientos_esperados</span>
+</pre></div>
+</div>
+<style>
+.dl-inline {width: auto; margin:0; padding: 0}
+.dl-inline>dt, .dl-inline>dd {float: none; width: auto; display: inline-block}
+.dl-inline>dt::after {content: ":\0020"; padding-right: .5ex}
+.dl-inline>dt:not(:first-of-type) {padding-left: .5ex}
+</style><dl class=dl-inline><dt>ECO</dt><dd>-0.000447181465559539</dd><dt>PFAVAL</dt><dd>-0.000398326704447035</dd><dt>ISA</dt><dd>0.000639854532799824</dd><dt>NUTRESA</dt><dd>-0.000268043266851791</dd></dl><p><strong>ECO:</strong> -0,0447% diario.</p>
+<p><strong>PFAVAL:</strong> -0,0398% diario.</p>
+<p><strong>ISA:</strong> 0,0640% diario.</p>
+<p><strong>NUTRESA:</strong> -0,0268% diario.</p>
+</div>
+<div class="section" id="sigma-volatilidad-de-cada-accion">
+<h2><span class="math notranslate nohighlight">\(\sigma:\)</span>Volatilidad de cada acción.<a class="headerlink" href="#sigma-volatilidad-de-cada-accion" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">volatilidades</span> <span class="o">=</span> <span class="nf">apply</span><span class="p">(</span><span class="n">rendimientos</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="n">sd</span><span class="p">)</span>
+<span class="n">volatilidades</span>
+</pre></div>
+</div>
+<style>
+.dl-inline {width: auto; margin:0; padding: 0}
+.dl-inline>dt, .dl-inline>dd {float: none; width: auto; display: inline-block}
+.dl-inline>dt::after {content: ":\0020"; padding-right: .5ex}
+.dl-inline>dt:not(:first-of-type) {padding-left: .5ex}
+</style><dl class=dl-inline><dt>ECO</dt><dd>0.0319324424190137</dd><dt>PFAVAL</dt><dd>0.0285577211893029</dd><dt>ISA</dt><dd>0.0237292026947701</dd><dt>NUTRESA</dt><dd>0.0140104740592151</dd></dl><p><strong>ECO:</strong> 3,193% diaria.</p>
+<p><strong>PFAVAL:</strong> 2,856% diaria.</p>
+<p><strong>ISA:</strong> 2,373% diaria.</p>
+<p><strong>NUTRESA:</strong> 1,401% diaria.</p>
+</div>
+<div class="section" id="matriz-varianzas-covarianzas">
+<h2>Matriz varianzas-covarianzas.<a class="headerlink" href="#matriz-varianzas-covarianzas" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">covarianzas</span> <span class="o">=</span> <span class="nf">cov</span><span class="p">(</span><span class="n">rendimientos</span><span class="p">)</span>
+<span class="n">covarianzas</span>
+</pre></div>
+</div>
+<table>
+<caption>A matrix: 4 × 4 of type dbl</caption>
+<thead>
+    <tr><th></th><th scope=col>ECO</th><th scope=col>PFAVAL</th><th scope=col>ISA</th><th scope=col>NUTRESA</th></tr>
+</thead>
+<tbody>
+    <tr><th scope=row>ECO</th><td>0.0010196809</td><td>0.0005939468</td><td>0.0001160327</td><td>0.0001493216</td></tr>
+    <tr><th scope=row>PFAVAL</th><td>0.0005939468</td><td>0.0008155434</td><td>0.0001564360</td><td>0.0001322689</td></tr>
+    <tr><th scope=row>ISA</th><td>0.0001160327</td><td>0.0001564360</td><td>0.0005630751</td><td>0.0001519996</td></tr>
+    <tr><th scope=row>NUTRESA</th><td>0.0001493216</td><td>0.0001322689</td><td>0.0001519996</td><td>0.0001962934</td></tr>
+</tbody>
+</table></div>
+<div class="section" id="coeficientes-de-correlacion">
+<h2>Coeficientes de correlación.<a class="headerlink" href="#coeficientes-de-correlacion" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">correlacion</span> <span class="o">=</span> <span class="nf">cor</span><span class="p">(</span><span class="n">rendimientos</span><span class="p">)</span>
+<span class="n">correlacion</span>
+</pre></div>
+</div>
+<table>
+<caption>A matrix: 4 × 4 of type dbl</caption>
+<thead>
+    <tr><th></th><th scope=col>ECO</th><th scope=col>PFAVAL</th><th scope=col>ISA</th><th scope=col>NUTRESA</th></tr>
+</thead>
+<tbody>
+    <tr><th scope=row>ECO</th><td>1.0000000</td><td>0.6513161</td><td>0.1531317</td><td>0.3337626</td></tr>
+    <tr><th scope=row>PFAVAL</th><td>0.6513161</td><td>1.0000000</td><td>0.2308501</td><td>0.3305836</td></tr>
+    <tr><th scope=row>ISA</th><td>0.1531317</td><td>0.2308501</td><td>1.0000000</td><td>0.4572004</td></tr>
+    <tr><th scope=row>NUTRESA</th><td>0.3337626</td><td>0.3305836</td><td>0.4572004</td><td>1.0000000</td></tr>
+</tbody>
+</table></div>
+<div class="section" id="rendimientos-del-portafolio-de-inversion">
+<h2>Rendimientos del portafolio de inversión.<a class="headerlink" href="#rendimientos-del-portafolio-de-inversion" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight">
+\[R_P=\sum_{i=1}^nw_iR_i\]</div>
+<hr class="docutils" />
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">rendimientos_portafolio</span> <span class="o">=</span> <span class="nf">vector</span><span class="p">()</span>
+
+<span class="nf">for</span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="nf">nrow</span><span class="p">(</span><span class="n">rendimientos</span><span class="p">)){</span>
+
+  <span class="n">rendimientos_portafolio</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">rendimientos</span><span class="p">[</span><span class="n">i</span><span class="p">,]</span><span class="o">*</span><span class="n">proporciones</span><span class="p">)</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="rendimiento-esperado-del-portafolio-de-inversion">
+<h2>Rendimiento esperado del portafolio de inversión.<a class="headerlink" href="#rendimiento-esperado-del-portafolio-de-inversion" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">rendimiento_esperado_portafolio</span> <span class="o">=</span> <span class="nf">mean</span><span class="p">(</span><span class="n">rendimientos_portafolio</span><span class="p">)</span>
+<span class="n">rendimiento_esperado_portafolio</span>
+</pre></div>
+</div>
+-0.000117473378221543<p>Rendimientos esperado del portafolio de inversión diario de -0,012%.</p>
+</div>
+<div class="section" id="volatilidad-del-portafolio-de-inversion">
+<h2>Volatilidad del portafolio de inversión.<a class="headerlink" href="#volatilidad-del-portafolio-de-inversion" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">volatilidad_portafolio</span> <span class="o">=</span> <span class="nf">sd</span><span class="p">(</span><span class="n">rendimientos_portafolio</span><span class="p">)</span>
+<span class="n">volatilidad_portafolio</span>
+</pre></div>
+</div>
+0.0195008972788864<p>Volatilidad del portafolio de inversión diaria de 1,950%.</p>
+</div>
+<div class="section" id="volatilidad-del-portafolio-a-partir-de-la-matriz-de-varianzas-covarianzas">
+<h2>Volatilidad del portafolio a partir de la matriz de varianzas-covarianzas.<a class="headerlink" href="#volatilidad-del-portafolio-a-partir-de-la-matriz-de-varianzas-covarianzas" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">volatilidad_portafolio</span> <span class="o">=</span> <span class="nf">sqrt</span><span class="p">(</span><span class="nf">sum</span><span class="p">(</span><span class="nf">t</span><span class="p">(</span><span class="n">proporciones</span><span class="p">)</span><span class="o">%*%</span><span class="n">covarianzas</span><span class="o">*</span><span class="n">proporciones</span><span class="p">))</span>
+<span class="n">volatilidad_portafolio</span>
+</pre></div>
+</div>
+0.0195008972788864<p>Volatilidad del portafolio de inversión diaria de 1,950%.</p>
+</div>
+<div class="section" id="var-sin-promedios">
+<h2>VaR (sin promedios)<a class="headerlink" href="#var-sin-promedios" title="Permalink to this headline">¶</a></h2>
+<p>Nivel de confianza, <code class="docutils literal notranslate"><span class="pre">NC</span></code>, del 99% y horizonte de tiempo, <code class="docutils literal notranslate"><span class="pre">t</span></code>, de 10
+días. Estos días representan dos semanas.</p>
+<p>La frecuencia de los datos es diaria, por tanto <code class="docutils literal notranslate"><span class="pre">t</span> <span class="pre">=</span> <span class="pre">10</span></code>.</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">NC</span> <span class="o">=</span> <span class="m">0.99</span>
+<span class="n">t</span> <span class="o">=</span> <span class="m">10</span>
+</pre></div>
+</div>
+<div class="math notranslate nohighlight">
+\[\alpha=0,01\]</div>
+<hr class="docutils" />
+<div class="figure align-default" id="id11">
+<img alt="1" src="../../../_images/VaR1.jpg" />
+<p class="caption"><span class="caption-text">1</span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
+</div>
+<p>En la distribución normal con <span class="math notranslate nohighlight">\(\mu=0\)</span>, se cumple que:</p>
+<div class="math notranslate nohighlight">
+\[|Z_{\alpha=0,01}|=Z_{NC=0,99}\]</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="var-individuales-sin-promedios">
+<h2>VaR individuales (sin promedios) [%].<a class="headerlink" href="#var-individuales-sin-promedios" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight">
+\[VaR=Z_{\alpha}\sigma\sqrt{(t)}\]</div>
+<hr class="docutils" />
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">VaR_individuales_sin_promedios_porcentaje</span> <span class="o">=</span> <span class="n">volatilidades</span><span class="o">*</span><span class="nf">qnorm</span><span class="p">(</span><span class="n">NC</span><span class="p">)</span><span class="o">*</span><span class="nf">sqrt</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="n">VaR_individuales_sin_promedios_porcentaje</span>
+</pre></div>
+</div>
+<style>
+.dl-inline {width: auto; margin:0; padding: 0}
+.dl-inline>dt, .dl-inline>dd {float: none; width: auto; display: inline-block}
+.dl-inline>dt::after {content: ":\0020"; padding-right: .5ex}
+.dl-inline>dt:not(:first-of-type) {padding-left: .5ex}
+</style><dl class=dl-inline><dt>ECO</dt><dd>0.234912861922595</dd><dt>PFAVAL</dt><dd>0.210086529759846</dd><dt>ISA</dt><dd>0.17456525382633</dd><dt>NUTRESA</dt><dd>0.103068863789222</dd></dl><ul class="simple">
+<li><p>Con un nivel de confianza del 99%, el VaR diario de ECO es de 23,49%.</p></li>
+<li><p>Con una probabilidad del 99%, se espera perder 21,01% o menos cada
+día con la acción de PFAVAL.</p></li>
+<li><p>Con una probabilidad del 1%, se espera perder más de 17,46% cada día
+con la acción de ISA.</p></li>
+<li><p>De cada 100 días, se espera que en un (1) día se pierda más de 10,31%
+con la acción de NUTRESA y 99 días perder 10,31% o menos.</p></li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h2>VaR individuales (sin promedios) [$].<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight">
+\[VaR=Z_{\alpha}\sigma V_0\sqrt{(t)}\]</div>
+<hr class="docutils" />
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">VaR_individuales_sin_promedios</span> <span class="o">=</span> <span class="n">valor_mercado_acciones</span><span class="o">*</span><span class="n">volatilidades</span><span class="o">*</span><span class="nf">qnorm</span><span class="p">(</span><span class="n">NC</span><span class="p">)</span><span class="o">*</span><span class="nf">sqrt</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="n">VaR_individuales_sin_promedios</span>
+</pre></div>
+</div>
+<style>
+.dl-inline {width: auto; margin:0; padding: 0}
+.dl-inline>dt, .dl-inline>dd {float: none; width: auto; display: inline-block}
+.dl-inline>dt::after {content: ":\0020"; padding-right: .5ex}
+.dl-inline>dt:not(:first-of-type) {padding-left: .5ex}
+</style><dl class=dl-inline><dt>ECO</dt><dd>93871179.624269</dd><dt>PFAVAL</dt><dd>1003163.17960326</dd><dt>ISA</dt><dd>37706094.8264872</dd><dt>NUTRESA</dt><dd>20871444.9173174</dd></dl></div>
+<div class="section" id="conclusion">
+<h2>Conclusión:<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Con un nivel de confianza del 99%, el VaR diario de ECO es de
+93.871.179,62 COP.</p></li>
+<li><p>Con una probabilidad del 99%, se espera perder 1.003.163,18 COP o
+menos cada día con la acción de PFAVAL.</p></li>
+<li><p>Con una probabilidad del 1%, se espera perder más de 37.706.094,83
+COP cada día con la acción de ISA.</p></li>
+<li><p>De cada 100 días, se espera que en un (1) día se pierda más de
+20.871.444,92 COP con la acción de NUTRESA y 99 días perder
+20.871.444,92 COP o menos.</p></li>
+</ul>
+<p>El vector <code class="docutils literal notranslate"><span class="pre">VaR_individuales_sin_promedios</span></code> está vertical.</p>
+</div>
+<div class="section" id="var-portafolio-de-inversion-sin-promedios">
+<h2>VaR portafolio de inversión (sin promedios) [$].<a class="headerlink" href="#var-portafolio-de-inversion-sin-promedios" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight">
+\[VaR_P=\sqrt{\sum_{i=1}^nVaR_i^2+2\sum_{i&lt;j}VaR_iVaR_j\rho_{i,j}}\]</div>
+<hr class="docutils" />
+<div class="figure align-default" id="id12">
+<img alt="2" src="../../../_images/VaR2.jpg" />
+<p class="caption"><span class="caption-text">2</span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
+</div>
+<div class="math notranslate nohighlight">
+\[VaR_P=\sqrt{[VaR]C[VaR]^T}\]</div>
+<hr class="docutils" />
+<p>Se transpone el vector <code class="docutils literal notranslate"><span class="pre">VaR_individuales_sin_promedios</span></code> al principio
+de la ecuación porque está vertical y debe ser primero horizontal. Al
+final de la ecuación debe estar vertical.</p>
+<p>Para transponer se usa la función <code class="docutils literal notranslate"><span class="pre">t</span></code>.</p>
+<p><span class="math notranslate nohighlight">\(C:\)</span> Matríz de correlaciones.</p>
+<p><span class="math notranslate nohighlight">\(VaR:\)</span> vector fila de los VaR individuales.</p>
+<p><span class="math notranslate nohighlight">\(VaR^T:\)</span> vector de los VaR individuales transpuesto.</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">VaR_portafolio_sin_promedios</span> <span class="o">=</span> <span class="nf">sqrt</span><span class="p">(</span><span class="nf">sum</span><span class="p">(</span><span class="nf">t</span><span class="p">(</span><span class="n">VaR_individuales_sin_promedios</span><span class="p">)</span><span class="o">%*%</span><span class="n">correlacion</span><span class="o">*</span><span class="n">VaR_individuales_sin_promedios</span><span class="p">))</span>
+<span class="n">VaR_portafolio_sin_promedios</span>
+</pre></div>
+</div>
+118049219.741064</div>
+<div class="section" id="id2">
+<h2>Conclusión:<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Con un nivel de confianza del 99%, el VaR diario del portafolio de
+inversión es de 118.049.219,74 COP.</p></li>
+<li><p>Con una probabilidad del 99%, se espera perder 118.049.219,74 COP o
+menos cada día en el portafolio de inversión.</p></li>
+<li><p>Con una probabilidad del 1%, se espera perder más de 118.049.219,74
+COP cada día en el portafolio de inversión.</p></li>
+<li><p>De cada 100 días, se espera que en un (1) día se pierda más de
+20.871.444,92 COP con la acción de NUTRESA y 99 días perder
+20.871.444,92 COP o menos.</p></li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h2>VaR portafolio de inversión (sin promedios) [%].<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">VaR_portafolio_sin_promedios_porcentaje</span> <span class="o">=</span> <span class="n">VaR_portafolio_sin_promedios</span><span class="o">/</span><span class="n">valor_portafolio</span>
+<span class="n">VaR_portafolio_sin_promedios_porcentaje</span>
+</pre></div>
+</div>
+0.143459480165352</div>
+<div class="section" id="id4">
+<h2>Conclusión:<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Con un nivel de confianza del 99%, el VaR diario del portafolio de
+inversión es de 14,35%.</p></li>
+<li><p>Con una probabilidad del 99%, se espera perder 14,35% o menos cada
+día en el portafolio de inversión.</p></li>
+<li><p>Con una probabilidad del 1%, se espera perder más de 14,35% cada día
+en el portafolio de inversión.</p></li>
+<li><p>De cada 100 días, se espera que en un (1) día se pierda más de
+20.871.444,92 COP con la acción de NUTRESA y 99 días perder
+20.871.444,92 COP o menos.</p></li>
+</ul>
+</div>
+<div class="section" id="sumatoria-de-los-var">
+<h2>Sumatoria de los VaR.<a class="headerlink" href="#sumatoria-de-los-var" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">suma_VaR_individuales_sin_promedios</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">VaR_individuales_sin_promedios</span><span class="p">)</span>
+<span class="n">suma_VaR_individuales_sin_promedios</span>
+</pre></div>
+</div>
+153451882.547677<p>Suponiendo que las acciones no conforman un portafolio de inversión, la
+sumatoria de los VaR individuales es de 153.451.882,54 COP; sin embargo,
+como las acciones están en un portafolio de inversión, el VaR del
+portafolio de inversión con un nivel de confianza del 99% es de
+118.049.219,74 COP.</p>
+<p>La diferencia entre los VaR individuales sumados y el VaR resultante del
+portafolio de inversión se conoce como Beneficio por diversificación
+(BD).</p>
+</div>
+<div class="section" id="beneficio-por-diversificacion-bd">
+<h2>Beneficio por diversificación (BD)<a class="headerlink" href="#beneficio-por-diversificacion-bd" title="Permalink to this headline">¶</a></h2>
+<p>El VaR global es menor o igual que la suma de los VaR individuales.</p>
+<div class="math notranslate nohighlight">
+\[VaR \leq \sum_{i=1}^nVaR_i\]</div>
+<hr class="docutils" />
+<div class="math notranslate nohighlight">
+\[BD = \sum_{i=1}^n VaR_i - VaR_P\]</div>
+<hr class="docutils" />
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">BD_sin_promedios</span> <span class="o">=</span> <span class="n">suma_VaR_individuales_sin_promedios</span> <span class="o">-</span> <span class="n">VaR_portafolio_sin_promedios</span>
+<span class="n">BD_sin_promedios</span>
+</pre></div>
+</div>
+35402662.8066126<p>El Beneficio por diversificación (BD) indica cuánto es el beneficio por
+diversificar el portafolio de inversión con las acciones.</p>
+<p>Con un nivel de confianza del 99%, el BD diario es de 35.402.662,81 COP.
+Cada día dejaría de perder 35.402.662,81 COP en el portafolio de
+inversión.</p>
+</div>
+<div class="section" id="var-con-promedios">
+<h2>VaR (con promedios)<a class="headerlink" href="#var-con-promedios" title="Permalink to this headline">¶</a></h2>
+<p>En la distribución normal con <span class="math notranslate nohighlight">\(\mu\neq0\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[|Z_{\alpha=0.01}|\neq Z_{NC=0.99}\]</div>
+<hr class="docutils" />
+<p>Nivel de confianza, <code class="docutils literal notranslate"><span class="pre">NC</span></code>, del 99% y horizonte de tiempo, <code class="docutils literal notranslate"><span class="pre">t</span></code>, de 10
+días. Estos días representan dos semanas.</p>
+<p>La frecuencia de los datos es diaria, por tanto <code class="docutils literal notranslate"><span class="pre">t</span> <span class="pre">=</span> <span class="pre">10</span></code>.</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">NC</span> <span class="o">=</span> <span class="m">0.99</span>
+<span class="n">t</span> <span class="o">=</span> <span class="m">10</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="var-individuales-con-promedios">
+<h2>VaR individuales (con promedios) [%].<a class="headerlink" href="#var-individuales-con-promedios" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight">
+\[VaR = |\mu + Z_{\alpha} \sigma|\]</div>
+<hr class="docutils" />
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">VaR_individuales_con_promedios_porcentaje</span> <span class="o">=</span> <span class="nf">abs</span><span class="p">(</span><span class="n">rendimientos_esperados</span><span class="o">*</span><span class="n">t</span><span class="o">+</span><span class="nf">qnorm</span><span class="p">(</span><span class="m">1</span><span class="o">-</span><span class="n">NC</span><span class="p">,</span> <span class="n">sd</span> <span class="o">=</span> <span class="n">volatilidades</span><span class="o">*</span><span class="nf">sqrt</span><span class="p">(</span><span class="n">t</span><span class="p">)))</span>
+<span class="n">VaR_individuales_con_promedios_porcentaje</span>
+</pre></div>
+</div>
+<style>
+.dl-inline {width: auto; margin:0; padding: 0}
+.dl-inline>dt, .dl-inline>dd {float: none; width: auto; display: inline-block}
+.dl-inline>dt::after {content: ":\0020"; padding-right: .5ex}
+.dl-inline>dt:not(:first-of-type) {padding-left: .5ex}
+</style><dl class=dl-inline><dt>ECO</dt><dd>0.23938467657819</dd><dt>PFAVAL</dt><dd>0.214069796804316</dd><dt>ISA</dt><dd>0.168166708498332</dd><dt>NUTRESA</dt><dd>0.10574929645774</dd></dl></div>
+<div class="section" id="id5">
+<h2>VaR individuales (con promedios) [$].<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight">
+\[VaR = |\mu + Z_{\alpha} \sigma V_0|\]</div>
+<hr class="docutils" />
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">VaR_individuales_con_promedios</span> <span class="o">=</span> <span class="n">valor_mercado_acciones</span><span class="o">*</span><span class="nf">abs</span><span class="p">(</span><span class="n">rendimientos_esperados</span><span class="o">*</span><span class="n">t</span><span class="o">+</span><span class="nf">qnorm</span><span class="p">(</span><span class="m">1</span><span class="o">-</span><span class="n">NC</span><span class="p">,</span> <span class="n">sd</span> <span class="o">=</span> <span class="n">volatilidades</span><span class="o">*</span><span class="nf">sqrt</span><span class="p">(</span><span class="n">t</span><span class="p">)))</span>
+<span class="n">VaR_individuales_con_promedios</span>
+</pre></div>
+</div>
+<style>
+.dl-inline {width: auto; margin:0; padding: 0}
+.dl-inline>dt, .dl-inline>dd {float: none; width: auto; display: inline-block}
+.dl-inline>dt::after {content: ":\0020"; padding-right: .5ex}
+.dl-inline>dt:not(:first-of-type) {padding-left: .5ex}
+</style><dl class=dl-inline><dt>ECO</dt><dd>95658116.7606449</dd><dt>PFAVAL</dt><dd>1022183.27974061</dd><dt>ISA</dt><dd>36324009.0356396</dd><dt>NUTRESA</dt><dd>21414232.5326923</dd></dl></div>
+<div class="section" id="var-portafolio-de-inversion-con-promedios">
+<h2>VaR portafolio de inversión (con promedios) [$].<a class="headerlink" href="#var-portafolio-de-inversion-con-promedios" title="Permalink to this headline">¶</a></h2>
+<p>Se transpone el vector <code class="docutils literal notranslate"><span class="pre">VaR_individuales_con_promedios</span></code> al principio
+de la ecuación porque está vertical y debe ser primero horizontal. Al
+final de la ecuación debe estar vertical.</p>
+<p>Para transponer se usa la función <code class="docutils literal notranslate"><span class="pre">t</span></code>.</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">VaR_portafolio_con_promedios</span> <span class="o">=</span> <span class="nf">sqrt</span><span class="p">(</span><span class="nf">sum</span><span class="p">(</span><span class="nf">t</span><span class="p">(</span><span class="n">VaR_individuales_con_promedios</span><span class="p">)</span><span class="o">%*%</span><span class="n">correlacion</span><span class="o">*</span><span class="n">VaR_individuales_con_promedios</span><span class="p">))</span>
+<span class="n">VaR_portafolio_con_promedios</span>
+</pre></div>
+</div>
+119295160.239381</div>
+<div class="section" id="id6">
+<h2>VaR portafolio de inversión (con promedios) [%].<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">VaR_portafolio_con_promedios_porcentaje</span> <span class="o">=</span> <span class="n">VaR_portafolio_con_promedios</span><span class="o">/</span><span class="n">valor_portafolio</span>
+<span class="n">VaR_portafolio_con_promedios_porcentaje</span>
+</pre></div>
+</div>
+0.144973611106646</div>
+<div class="section" id="id7">
+<h2>Sumatoria de los VaR.<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">suma_VaR_individuales_con_promedios</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">VaR_individuales_con_promedios</span><span class="p">)</span>
+<span class="n">suma_VaR_individuales_con_promedios</span>
+</pre></div>
+</div>
+154418541.608717</div>
+<div class="section" id="id8">
+<h2>Beneficio por diversificación (BD)<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">BD_con_promedios</span> <span class="o">=</span> <span class="n">suma_VaR_individuales_con_promedios</span> <span class="o">-</span> <span class="n">VaR_portafolio_con_promedios</span>
+<span class="n">BD_con_promedios</span>
+</pre></div>
+</div>
+35123381.3693362</div>
+<div class="section" id="otra-forma-de-calcular-el-var-sin-promedios">
+<h2>Otra forma de calcular el VaR (sin promedios)<a class="headerlink" href="#otra-forma-de-calcular-el-var-sin-promedios" title="Permalink to this headline">¶</a></h2>
+<p>Esta forma es a partir de las proporciones de inversión,
+<code class="docutils literal notranslate"><span class="pre">proporciones</span></code>, y la matriz varianzas-covarianzas, <code class="docutils literal notranslate"><span class="pre">covarianzas</span></code>.</p>
+<p>El vector <code class="docutils literal notranslate"><span class="pre">proporciones</span></code> está vertical, se debe transponer al
+principio de la ecuación.</p>
+</div>
+<div class="section" id="id9">
+<h2>Volatilidad del portafolio a partir de la matriz de varianzas-covarianzas<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">vol_portafolio</span> <span class="o">=</span> <span class="nf">sqrt</span><span class="p">(</span><span class="nf">sum</span><span class="p">(</span><span class="nf">t</span><span class="p">(</span><span class="n">proporciones</span><span class="p">)</span><span class="o">%*%</span><span class="n">covarianzas</span><span class="o">*</span><span class="n">proporciones</span><span class="p">))</span>
+<span class="n">vol_portafolio</span>
+</pre></div>
+</div>
+0.0195008972788864</div>
+<div class="section" id="id10">
+<h2>VaR portafolio de inversión (sin promedios) [$].<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">VaR_portafolio_sin_promedios</span> <span class="o">=</span> <span class="n">valor_portafolio</span><span class="o">*</span><span class="n">vol_portafolio</span><span class="o">*</span><span class="nf">qnorm</span><span class="p">(</span><span class="n">NC</span><span class="p">)</span><span class="o">*</span><span class="nf">sqrt</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="n">VaR_portafolio_sin_promedios</span>
+</pre></div>
+</div>
+118049219.741064<p>Este valor es igual al calculado anteriormente a partir de los VaR
+individuales (sin promedio).</p>
+</div>
+<div class="section" id="graficos">
+<h2>Gráficos<a class="headerlink" href="#graficos" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="precios-de-las-acciones">
+<h2>Precios de las acciones.<a class="headerlink" href="#precios-de-las-acciones" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="n">precios</span><span class="p">,</span> <span class="n">col</span> <span class="o">=</span> <span class="s">&quot;darkblue&quot;</span><span class="p">,</span> <span class="n">lwd</span> <span class="o">=</span> <span class="m">2</span><span class="p">,</span> <span class="n">main</span> <span class="o">=</span> <span class="s">&quot;Precios&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../../_images/output_123_0.png"><img alt="../../../_images/output_123_0.png" src="../../../_images/output_123_0.png" style="width: 420px; height: 420px;" /></a>
+</div>
+<div class="section" id="rendimientos-de-las-acciones">
+<h2>Rendimientos de las acciones.<a class="headerlink" href="#rendimientos-de-las-acciones" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="n">rendimientos</span><span class="p">,</span> <span class="n">col</span> <span class="o">=</span> <span class="s">&quot;darkblue&quot;</span><span class="p">,</span> <span class="n">lwd</span> <span class="o">=</span> <span class="m">2</span><span class="p">,</span> <span class="n">main</span> <span class="o">=</span> <span class="s">&quot;Rendimientos&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../../_images/output_125_0.png"><img alt="../../../_images/output_125_0.png" src="../../../_images/output_125_0.png" style="width: 420px; height: 420px;" /></a>
+</div>
+<div class="section" id="histograma-distribucion-normal-y-var-sin-promedios-de-las-acciones">
+<h2>Histograma, distribución normal y VaR (sin promedios) de las acciones.<a class="headerlink" href="#histograma-distribucion-normal-y-var-sin-promedios-de-las-acciones" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">layout</span><span class="p">(</span><span class="nf">matrix</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">),</span> <span class="n">nrow</span> <span class="o">=</span> <span class="m">2</span><span class="p">,</span> <span class="n">byrow</span> <span class="o">=</span> <span class="bp">T</span><span class="p">))</span>
+<span class="c1"># layout.show(4)  correr esta línea en RStudio.</span>
+
+<span class="nf">for</span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="n">acciones</span><span class="p">){</span>
+
+  <span class="nf">hist</span><span class="p">(</span><span class="n">rendimientos</span><span class="p">[,</span><span class="n">i</span><span class="p">],</span> <span class="n">breaks</span> <span class="o">=</span> <span class="m">60</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span> <span class="s">&quot;gray&quot;</span><span class="p">,</span> <span class="n">xlab</span> <span class="o">=</span> <span class="s">&quot;Rendimientos&quot;</span><span class="p">,</span> <span class="n">ylab</span> <span class="o">=</span> <span class="s">&quot;Frecuencia&quot;</span><span class="p">,</span> <span class="n">main</span> <span class="o">=</span> <span class="n">nombres</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">freq</span> <span class="o">=</span> <span class="bp">F</span><span class="p">,</span> <span class="n">xlim</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">-0.5</span><span class="p">,</span> <span class="m">0.5</span><span class="p">))</span>
+  <span class="nf">curve</span><span class="p">(</span><span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mean</span> <span class="o">=</span> <span class="m">0</span><span class="p">,</span> <span class="n">sd</span> <span class="o">=</span> <span class="n">volatilidades</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="nf">sqrt</span><span class="p">(</span><span class="n">t</span><span class="p">)),</span> <span class="n">add</span> <span class="o">=</span> <span class="bp">T</span><span class="p">,</span> <span class="n">lwd</span> <span class="o">=</span> <span class="m">3</span><span class="p">)</span>
+  <span class="nf">abline</span><span class="p">(</span><span class="n">v</span> <span class="o">=</span> <span class="o">-</span> <span class="n">VaR_individuales_sin_promedios_porcentaje</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">col</span> <span class="o">=</span> <span class="s">&quot;darkred&quot;</span><span class="p">,</span> <span class="n">lwd</span> <span class="o">=</span> <span class="m">2</span><span class="p">)</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../../_images/output_127_0.png"><img alt="../../../_images/output_127_0.png" src="../../../_images/output_127_0.png" style="width: 420px; height: 420px;" /></a>
+</div>
+<div class="section" id="histograma-distribucion-normal-y-var-sin-promedios-del-portafolio-de-inversion">
+<h2>Histograma, distribución normal y VaR (sin promedios) del portafolio de inversión.<a class="headerlink" href="#histograma-distribucion-normal-y-var-sin-promedios-del-portafolio-de-inversion" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">hist</span><span class="p">(</span><span class="n">rendimientos_portafolio</span><span class="p">,</span> <span class="n">breaks</span> <span class="o">=</span> <span class="m">60</span><span class="p">,</span> <span class="n">col</span> <span class="o">=</span> <span class="s">&quot;gray&quot;</span><span class="p">,</span> <span class="n">xlab</span> <span class="o">=</span> <span class="s">&quot;Rendimientos&quot;</span><span class="p">,</span> <span class="n">ylab</span> <span class="o">=</span> <span class="s">&quot;Frecuencia&quot;</span><span class="p">,</span> <span class="n">main</span> <span class="o">=</span> <span class="s">&quot;Portafolio de inversión&quot;</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="bp">F</span><span class="p">,</span> <span class="n">xlim</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">-0.3</span><span class="p">,</span> <span class="m">0.3</span><span class="p">))</span>
+<span class="nf">curve</span><span class="p">(</span><span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mean</span> <span class="o">=</span> <span class="m">0</span><span class="p">,</span> <span class="n">sd</span> <span class="o">=</span> <span class="n">volatilidad_portafolio</span><span class="o">*</span><span class="nf">sqrt</span><span class="p">(</span><span class="n">t</span><span class="p">)),</span> <span class="n">add</span> <span class="o">=</span> <span class="bp">T</span><span class="p">,</span> <span class="n">lwd</span> <span class="o">=</span> <span class="m">3</span><span class="p">)</span>
+<span class="nf">abline</span><span class="p">(</span><span class="n">v</span> <span class="o">=</span> <span class="o">-</span><span class="n">VaR_portafolio_con_promedios_porcentaje</span><span class="p">,</span> <span class="n">col</span> <span class="o">=</span> <span class="s">&quot;darkgreen&quot;</span><span class="p">,</span> <span class="n">lwd</span> <span class="o">=</span> <span class="m">4</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../../_images/output_129_0.png"><img alt="../../../_images/output_129_0.png" src="../../../_images/output_129_0.png" style="width: 420px; height: 420px;" /></a>
+</div>
+<div class="section" id="comparacion-var-sin-promedios">
+<h2>Comparación VaR (sin promedios).<a class="headerlink" href="#comparacion-var-sin-promedios" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">hist</span><span class="p">(</span><span class="n">rendimientos_portafolio</span><span class="p">,</span> <span class="n">breaks</span> <span class="o">=</span> <span class="m">60</span><span class="p">,</span> <span class="n">col</span> <span class="o">=</span> <span class="s">&quot;gray&quot;</span><span class="p">,</span> <span class="n">xlab</span> <span class="o">=</span> <span class="s">&quot;Rendimientos&quot;</span><span class="p">,</span> <span class="n">ylab</span> <span class="o">=</span> <span class="s">&quot;Frecuencia&quot;</span><span class="p">,</span> <span class="n">main</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="bp">F</span><span class="p">,</span> <span class="n">xlim</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">-0.3</span><span class="p">,</span><span class="m">0.1</span><span class="p">))</span>
+<span class="nf">for</span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="n">acciones</span><span class="p">){</span>
+
+<span class="nf">abline</span><span class="p">(</span><span class="n">v</span> <span class="o">=</span> <span class="o">-</span> <span class="n">VaR_individuales_sin_promedios_porcentaje</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">col</span> <span class="o">=</span> <span class="n">i</span><span class="p">,</span> <span class="n">lwd</span> <span class="o">=</span> <span class="m">2</span><span class="p">)</span>
+
+<span class="p">}</span>
+<span class="nf">abline</span><span class="p">(</span><span class="n">v</span> <span class="o">=</span> <span class="o">-</span><span class="n">VaR_portafolio_sin_promedios_porcentaje</span><span class="p">,</span> <span class="n">col</span> <span class="o">=</span> <span class="s">&quot;darkgreen&quot;</span><span class="p">,</span> <span class="n">lwd</span> <span class="o">=</span> <span class="m">4</span><span class="p">)</span>
+<span class="nf">legend</span><span class="p">(</span><span class="s">&quot;topleft&quot;</span><span class="p">,</span> <span class="n">nombres</span><span class="p">,</span> <span class="n">lty</span> <span class="o">=</span> <span class="nf">rep</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="n">times</span> <span class="o">=</span> <span class="n">acciones</span><span class="p">),</span> <span class="n">lwd</span> <span class="o">=</span> <span class="nf">rep</span><span class="p">(</span><span class="m">2</span><span class="p">,</span> <span class="n">times</span> <span class="o">=</span> <span class="n">acciones</span><span class="p">),</span> <span class="n">col</span> <span class="o">=</span> <span class="nf">seq</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="n">acciones</span><span class="p">),</span> <span class="n">bty</span> <span class="o">=</span> <span class="s">&quot;n&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../../_images/output_131_0.png"><img alt="../../../_images/output_131_0.png" src="../../../_images/output_131_0.png" style="width: 420px; height: 420px;" /></a>
+</div>
+<div class="section" id="histograma-distribucion-normal-y-var-con-promedios-de-las-acciones">
+<h2>Histograma, distribución normal y VaR (con promedios) de las acciones.<a class="headerlink" href="#histograma-distribucion-normal-y-var-con-promedios-de-las-acciones" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">layout</span><span class="p">(</span><span class="nf">matrix</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">),</span> <span class="n">nrow</span> <span class="o">=</span> <span class="m">2</span><span class="p">,</span> <span class="n">byrow</span> <span class="o">=</span> <span class="bp">T</span><span class="p">))</span>
+<span class="c1"># layout.show(4)  correr esta línea en RStudio.</span>
+
+<span class="nf">for</span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="n">acciones</span><span class="p">){</span>
+
+  <span class="nf">hist</span><span class="p">(</span><span class="n">rendimientos</span><span class="p">[,</span><span class="n">i</span><span class="p">],</span> <span class="n">breaks</span> <span class="o">=</span> <span class="m">60</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span> <span class="s">&quot;gray&quot;</span><span class="p">,</span> <span class="n">xlab</span> <span class="o">=</span> <span class="s">&quot;Rendimientos&quot;</span><span class="p">,</span> <span class="n">ylab</span> <span class="o">=</span> <span class="s">&quot;Frecuencia&quot;</span><span class="p">,</span> <span class="n">main</span> <span class="o">=</span> <span class="n">nombres</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">freq</span> <span class="o">=</span> <span class="bp">F</span><span class="p">,</span> <span class="n">xlim</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">-0.5</span><span class="p">,</span> <span class="m">0.5</span><span class="p">))</span>
+  <span class="nf">curve</span><span class="p">(</span><span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mean</span> <span class="o">=</span> <span class="n">rendimientos_esperados</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">t</span><span class="p">,</span> <span class="n">sd</span> <span class="o">=</span> <span class="n">volatilidades</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="nf">sqrt</span><span class="p">(</span><span class="n">t</span><span class="p">)),</span> <span class="n">add</span> <span class="o">=</span> <span class="bp">T</span><span class="p">,</span> <span class="n">lwd</span> <span class="o">=</span> <span class="m">3</span><span class="p">)</span>
+  <span class="nf">abline</span><span class="p">(</span><span class="n">v</span> <span class="o">=</span> <span class="o">-</span> <span class="n">VaR_individuales_con_promedios_porcentaje</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">col</span> <span class="o">=</span> <span class="s">&quot;darkred&quot;</span><span class="p">,</span> <span class="n">lwd</span> <span class="o">=</span> <span class="m">2</span><span class="p">)</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../../_images/output_133_0.png"><img alt="../../../_images/output_133_0.png" src="../../../_images/output_133_0.png" style="width: 420px; height: 420px;" /></a>
+</div>
+<div class="section" id="histograma-distribucion-normal-y-var-con-promedios-del-portafolio-de-inversion">
+<h2>Histograma, distribución normal y VaR (con promedios) del portafolio de inversión.<a class="headerlink" href="#histograma-distribucion-normal-y-var-con-promedios-del-portafolio-de-inversion" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">hist</span><span class="p">(</span><span class="n">rendimientos_portafolio</span><span class="p">,</span> <span class="n">breaks</span> <span class="o">=</span> <span class="m">60</span><span class="p">,</span> <span class="n">col</span> <span class="o">=</span> <span class="s">&quot;gray&quot;</span><span class="p">,</span> <span class="n">xlab</span> <span class="o">=</span> <span class="s">&quot;Rendimientos&quot;</span><span class="p">,</span> <span class="n">ylab</span> <span class="o">=</span> <span class="s">&quot;Frecuencia&quot;</span><span class="p">,</span> <span class="n">main</span> <span class="o">=</span> <span class="s">&quot;Portafolio de inversión&quot;</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="bp">F</span><span class="p">,</span> <span class="n">xlim</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">-0.5</span><span class="p">,</span> <span class="m">0.5</span><span class="p">))</span>
+<span class="nf">curve</span><span class="p">(</span><span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mean</span> <span class="o">=</span> <span class="n">rendimiento_esperado_portafolio</span><span class="o">*</span><span class="n">t</span><span class="p">,</span> <span class="n">sd</span> <span class="o">=</span> <span class="n">volatilidad_portafolio</span><span class="o">*</span><span class="nf">sqrt</span><span class="p">(</span><span class="n">t</span><span class="p">)),</span> <span class="n">add</span> <span class="o">=</span> <span class="bp">T</span><span class="p">,</span> <span class="n">lwd</span> <span class="o">=</span> <span class="m">3</span><span class="p">)</span>
+<span class="nf">abline</span><span class="p">(</span><span class="n">v</span> <span class="o">=</span> <span class="o">-</span><span class="n">VaR_portafolio_con_promedios_porcentaje</span><span class="p">,</span> <span class="n">col</span> <span class="o">=</span> <span class="s">&quot;darkgreen&quot;</span><span class="p">,</span> <span class="n">lwd</span> <span class="o">=</span> <span class="m">4</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../../_images/output_135_0.png"><img alt="../../../_images/output_135_0.png" src="../../../_images/output_135_0.png" style="width: 420px; height: 420px;" /></a>
+</div>
+<div class="section" id="comparacion-var-con-promedios">
+<h2>Comparación VaR (con promedios).<a class="headerlink" href="#comparacion-var-con-promedios" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">hist</span><span class="p">(</span><span class="n">rendimientos_portafolio</span><span class="p">,</span> <span class="n">breaks</span> <span class="o">=</span> <span class="m">60</span><span class="p">,</span> <span class="n">col</span> <span class="o">=</span> <span class="s">&quot;gray&quot;</span><span class="p">,</span> <span class="n">xlab</span> <span class="o">=</span> <span class="s">&quot;Rendimientos&quot;</span><span class="p">,</span> <span class="n">ylab</span> <span class="o">=</span> <span class="s">&quot;Frecuencia&quot;</span><span class="p">,</span> <span class="n">main</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="bp">F</span><span class="p">,</span> <span class="n">xlim</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">-0.3</span><span class="p">,</span><span class="m">0.1</span><span class="p">))</span>
+<span class="nf">for</span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="n">acciones</span><span class="p">){</span>
+
+<span class="nf">abline</span><span class="p">(</span><span class="n">v</span> <span class="o">=</span> <span class="o">-</span> <span class="n">VaR_individuales_con_promedios_porcentaje</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">col</span> <span class="o">=</span> <span class="n">i</span><span class="p">,</span> <span class="n">lwd</span> <span class="o">=</span> <span class="m">2</span><span class="p">)</span>
+
+<span class="p">}</span>
+<span class="nf">abline</span><span class="p">(</span><span class="n">v</span> <span class="o">=</span> <span class="o">-</span><span class="n">VaR_portafolio_con_promedios_porcentaje</span><span class="p">,</span> <span class="n">col</span> <span class="o">=</span> <span class="s">&quot;darkgreen&quot;</span><span class="p">,</span> <span class="n">lwd</span> <span class="o">=</span> <span class="m">4</span><span class="p">)</span>
+<span class="nf">legend</span><span class="p">(</span><span class="s">&quot;topleft&quot;</span><span class="p">,</span> <span class="n">nombres</span><span class="p">,</span> <span class="n">lty</span> <span class="o">=</span> <span class="nf">rep</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="n">times</span> <span class="o">=</span> <span class="n">acciones</span><span class="p">),</span> <span class="n">lwd</span> <span class="o">=</span> <span class="nf">rep</span><span class="p">(</span><span class="m">2</span><span class="p">,</span> <span class="n">times</span> <span class="o">=</span> <span class="n">acciones</span><span class="p">),</span> <span class="n">col</span> <span class="o">=</span> <span class="nf">seq</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="n">acciones</span><span class="p">),</span> <span class="n">bty</span> <span class="o">=</span> <span class="s">&quot;n&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../../_images/output_137_0.png"><img alt="../../../_images/output_137_0.png" src="../../../_images/output_137_0.png" style="width: 420px; height: 420px;" /></a>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../Taller 1/Taller N° 1 - VaR método Delta-Normal o varianzas-covarianzas.html" class="btn btn-neutral float-right" title="Taller N° 1: VaR método Delta-Normal o varianzas-covarianzas" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../Distribución normal/Distribución normal.html" class="btn btn-neutral" title="Distribución normal" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Miguel Jiménez.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../../_static/language_data.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
